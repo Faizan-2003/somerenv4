@@ -1,0 +1,24 @@
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenModel\bin\Debug\net6.0\SomerenModel.deps.json
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenModel\bin\Debug\net6.0\SomerenModel.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenModel\bin\Debug\net6.0\SomerenModel.pdb
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenModel\obj\Debug\net6.0\SomerenModel.csproj.AssemblyReference.cache
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenModel\obj\Debug\net6.0\SomerenModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenModel\obj\Debug\net6.0\SomerenModel.AssemblyInfoInputs.cache
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenModel\obj\Debug\net6.0\SomerenModel.AssemblyInfo.cs
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenModel\obj\Debug\net6.0\SomerenModel.csproj.CoreCompileInputs.cache
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenModel\obj\Debug\net6.0\SomerenModel.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenModel\obj\Debug\net6.0\refint\SomerenModel.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenModel\obj\Debug\net6.0\SomerenModel.pdb
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenModel\obj\Debug\net6.0\ref\SomerenModel.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenModel\bin\Debug\net6.0\SomerenModel.deps.json
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenModel\bin\Debug\net6.0\SomerenModel.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenModel\bin\Debug\net6.0\SomerenModel.pdb
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenModel\obj\Debug\net6.0\SomerenModel.csproj.AssemblyReference.cache
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenModel\obj\Debug\net6.0\SomerenModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenModel\obj\Debug\net6.0\SomerenModel.AssemblyInfoInputs.cache
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenModel\obj\Debug\net6.0\SomerenModel.AssemblyInfo.cs
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenModel\obj\Debug\net6.0\SomerenModel.csproj.CoreCompileInputs.cache
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenModel\obj\Debug\net6.0\SomerenModel.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenModel\obj\Debug\net6.0\refint\SomerenModel.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenModel\obj\Debug\net6.0\SomerenModel.pdb
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenModel\obj\Debug\net6.0\ref\SomerenModel.dll

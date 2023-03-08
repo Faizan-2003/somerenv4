@@ -1,0 +1,73 @@
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.AssemblyReference.cache
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.GenerateResource.cache
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.AssemblyInfoInputs.cache
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.AssemblyInfo.cs
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.CoreCompileInputs.cache
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.Properties.Resources.resources
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.SomerenUI.resources
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.exe
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.deps.json
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.runtimeconfig.json
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.pdb
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\SomerenDAL.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\SomerenModel.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\SomerenService.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\SomerenModel.pdb
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\SomerenService.pdb
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\bin\Debug\net6.0-windows\SomerenDAL.pdb
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.CopyComplete
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\refint\SomerenUI.dll
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.pdb
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.genruntimeconfig.cache
+C:\Users\gerwin.vandijken\source\repos\Someren\SomerenUI\obj\Debug\net6.0-windows\ref\SomerenUI.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.AssemblyReference.cache
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\refint\SomerenUI.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.pdb
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.exe
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.dll.config
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.deps.json
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.runtimeconfig.json
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.pdb
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\Microsoft.Win32.SystemEvents.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\System.Configuration.ConfigurationManager.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\System.Drawing.Common.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\System.Security.Cryptography.ProtectedData.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\System.Security.Permissions.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\System.Windows.Extensions.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\SomerenDAL.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\SomerenModel.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\SomerenService.dll
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\SomerenModel.pdb
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\SomerenService.pdb
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\bin\Debug\net6.0-windows\SomerenDAL.pdb
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.Properties.Resources.resources
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.SomerenUI.resources
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.GenerateResource.cache
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.AssemblyInfoInputs.cache
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.AssemblyInfo.cs
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.CoreCompileInputs.cache
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.CopyComplete
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.genruntimeconfig.cache
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\Someren2023\SomerenUI\obj\Debug\net6.0-windows\ref\SomerenUI.dll
