@@ -9,5 +9,6 @@ namespace SomerenModel
         public string lastName { get; set; }
         public int telephone { get; set; }
         public int age { get; set; }
+        public int roomId { get; set; }
     }
 }
