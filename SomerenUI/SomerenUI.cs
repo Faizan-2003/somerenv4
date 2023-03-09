@@ -52,7 +52,7 @@ namespace SomerenUI
             try
             {
                 List<Room> rooms = GetRooms();
-                DisplayRooms(rooms);
+                DisplayRoom(rooms);
             }
 
             catch (Exception e)
@@ -87,7 +87,7 @@ namespace SomerenUI
             List<Room> rooms = roomService.GetRooms();
             return rooms;
         }
-        private void DisplayRooms(List<Room> rooms)
+        private void DisplayRoom(List<Room> rooms)
         {
             listViewRooms.Items.Clear();
 
@@ -99,6 +99,8 @@ namespace SomerenUI
                 listViewRooms.Items.Add(li);
             }
         }
+
+
 
         private void dashboardToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
