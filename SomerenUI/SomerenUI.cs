@@ -3,6 +3,7 @@ using SomerenModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System;
+using SomerenLogic;
 
 namespace SomerenUI
 {
@@ -11,6 +12,7 @@ namespace SomerenUI
         public SomerenUI()
         {
             InitializeComponent();
+            ShowDashboardPanel();
         }
 
         private void ShowDashboardPanel()
@@ -18,6 +20,7 @@ namespace SomerenUI
             // hide all other panels
             pnlStudents.Hide();
             pnlRooms.Hide();
+            pnlLecturers.Hide();
 
             // show dashboard
             pnlDashboard.Show();
@@ -28,6 +31,7 @@ namespace SomerenUI
             // hide all other panels
             pnlDashboard.Hide();
             pnlRooms.Hide();
+            pnlLecturers.Hide();
 
             // show students
             pnlStudents.Show();
@@ -47,6 +51,7 @@ namespace SomerenUI
         {
             pnlStudents.Hide();
             pnlDashboard.Hide();
+            pnlLecturers.Hide();
 
             pnlRooms.Show();
             try
@@ -100,6 +105,43 @@ namespace SomerenUI
             }
         }
 
+        public void ShowLecturerPanel()
+        {
+            pnlStudents.Hide();
+            pnlDashboard.Hide();
+            pnlRooms.Hide();
+
+            pnlLecturers.Show();
+            try
+            {
+                List<Room> rooms = GetRooms();
+                DisplayRoom(rooms);
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
+            }
+        }
+        private List<Lecturer> GetLecturers()
+        {
+            LecturerService lecturerService = new LecturerService();
+            List<Lecturer> lecturers= lecturerService.GetLecturers();
+            return lecturers;
+        }
+        private void DisplayLecturers(List<Lecturer> lecturers)
+        {
+            listViewLecturers.Items.Clear();
+
+            foreach (Lecturer lecturer in lecturers)
+            {
+                ListViewItem li = new ListViewItem(lecturer.lecturerId.ToString());
+                li.Tag = lecturer;
+                //li.SubItems.Add(room.Number.ToString());
+                listViewLecturers.Items.Add(li);
+            }
+        }
+
 
 
         private void dashboardToolStripMenuItem1_Click(object sender, System.EventArgs e)
@@ -119,12 +161,7 @@ namespace SomerenUI
 
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            ShowRoomPanel();
         }
     }
 }
