@@ -113,8 +113,8 @@ namespace SomerenUI
             pnlLecturers.Show();
             try
             {
-                List<Room> rooms = GetRooms();
-                DisplayRoom(rooms);
+                List<Lecturer> lecturers = GetLecturers();
+                DisplayLecturers(lecturers);
             }
 
             catch (Exception e)
@@ -136,7 +136,11 @@ namespace SomerenUI
             {
                 ListViewItem li = new ListViewItem(lecturer.lecturerId.ToString());
                 li.Tag = lecturer;
-                //li.SubItems.Add(room.Number.ToString());
+                li.SubItems.Add(lecturer.firstName.ToString());
+                li.SubItems.Add(lecturer.lastName.ToString());
+                li.SubItems.Add(lecturer.telephone.ToString());
+                li.SubItems.Add(lecturer.age.ToString());
+                li.SubItems.Add(lecturer.roomId.ToString());
                 listViewLecturers.Items.Add(li);
             }
         }
@@ -153,7 +157,7 @@ namespace SomerenUI
             Application.Exit();
         }
 
-        private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void studentsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowStudentsPanel();
         }
@@ -161,6 +165,21 @@ namespace SomerenUI
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowRoomPanel();
+        }
+
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowLecturerPanel();
+        }
+
+        private void dashboardToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            ShowDashboardPanel();
+        }
+
+        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
