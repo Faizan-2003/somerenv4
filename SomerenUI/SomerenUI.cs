@@ -17,6 +17,7 @@ namespace SomerenUI
         {
             // hide all other panels
             pnlStudents.Hide();
+            pnlRooms.Hide();
 
             // show dashboard
             pnlDashboard.Show();
@@ -26,6 +27,7 @@ namespace SomerenUI
         {
             // hide all other panels
             pnlDashboard.Hide();
+            pnlRooms.Hide();
 
             // show students
             pnlStudents.Show();
@@ -39,6 +41,23 @@ namespace SomerenUI
             catch (Exception e)
             {
                 MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+            }
+        }
+        public void ShowRoomPanel()
+        {
+            pnlStudents.Hide();
+            pnlDashboard.Hide();
+
+            pnlRooms.Show();
+            try
+            {
+                List<Room> rooms = GetRooms();
+                DisplayRooms(rooms);
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
             }
         }
 
@@ -62,6 +81,18 @@ namespace SomerenUI
                 listViewStudents.Items.Add(li);
             }
         }
+        private void DisplayRoom(List<Room> rooms)
+        {
+            listViewRooms.Items.Clear();
+
+            foreach (Room room in rooms)
+            {
+                ListViewItem li = new ListViewItem(room.FirstName);
+                li.Tag = room;   // link student object to listview item
+                //li.SubItems.Add(room.Number.ToString());
+                listViewRooms.Items.Add(li);
+            }
+        }
 
         private void dashboardToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
@@ -76,6 +107,16 @@ namespace SomerenUI
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowStudentsPanel();
+        }
+
+        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
