@@ -84,7 +84,7 @@ namespace SomerenUI
         private List<Room> GetRooms()
         {
             RoomService roomService = new RoomService();
-            List<Room> rooms = RoomService.GetRooms();
+            List<Room> rooms = roomService.GetRooms();
             return rooms;
         }
         private void DisplayRoom(List<Room> rooms)
@@ -93,7 +93,7 @@ namespace SomerenUI
 
             foreach (Room room in rooms)
             {
-                ListViewItem li = new ListViewItem(room.roomId);
+                ListViewItem li = new ListViewItem(room.roomId.ToString());
                 li.Tag = room;   // link student object to listview item
                 //li.SubItems.Add(room.Number.ToString());
                 listViewRooms.Items.Add(li);
