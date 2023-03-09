@@ -81,13 +81,19 @@ namespace SomerenUI
                 listViewStudents.Items.Add(li);
             }
         }
+        private List<Room> GetRooms()
+        {
+            RoomService roomService = new RoomService();
+            List<Room> rooms = RoomService.GetRooms();
+            return rooms;
+        }
         private void DisplayRoom(List<Room> rooms)
         {
             listViewRooms.Items.Clear();
 
             foreach (Room room in rooms)
             {
-                ListViewItem li = new ListViewItem(room.FirstName);
+                ListViewItem li = new ListViewItem(room.roomId);
                 li.Tag = room;   // link student object to listview item
                 //li.SubItems.Add(room.Number.ToString());
                 listViewRooms.Items.Add(li);
