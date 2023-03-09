@@ -34,3 +34,15 @@ C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenModel\obj\Debu
 C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenModel\obj\Debug\net6.0\refint\SomerenModel.dll
 C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.pdb
 C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenModel\obj\Debug\net6.0\ref\SomerenModel.dll
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenModel\bin\Debug\net6.0\SomerenModel.deps.json
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenModel\bin\Debug\net6.0\SomerenModel.dll
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenModel\bin\Debug\net6.0\SomerenModel.pdb
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.csproj.AssemblyReference.cache
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.AssemblyInfoInputs.cache
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.AssemblyInfo.cs
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.csproj.CoreCompileInputs.cache
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.dll
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenModel\obj\Debug\net6.0\refint\SomerenModel.dll
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.pdb
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenModel\obj\Debug\net6.0\ref\SomerenModel.dll
