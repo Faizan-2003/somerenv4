@@ -33,7 +33,7 @@ namespace SomerenDAL
                     buildingId = dr["buildingId"].ToString(),
 
                 };
-                rooms.Add(room);
+                Room.Add(rooms);
             }
             return rooms;
         }
