@@ -3,7 +3,6 @@ using SomerenModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System;
-using SomerenLogic;
 
 namespace SomerenUI
 {
