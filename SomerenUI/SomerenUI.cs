@@ -108,10 +108,7 @@ namespace SomerenUI
                 li.SubItems.Add(room.floor.ToString());
                 li.SubItems.Add(room.buildingId.ToString());
 
-                listViewRooms.Items.Add(li);
-              
-    
-  
+                listViewRooms.Items.Add(li); 
             }
         }
 
