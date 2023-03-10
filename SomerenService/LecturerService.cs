@@ -1,24 +1,22 @@
-﻿
-
-using SomerenDAL;
+﻿using SomerenDAL;
 using SomerenModel;
 using System.Collections.Generic;
 
-namespace SomerenLogic
+namespace SomerenService
 {
     public class LecturerService
     {
-        LecturerDao lecturerdb;
+        private LecturerDao lecturerdb;
 
         public LecturerService()
         {
             lecturerdb = new LecturerDao();
         }
-
         public List<Lecturer> GetLecturers()
         {
             List<Lecturer> lecturers = lecturerdb.GetAllLecturers();
             return lecturers;
         }
+
     }
 }
