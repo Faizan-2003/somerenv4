@@ -9,9 +9,8 @@ namespace SomerenModel
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int telephone { get; set; }
-
         public string Class { get; set; }
+        public int RoomID { get; set; }
 
-        public int RoomID {get; set; }
     }
 }
