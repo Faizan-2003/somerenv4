@@ -95,6 +95,8 @@ namespace SomerenUI
             RoomService roomService = new RoomService();
             List<Room> rooms = roomService.GetRooms();
             return rooms;
+
+
         }
         private void DisplayRoom(List<Room> rooms)
         {
@@ -103,9 +105,18 @@ namespace SomerenUI
             foreach (Room room in rooms)
             {
                 ListViewItem li = new ListViewItem(room.roomId.ToString());
-                li.Tag = room;   // link student object to listview item
-                //li.SubItems.Add(room.Number.ToString());
+
+                li.Tag = room;
+
+                li.SubItems.Add(room.roomNumber.ToString());
+                li.SubItems.Add(room.roomType.ToString());
+                li.SubItems.Add(room.floor.ToString());
+                li.SubItems.Add(room.buildingId.ToString());
+
                 listViewRooms.Items.Add(li);
+              
+    
+  
             }
         }
 
@@ -130,7 +141,7 @@ namespace SomerenUI
         private List<Lecturer> GetLecturers()
         {
             LecturerService lecturerService = new LecturerService();
-            List<Lecturer> lecturers= lecturerService.GetLecturers();
+            List<Lecturer> lecturers = lecturerService.GetLecturers();
             return lecturers;
         }
         private void DisplayLecturers(List<Lecturer> lecturers)
@@ -185,6 +196,11 @@ namespace SomerenUI
         private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pnlRooms_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
