@@ -108,7 +108,15 @@ namespace SomerenUI
 
                 li.Tag = room;
 
-                li.SubItems.Add(room.roomType.ToString());
+                if(room.roomType == true)
+                {
+                    li.SubItems.Add("Single");
+                }
+                else
+                {
+                    li.SubItems.Add("Dormitory");
+                }
+          
                 li.SubItems.Add(room.floor.ToString());
                 li.SubItems.Add(room.buildingId.ToString());
 

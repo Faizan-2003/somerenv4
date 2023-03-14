@@ -267,12 +267,12 @@
             // 
             // roomnumber
             // 
-            roomnumber.Text = "RoomNumber";
+            roomnumber.Text = "Room Number";
             roomnumber.Width = 150;
             // 
             // roomType
             // 
-            roomType.Text = "RoomType";
+            roomType.Text = "Room Type";
             roomType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             roomType.Width = 150;
             // 
@@ -284,7 +284,7 @@
             // 
             // buildingId
             // 
-            buildingId.Text = "BuildingId";
+            buildingId.Text = "Building ID";
             buildingId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             buildingId.Width = 150;
             // 
@@ -351,7 +351,7 @@
             // 
             // age
             // 
-            age.Text = "age";
+            age.Text = "Age";
             age.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             age.Width = 150;
             // 
@@ -378,10 +378,10 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1374, 842);
             Controls.Add(menuStrip1);
+            Controls.Add(pnlRooms);
             Controls.Add(pnlStudents);
             Controls.Add(pnlDashboard);
             Controls.Add(pnlLecturers);
-            Controls.Add(pnlRooms);
             MainMenuStrip = menuStrip1;
             Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             Name = "SomerenUI";
