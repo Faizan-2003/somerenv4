@@ -28,7 +28,7 @@ namespace SomerenDAL
                 {
                     roomId = (int)dr["roomId"],
                     roomNumber =(int) dr["roomNumber"],
-                    roomType = (string)dr["roomType"],
+                    roomType = (bool)dr["roomType"],
                     floor = (int)dr["floor"],
                     buildingId = dr["buildingId"].ToString(),
 
