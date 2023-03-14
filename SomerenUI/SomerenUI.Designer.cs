@@ -185,6 +185,7 @@
             listViewStudents.TabIndex = 1;
             listViewStudents.UseCompatibleStateImageBehavior = false;
             listViewStudents.View = System.Windows.Forms.View.Details;
+            listViewStudents.ColumnClick += listViewStudents_ColumnClick;
             // 
             // columnHeader2
             // 
@@ -378,10 +379,10 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1374, 842);
             Controls.Add(menuStrip1);
-            Controls.Add(pnlRooms);
             Controls.Add(pnlStudents);
             Controls.Add(pnlDashboard);
             Controls.Add(pnlLecturers);
+            Controls.Add(pnlRooms);
             MainMenuStrip = menuStrip1;
             Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             Name = "SomerenUI";

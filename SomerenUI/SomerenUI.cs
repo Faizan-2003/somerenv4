@@ -108,7 +108,7 @@ namespace SomerenUI
 
                 li.Tag = room;
 
-                if(room.roomType == true)
+                if (room.roomType == true)
                 {
                     li.SubItems.Add("Single");
                 }
@@ -116,7 +116,7 @@ namespace SomerenUI
                 {
                     li.SubItems.Add("Dormitory");
                 }
-          
+
                 li.SubItems.Add(room.floor.ToString());
                 li.SubItems.Add(room.buildingId.ToString());
 
@@ -203,6 +203,11 @@ namespace SomerenUI
         }
 
         private void pnlRooms_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void listViewStudents_ColumnClick(object sender, ColumnClickEventArgs e)
         {
 
         }
