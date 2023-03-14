@@ -54,12 +54,11 @@
             this.pnlLecturers = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.listViewLecturers = new System.Windows.Forms.ListView();
-            this.LecturerId = new System.Windows.Forms.ColumnHeader();
-            this.firstName = new System.Windows.Forms.ColumnHeader();
             this.lastName = new System.Windows.Forms.ColumnHeader();
+            this.firstName = new System.Windows.Forms.ColumnHeader();
             this.telephone = new System.Windows.Forms.ColumnHeader();
             this.age = new System.Windows.Forms.ColumnHeader();
-            this.roomId = new System.Windows.Forms.ColumnHeader();
+            this.room = new System.Windows.Forms.ColumnHeader();
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -99,14 +98,14 @@
             // dashboardToolStripMenuItem1
             // 
             this.dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(165, 26);
             this.dashboardToolStripMenuItem1.Text = "Dashboard";
             this.dashboardToolStripMenuItem1.Click += new System.EventHandler(this.dashboardToolStripMenuItem1_Click_1);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
             // 
@@ -287,12 +286,11 @@
             // listViewLecturers
             // 
             this.listViewLecturers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.LecturerId,
-            this.firstName,
             this.lastName,
+            this.firstName,
             this.telephone,
             this.age,
-            this.roomId});
+            this.room});
             this.listViewLecturers.Location = new System.Drawing.Point(18, 56);
             this.listViewLecturers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listViewLecturers.Name = "listViewLecturers";
@@ -301,40 +299,30 @@
             this.listViewLecturers.UseCompatibleStateImageBehavior = false;
             this.listViewLecturers.View = System.Windows.Forms.View.Details;
             // 
-            // LecturerId
+            // lastName
             // 
-            this.LecturerId.Text = "LecturerId";
-            this.LecturerId.Width = 90;
+            this.lastName.Text = "Last Name";
+            this.lastName.Width = 150;
             // 
             // firstName
             // 
-            this.firstName.Text = "firstName";
-            this.firstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.firstName.Width = 111;
-            // 
-            // lastName
-            // 
-            this.lastName.Text = "lastName";
-            this.lastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.lastName.Width = 111;
+            this.firstName.Text = "First Name";
+            this.firstName.Width = 150;
             // 
             // telephone
             // 
-            this.telephone.Text = "telephone";
-            this.telephone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.telephone.Width = 111;
+            this.telephone.Text = "Telephone";
+            this.telephone.Width = 150;
             // 
             // age
             // 
-            this.age.Text = "age";
-            this.age.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.age.Width = 75;
+            this.age.Text = "Age";
+            this.age.Width = 150;
             // 
-            // roomId
+            // room
             // 
-            this.roomId.Text = "roomId";
-            this.roomId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.roomId.Width = 80;
+            this.room.Text = "Room ID";
+            this.room.Width = 150;
             // 
             // label3
             // 
@@ -405,12 +393,11 @@
         private System.Windows.Forms.Panel pnlLecturers;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ListView listViewLecturers;
-        private System.Windows.Forms.ColumnHeader LecturerId;
+        private System.Windows.Forms.ColumnHeader lastName;
         private System.Windows.Forms.ColumnHeader firstName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ColumnHeader lastName;
         private System.Windows.Forms.ColumnHeader telephone;
         private System.Windows.Forms.ColumnHeader age;
-        private System.Windows.Forms.ColumnHeader roomId;
+        private System.Windows.Forms.ColumnHeader room;
     }
 }
