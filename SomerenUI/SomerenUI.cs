@@ -3,6 +3,7 @@ using SomerenModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
 namespace SomerenUI
 {
@@ -207,9 +208,23 @@ namespace SomerenUI
 
         }
 
-        private void listViewStudents_ColumnClick(object sender, ColumnClickEventArgs e)
+        private void listViewLecturers_ColumnClick(object sender, ColumnClickEventArgs e)
         {
+            List <Lecturer> lecturers = GetLecturers();
 
+            lecturers.Sort((s1, s2) => s1.firstName.CompareTo(s2.firstName));
+
+            if (firstName.Text == "First Name")
+            {
+                lecturers.Reverse();
+                firstName.Text = "First Name ASC";
+            }
+            else
+            {
+                firstName.Text = "First Name";
+            }
+
+            DisplayLecturers(lecturers);
         }
     }
 }
