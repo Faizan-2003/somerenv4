@@ -104,19 +104,15 @@ namespace SomerenUI
 
             foreach (Room room in rooms)
             {
-                ListViewItem li = new ListViewItem(room.roomId.ToString());
+                ListViewItem li = new ListViewItem(room.roomNumber.ToString());
 
                 li.Tag = room;
 
-                li.SubItems.Add(room.roomNumber.ToString());
                 li.SubItems.Add(room.roomType.ToString());
                 li.SubItems.Add(room.floor.ToString());
                 li.SubItems.Add(room.buildingId.ToString());
 
                 listViewRooms.Items.Add(li);
-              
-    
-  
             }
         }
 
