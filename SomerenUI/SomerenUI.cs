@@ -210,21 +210,24 @@ namespace SomerenUI
 
         private void listViewLecturers_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            List <Lecturer> lecturers = GetLecturers();
+            this.listViewLecturers.ListViewItemSorter = new ListViewItemComparer(e.Column);
+        }
 
-            lecturers.Sort((s1, s2) => s1.firstName.CompareTo(s2.firstName));
-
-            if (firstName.Text == "First Name")
+        class ListViewItemComparer : IComparer
+        {
+            private int col;
+            public ListViewItemComparer()
             {
-                lecturers.Reverse();
-                firstName.Text = "First Name ASC";
+                col = 0;
             }
-            else
+            public ListViewItemComparer(int column)
             {
-                firstName.Text = "First Name";
+                col = column;
             }
-
-            DisplayLecturers(lecturers);
+            public int Compare(object x, object y)
+            {
+                return String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
+            }
         }
     }
 }
