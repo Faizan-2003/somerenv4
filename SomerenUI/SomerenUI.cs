@@ -3,6 +3,7 @@ using SomerenModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
 namespace SomerenUI
 {
@@ -108,7 +109,15 @@ namespace SomerenUI
 
                 li.Tag = room;
 
-                li.SubItems.Add(room.roomType.ToString());
+                if (room.roomType == true)
+                {
+                    li.SubItems.Add("Single");
+                }
+                else
+                {
+                    li.SubItems.Add("Dormitory");
+                }
+
                 li.SubItems.Add(room.floor.ToString());
                 li.SubItems.Add(room.buildingId.ToString());
 
@@ -146,9 +155,9 @@ namespace SomerenUI
 
             foreach (Lecturer lecturer in lecturers)
             {
-                ListViewItem li = new ListViewItem(lecturer.lecturerId.ToString());
+                ListViewItem li = new ListViewItem(lecturer.firstName.ToString());
                 li.Tag = lecturer;
-                li.SubItems.Add(lecturer.firstName.ToString());
+
                 li.SubItems.Add(lecturer.lastName.ToString());
                 li.SubItems.Add(lecturer.telephone.ToString());
                 li.SubItems.Add(lecturer.age.ToString());
@@ -197,6 +206,24 @@ namespace SomerenUI
         private void pnlRooms_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void listViewLecturers_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            List <Lecturer> lecturers = GetLecturers();
+            lecturers.Sort((s1, s2) => s1.firstName.CompareTo(s2.firstName));
+
+            if (firstName.Text == "First Name")
+            {
+                lecturers.Reverse();
+                firstName.Text = "First Name ASC";
+            }
+            else
+            {
+                firstName.Text = "First Name";
+            }
+
+            DisplayLecturers(lecturers);
         }
     }
 }
