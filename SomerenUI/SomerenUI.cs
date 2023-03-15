@@ -3,6 +3,7 @@ using SomerenModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
 namespace SomerenUI
 {
@@ -108,7 +109,7 @@ namespace SomerenUI
 
                 li.Tag = room;
 
-                if(room.roomType == true)
+                if (room.roomType == true)
                 {
                     li.SubItems.Add("Single");
                 }
@@ -116,7 +117,7 @@ namespace SomerenUI
                 {
                     li.SubItems.Add("Dormitory");
                 }
-          
+
                 li.SubItems.Add(room.floor.ToString());
                 li.SubItems.Add(room.buildingId.ToString());
 
@@ -205,6 +206,25 @@ namespace SomerenUI
         private void pnlRooms_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void listViewLecturers_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            List <Lecturer> lecturers = GetLecturers();
+
+            lecturers.Sort((s1, s2) => s1.firstName.CompareTo(s2.firstName));
+
+            if (firstName.Text == "First Name")
+            {
+                lecturers.Reverse();
+                firstName.Text = "First Name ASC";
+            }
+            else
+            {
+                firstName.Text = "First Name";
+            }
+
+            DisplayLecturers(lecturers);
         }
     }
 }
