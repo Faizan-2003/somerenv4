@@ -211,7 +211,6 @@ namespace SomerenUI
         private void listViewLecturers_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             List <Lecturer> lecturers = GetLecturers();
-
             lecturers.Sort((s1, s2) => s1.firstName.CompareTo(s2.firstName));
 
             if (firstName.Text == "First Name")
