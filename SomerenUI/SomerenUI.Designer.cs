@@ -54,6 +54,7 @@
             listViewRooms = new System.Windows.Forms.ListView();
             roomnumber = new System.Windows.Forms.ColumnHeader();
             roomType = new System.Windows.Forms.ColumnHeader();
+            capacity = new System.Windows.Forms.ColumnHeader();
             Floor = new System.Windows.Forms.ColumnHeader();
             buildingId = new System.Windows.Forms.ColumnHeader();
             label2 = new System.Windows.Forms.Label();
@@ -185,7 +186,6 @@
             listViewStudents.TabIndex = 1;
             listViewStudents.UseCompatibleStateImageBehavior = false;
             listViewStudents.View = System.Windows.Forms.View.Details;
-
             // 
             // columnHeader2
             // 
@@ -257,7 +257,7 @@
             // 
             // listViewRooms
             // 
-            listViewRooms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { roomnumber, roomType, Floor, buildingId });
+            listViewRooms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { roomnumber, roomType, capacity, Floor, buildingId });
             listViewRooms.Location = new System.Drawing.Point(22, 70);
             listViewRooms.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             listViewRooms.Name = "listViewRooms";
@@ -276,6 +276,12 @@
             roomType.Text = "Room Type";
             roomType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             roomType.Width = 150;
+            // 
+            // capacity
+            // 
+            capacity.Text = "Capacity";
+            capacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            capacity.Width = 150;
             // 
             // Floor
             // 
@@ -380,10 +386,10 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1374, 842);
             Controls.Add(menuStrip1);
-            Controls.Add(pnlLecturers);
             Controls.Add(pnlRooms);
             Controls.Add(pnlStudents);
             Controls.Add(pnlDashboard);
+            Controls.Add(pnlLecturers);
             MainMenuStrip = menuStrip1;
             Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             Name = "SomerenUI";
@@ -444,5 +450,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader capacity;
     }
 }

@@ -117,6 +117,14 @@ namespace SomerenUI
                 {
                     li.SubItems.Add("Dormitory");
                 }
+                if(room.roomType == true)
+                {
+                    li.SubItems.Add("1");
+                }
+                else
+                {
+                    li.SubItems.Add("8");
+                }
 
                 li.SubItems.Add(room.floor.ToString());
                 li.SubItems.Add(room.buildingId.ToString());
@@ -210,7 +218,7 @@ namespace SomerenUI
 
         private void listViewLecturers_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            List <Lecturer> lecturers = GetLecturers();
+            List<Lecturer> lecturers = GetLecturers();
             lecturers.Sort((s1, s2) => s1.firstName.CompareTo(s2.firstName));
 
             if (firstName.Text == "First Name")
