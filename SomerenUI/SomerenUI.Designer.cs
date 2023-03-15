@@ -1,4 +1,6 @@
-﻿namespace SomerenUI
+﻿using System.Windows.Forms;
+
+namespace SomerenUI
 {
     partial class SomerenUI
     {
@@ -19,6 +21,8 @@
             }
             base.Dispose(disposing);
         }
+
+
 
         #region Windows Form Designer generated code
 
@@ -75,6 +79,8 @@
             pnlLecturers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
+
+
             // 
             // menuStrip1
             // 

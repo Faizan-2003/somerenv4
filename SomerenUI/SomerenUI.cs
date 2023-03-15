@@ -208,25 +208,61 @@ namespace SomerenUI
 
         }
 
+        private int _sortColumnIndex = -1;
+
         private void listViewLecturers_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            this.listViewLecturers.ListViewItemSorter = new ListViewItemComparer(e.Column);
+            if (e.Column != _sortColumnIndex)
+            {
+                // Set the sort column to the new column.
+                _sortColumnIndex = e.Column;
+                // Set the sort order to ascending by default.
+                listViewLecturers.Sorting = SortOrder.Ascending;
+            }
+            else
+            {
+                // Determine what the last sort order was and change it.
+                if (listViewLecturers.Sorting == SortOrder.Ascending)
+                    listViewLecturers.Sorting = SortOrder.Descending;
+                else
+                    listViewLecturers.Sorting = SortOrder.Ascending;
+            }
+
+            // Call the sort method to manually sort.
+            listViewLecturers.Sort();
+
+            // Set the ListViewItemSorter property to a new ListViewItemComparer object.
+            listViewLecturers.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewLecturers.Sorting);
         }
 
-        class ListViewItemComparer : IComparer
+        class ListViewItemStringComparer : IComparer
         {
             private int col;
-            public ListViewItemComparer()
+            private SortOrder order;
+            public ListViewItemStringComparer()
             {
                 col = 0;
+                order = SortOrder.Ascending;
             }
-            public ListViewItemComparer(int column)
+
+            public ListViewItemStringComparer(int column, SortOrder order)
             {
                 col = column;
+                this.order = order;
             }
+
             public int Compare(object x, object y)
             {
-                return String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
+                int returnVal = -1;
+                returnVal = String.Compare(((ListViewItem)x).SubItems[col].Text,
+                                           ((ListViewItem)y).SubItems[col].Text);
+
+                // Determine whether the sort order is descending.
+                if (order == SortOrder.Descending)
+                    // Invert the value returned by String.Compare.
+                    returnVal *= -1;
+
+                return returnVal;
             }
         }
     }
