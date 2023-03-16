@@ -6,6 +6,7 @@ namespace SomerenService
 {
     public class RoomService
     {
+        // creating field roomdb form class RoomDao
         private RoomDao roomdb;
         
         public RoomService()
