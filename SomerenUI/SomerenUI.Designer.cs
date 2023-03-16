@@ -67,6 +67,7 @@
             age = new System.Windows.Forms.ColumnHeader();
             roomId = new System.Windows.Forms.ColumnHeader();
             label3 = new System.Windows.Forms.Label();
+            isSupervisor = new System.Windows.Forms.ColumnHeader();
             menuStrip1.SuspendLayout();
             pnlDashboard.SuspendLayout();
             pnlStudents.SuspendLayout();
@@ -329,7 +330,7 @@
             // 
             // listViewLecturers
             // 
-            listViewLecturers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { firstName, lastName, telephone, age, roomId });
+            listViewLecturers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { firstName, lastName, telephone, age, roomId, isSupervisor });
             listViewLecturers.Location = new System.Drawing.Point(22, 70);
             listViewLecturers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             listViewLecturers.Name = "listViewLecturers";
@@ -380,16 +381,22 @@
             label3.TabIndex = 0;
             label3.Text = "Lecturers";
             // 
+            // isSupervisor
+            // 
+            isSupervisor.Text = "Supervisor";
+            isSupervisor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            isSupervisor.Width = 150;
+            // 
             // SomerenUI
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1374, 842);
             Controls.Add(menuStrip1);
+            Controls.Add(pnlLecturers);
             Controls.Add(pnlRooms);
             Controls.Add(pnlStudents);
             Controls.Add(pnlDashboard);
-            Controls.Add(pnlLecturers);
             MainMenuStrip = menuStrip1;
             Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             Name = "SomerenUI";
@@ -451,5 +458,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader capacity;
+        private System.Windows.Forms.ColumnHeader isSupervisor;
     }
 }

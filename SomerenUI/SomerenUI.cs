@@ -117,7 +117,7 @@ namespace SomerenUI
                 {
                     li.SubItems.Add("Dormitory");
                 }
-                if(room.roomType == true)
+                if (room.roomType == true)
                 {
                     li.SubItems.Add("1");
                 }
