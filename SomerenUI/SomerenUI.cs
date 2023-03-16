@@ -49,19 +49,23 @@ namespace SomerenUI
         }
         public void ShowRoomPanel()
         {
+            // hide the rest of the panels
             pnlStudents.Hide();
             pnlDashboard.Hide();
             pnlLecturers.Hide();
 
+            // show the room panel
             pnlRooms.Show();
             try
             {
+                // getting the rooms form the GetRooms method and sending it to the list and then displaying the rooms.
                 List<Room> rooms = GetRooms();
                 DisplayRoom(rooms);
             }
 
             catch (Exception e)
             {
+                // show error message box if there is an error
                 MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
             }
         }
@@ -93,7 +97,9 @@ namespace SomerenUI
         }
         private List<Room> GetRooms()
         {
+            // creating variables "roomService" from class "RoomService"
             RoomService roomService = new RoomService();
+            // getting room from the method GetRooms in roomService and adding them to the list room and returning them
             List<Room> rooms = roomService.GetRooms();
             return rooms;
 
@@ -101,14 +107,17 @@ namespace SomerenUI
         }
         private void DisplayRoom(List<Room> rooms)
         {
+            // clearing the list before displaying
             listViewRooms.Items.Clear();
 
             foreach (Room room in rooms)
             {
+                // adding roomNumber to listview
                 ListViewItem li = new ListViewItem(room.roomNumber.ToString());
 
                 li.Tag = room;
 
+                // adding either the room is Single or Dormitory 
                 if (room.roomType == true)
                 {
                     li.SubItems.Add("Single");
@@ -117,6 +126,7 @@ namespace SomerenUI
                 {
                     li.SubItems.Add("Dormitory");
                 }
+                // adding the capacity of the room depending on the room type 1 = Single and 8 = Dormitory
                 if (room.roomType == true)
                 {
                     li.SubItems.Add("1");
@@ -125,10 +135,11 @@ namespace SomerenUI
                 {
                     li.SubItems.Add("8");
                 }
-
+                // adding the floor number and building ID
                 li.SubItems.Add(room.floor.ToString());
                 li.SubItems.Add(room.buildingId.ToString());
 
+                // adding all the item to the list view
                 listViewRooms.Items.Add(li);
             }
         }
