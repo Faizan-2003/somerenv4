@@ -54,6 +54,7 @@
             listViewRooms = new System.Windows.Forms.ListView();
             roomnumber = new System.Windows.Forms.ColumnHeader();
             roomType = new System.Windows.Forms.ColumnHeader();
+            capacity = new System.Windows.Forms.ColumnHeader();
             Floor = new System.Windows.Forms.ColumnHeader();
             buildingId = new System.Windows.Forms.ColumnHeader();
             label2 = new System.Windows.Forms.Label();
@@ -66,6 +67,7 @@
             age = new System.Windows.Forms.ColumnHeader();
             roomId = new System.Windows.Forms.ColumnHeader();
             label3 = new System.Windows.Forms.Label();
+            isSupervisor = new System.Windows.Forms.ColumnHeader();
             menuStrip1.SuspendLayout();
             pnlDashboard.SuspendLayout();
             pnlStudents.SuspendLayout();
@@ -256,7 +258,7 @@
             // 
             // listViewRooms
             // 
-            listViewRooms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { roomnumber, roomType, Floor, buildingId });
+            listViewRooms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { roomnumber, roomType, capacity, Floor, buildingId });
             listViewRooms.Location = new System.Drawing.Point(22, 70);
             listViewRooms.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             listViewRooms.Name = "listViewRooms";
@@ -267,14 +269,20 @@
             // 
             // roomnumber
             // 
-            roomnumber.Text = "RoomNumber";
+            roomnumber.Text = "Room Number";
             roomnumber.Width = 150;
             // 
             // roomType
             // 
-            roomType.Text = "RoomType";
+            roomType.Text = "Room Type";
             roomType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             roomType.Width = 150;
+            // 
+            // capacity
+            // 
+            capacity.Text = "Capacity";
+            capacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            capacity.Width = 150;
             // 
             // Floor
             // 
@@ -284,7 +292,7 @@
             // 
             // buildingId
             // 
-            buildingId.Text = "BuildingId";
+            buildingId.Text = "Building ID";
             buildingId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             buildingId.Width = 150;
             // 
@@ -322,7 +330,7 @@
             // 
             // listViewLecturers
             // 
-            listViewLecturers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { firstName, lastName, telephone, age, roomId });
+            listViewLecturers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { firstName, lastName, telephone, age, roomId, isSupervisor });
             listViewLecturers.Location = new System.Drawing.Point(22, 70);
             listViewLecturers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             listViewLecturers.Name = "listViewLecturers";
@@ -330,6 +338,7 @@
             listViewLecturers.TabIndex = 0;
             listViewLecturers.UseCompatibleStateImageBehavior = false;
             listViewLecturers.View = System.Windows.Forms.View.Details;
+            listViewLecturers.ColumnClick += listViewLecturers_ColumnClick;
             // 
             // firstName
             // 
@@ -351,7 +360,7 @@
             // 
             // age
             // 
-            age.Text = "age";
+            age.Text = "Age";
             age.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             age.Width = 150;
             // 
@@ -372,16 +381,22 @@
             label3.TabIndex = 0;
             label3.Text = "Lecturers";
             // 
+            // isSupervisor
+            // 
+            isSupervisor.Text = "Supervisor";
+            isSupervisor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            isSupervisor.Width = 150;
+            // 
             // SomerenUI
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1374, 842);
             Controls.Add(menuStrip1);
-            Controls.Add(pnlStudents);
-            Controls.Add(pnlDashboard);
             Controls.Add(pnlLecturers);
             Controls.Add(pnlRooms);
+            Controls.Add(pnlStudents);
+            Controls.Add(pnlDashboard);
             MainMenuStrip = menuStrip1;
             Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             Name = "SomerenUI";
@@ -442,5 +457,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader capacity;
+        private System.Windows.Forms.ColumnHeader isSupervisor;
     }
 }

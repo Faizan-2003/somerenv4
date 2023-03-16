@@ -24,10 +24,10 @@ namespace SomerenDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-             Room room = new Room()
+                Room room = new Room()
                 {
                     roomId = (int)dr["roomId"],
-                    roomNumber =(int) dr["roomNumber"],
+                    roomNumber = (int)dr["roomNumber"],
                     roomType = (bool)dr["roomType"],
                     floor = (int)dr["floor"],
                     buildingId = dr["buildingId"].ToString(),
