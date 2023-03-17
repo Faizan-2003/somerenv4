@@ -329,9 +329,8 @@ namespace SomerenUI
             }
         }
         private SortOrder studentSortOrder = SortOrder.Ascending;
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            // Toggle between ascending and descending order
             if (studentSortOrder == SortOrder.Ascending)
             {
                 studentSortOrder = SortOrder.Descending;
@@ -393,7 +392,6 @@ namespace SomerenUI
             listViewStudents.Sort();
         }
 
-
         private void button5_Click(object sender, EventArgs e)
         {
             // Toggle between ascending and descending order
@@ -409,6 +407,7 @@ namespace SomerenUI
             listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(4, studentSortOrder);
             listViewStudents.Sort();
         }
+
         private void button6_Click(object sender, EventArgs e)
         {
             if (studentSortOrder == SortOrder.Ascending)
@@ -423,6 +422,5 @@ namespace SomerenUI
             listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(5, studentSortOrder);
             listViewStudents.Sort();
         }
-
     }
 }
