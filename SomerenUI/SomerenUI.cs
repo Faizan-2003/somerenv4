@@ -110,13 +110,13 @@ namespace SomerenUI
 
             foreach (Room room in rooms)
             {
-<<<<<<< Updated upstream
+
                 ListViewItem li = new ListViewItem(room.roomId.ToString());
                 li.Tag = room;   // link student object to listview item
                 //li.SubItems.Add(room.Number.ToString());
-=======
+
                 // adding roomNumber to listview
-                ListViewItem li = new ListViewItem(room.roomNumber.ToString());
+                li = new ListViewItem(room.roomNumber.ToString());
 
                 li.Tag = room;
 
@@ -143,7 +143,7 @@ namespace SomerenUI
                 li.SubItems.Add(room.buildingId.ToString());
 
                 // adding all the item to the list view
->>>>>>> Stashed changes
+
                 listViewRooms.Items.Add(li);
             }
         }
@@ -237,8 +237,6 @@ namespace SomerenUI
         {
             this.Close();
         }
-<<<<<<< Updated upstream
-=======
 
         private void pnlRooms_Paint(object sender, PaintEventArgs e)
         {
@@ -425,6 +423,6 @@ namespace SomerenUI
             listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(5, studentSortOrder);
             listViewStudents.Sort();
         }
->>>>>>> Stashed changes
+
     }
 }
