@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "nll+epzJDZl+4MogdaUonpxamIRcNtLmdFcqUDDRpUxpU9eI86dnmQew82ftXmT1RURu440hYZx5B1lCKKmKIA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Home\\Documents\\Desktop\\The copy folder of backups\\If things get f up\\SomerenModel\\SomerenModel.csproj",
+=======
+  "dgSpecHash": "b4bPTUUKnaxJzg1asXPBNts1Iz7ZisLTaQHvHJcDo+54/a8j7Z5+fzyqME/5b09afz9D/eZbsmjFqK24yr/tKQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Home\\Documents\\Desktop\\somerenv4-main\\SomerenModel\\SomerenModel.csproj",
+>>>>>>> Stashed changes
   "expectedPackageFiles": [],
   "logs": []
 }

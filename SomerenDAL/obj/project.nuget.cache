@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "evondIhUvIWgl9cZjU8CYqteI43c1AR6ClFMGaxfnGVGWs64zNzHYT1XGOGgNJGjQvYabkaMFBC/nlDPBQYtig==",
   "success": true,
   "projectFilePath": "C:\\Users\\Home\\Documents\\Desktop\\The copy folder of backups\\If things get f up\\SomerenDAL\\SomerenDAL.csproj",
+=======
+  "dgSpecHash": "nw27zV3E92QWbgrFItlz6Ex78YCrjBipac8xYwH0ArXNBvnqvF8t4dGk54ggnxagKN2lHC5QTRGVtRlDEecxhQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Home\\Documents\\Desktop\\somerenv4-main\\SomerenDAL\\SomerenDAL.csproj",
+>>>>>>> Stashed changes
   "expectedPackageFiles": [
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
