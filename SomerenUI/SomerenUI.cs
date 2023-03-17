@@ -146,19 +146,24 @@ namespace SomerenUI
 
         public void ShowLecturerPanel()
         {
+            // hide all other panels
             pnlStudents.Hide();
             pnlDashboard.Hide();
             pnlRooms.Hide();
 
+            // show lecturer panel
+            
             pnlLecturers.Show();
             try
             {
+                // getting the lecturers form the GetLecturers method and sending it to the list and then displaying
                 List<Lecturer> lecturers = GetLecturers();
                 DisplayLecturers(lecturers);
             }
 
             catch (Exception e)
             {
+                // show error message box if there is an error
                 MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
             }
         }
@@ -170,13 +175,16 @@ namespace SomerenUI
         }
         private void DisplayLecturers(List<Lecturer> lecturers)
         {
+            // clearing the list before displaying
             listViewLecturers.Items.Clear();
 
             foreach (Lecturer lecturer in lecturers)
             {
+                // adding firstName to listview
                 ListViewItem li = new ListViewItem(lecturer.firstName.ToString());
                 li.Tag = lecturer;
 
+                // adding data to the listview 
                 li.SubItems.Add(lecturer.lastName.ToString());
                 li.SubItems.Add(lecturer.telephone.ToString());
                 li.SubItems.Add(lecturer.age.ToString());
