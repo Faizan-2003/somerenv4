@@ -102,8 +102,6 @@ namespace SomerenUI
             // getting room from the method GetRooms in roomService and adding them to the list room and returning them
             List<Room> rooms = roomService.GetRooms();
             return rooms;
-
-
         }
         private void DisplayRoom(List<Room> rooms)
         {
@@ -112,8 +110,13 @@ namespace SomerenUI
 
             foreach (Room room in rooms)
             {
+
+                ListViewItem li = new ListViewItem(room.roomId.ToString());
+                li.Tag = room;   // link student object to listview item
+                //li.SubItems.Add(room.Number.ToString());
+
                 // adding roomNumber to listview
-                ListViewItem li = new ListViewItem(room.roomNumber.ToString());
+                li = new ListViewItem(room.roomNumber.ToString());
 
                 li.Tag = room;
 
@@ -140,6 +143,7 @@ namespace SomerenUI
                 li.SubItems.Add(room.buildingId.ToString());
 
                 // adding all the item to the list view
+
                 listViewRooms.Items.Add(li);
             }
         }
@@ -152,7 +156,7 @@ namespace SomerenUI
             pnlRooms.Hide();
 
             // show lecturer panel
-            
+
             pnlLecturers.Show();
             try
             {
@@ -294,5 +298,131 @@ namespace SomerenUI
                 return returnVal;
             }
         }
+
+        class ListViewItemIntComparer : IComparer
+        {
+            private int col;
+            private SortOrder order;
+
+            public ListViewItemIntComparer(int column, SortOrder order)
+            {
+                col = column;
+                this.order = order;
+            }
+
+            public int Compare(object x, object y)
+            {
+                int returnVal = -1;
+                int value1, value2;
+
+                if (int.TryParse(((ListViewItem)x).SubItems[col].Text, out value1) && int.TryParse(((ListViewItem)y).SubItems[col].Text, out value2))
+                {
+                    returnVal = value1.CompareTo(value2);
+                }
+
+                if (order == SortOrder.Descending)
+                {
+                    returnVal *= -1;
+                }
+
+                return returnVal;
+            }
+        }
+        private SortOrder studentSortOrder = SortOrder.Ascending;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Toggle between ascending and descending order
+            if (studentSortOrder == SortOrder.Ascending)
+            {
+                studentSortOrder = SortOrder.Descending;
+            }
+            else
+            {
+                studentSortOrder = SortOrder.Ascending;
+            }
+            // Sort students by their ID
+            listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(0, studentSortOrder);
+            listViewStudents.Sort();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Toggle between ascending and descending order
+            if (studentSortOrder == SortOrder.Ascending)
+            {
+                studentSortOrder = SortOrder.Descending;
+            }
+            else
+            {
+                studentSortOrder = SortOrder.Ascending;
+            }
+            // Sort students by their name (first name column is index 1)
+            listViewStudents.ListViewItemSorter = new ListViewItemStringComparer(1, studentSortOrder);
+            listViewStudents.Sort();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Toggle between ascending and descending order
+            if (studentSortOrder == SortOrder.Ascending)
+            {
+                studentSortOrder = SortOrder.Descending;
+            }
+            else
+            {
+                studentSortOrder = SortOrder.Ascending;
+            }
+            // Sort students by their last name (last name column is index 2)
+            listViewStudents.ListViewItemSorter = new ListViewItemStringComparer(2, studentSortOrder);
+            listViewStudents.Sort();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // Toggle between ascending and descending order
+            if (studentSortOrder == SortOrder.Ascending)
+            {
+                studentSortOrder = SortOrder.Descending;
+            }
+            else
+            {
+                studentSortOrder = SortOrder.Ascending;
+            }
+            // Sort students by their phone (phone column is index 3)
+            listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(3, studentSortOrder);
+            listViewStudents.Sort();
+        }
+
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Toggle between ascending and descending order
+            if (studentSortOrder == SortOrder.Ascending)
+            {
+                studentSortOrder = SortOrder.Descending;
+            }
+            else
+            {
+                studentSortOrder = SortOrder.Ascending;
+            }
+            // Sort students by their class (class column is index 4)
+            listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(4, studentSortOrder);
+            listViewStudents.Sort();
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (studentSortOrder == SortOrder.Ascending)
+            {
+                studentSortOrder = SortOrder.Descending;
+            }
+            else
+            {
+                studentSortOrder = SortOrder.Ascending;
+            }
+            // Sort students by their class (class column is index 4)
+            listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(5, studentSortOrder);
+            listViewStudents.Sort();
+        }
+
     }
 }
