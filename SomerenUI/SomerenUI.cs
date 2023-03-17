@@ -174,7 +174,7 @@ namespace SomerenUI
         private List<Lecturer> GetLecturers()
         {
             LecturerService lecturerService = new LecturerService();
-            List<Lecturer> lecturers= lecturerService.GetLecturers();
+            List<Lecturer> lecturers = lecturerService.GetLecturers();
             return lecturers;
         }
         private void DisplayLecturers(List<Lecturer> lecturers)
