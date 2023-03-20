@@ -506,5 +506,19 @@ namespace SomerenUI
         {
             ShowDrinksPanel();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Drinks drink = new Drinks();
+            DrinkDelete drinkDelete = new DrinkDelete(drink);
+            drinkDelete.ShowDialog();
+        }
+
+        private void bnUpdate_Click(object sender, EventArgs e)
+        {
+            Drinks drink = new Drinks();
+            DrinkUpdate drinkUpdate = new DrinkUpdate(drink);
+            drinkUpdate.ShowDialog();
+        }
     }
 }
