@@ -76,6 +76,10 @@
             this.isSupervisor = new System.Windows.Forms.ColumnHeader();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlDrinks = new System.Windows.Forms.Panel();
+            this.btn_Refresh = new System.Windows.Forms.Button();
+            this.bnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.listViewDrinks = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
@@ -214,6 +218,7 @@
             this.roomIDbutton.TabIndex = 10;
             this.roomIDbutton.Text = "Room ID";
             this.roomIDbutton.UseVisualStyleBackColor = true;
+            this.roomIDbutton.Click += new System.EventHandler(this.roomIDbutton_Click);
             // 
             // classButton
             // 
@@ -223,6 +228,7 @@
             this.classButton.TabIndex = 9;
             this.classButton.Text = "Class";
             this.classButton.UseVisualStyleBackColor = true;
+            this.classButton.Click += new System.EventHandler(this.classButton_Click);
             // 
             // telephoneButton
             // 
@@ -232,6 +238,7 @@
             this.telephoneButton.TabIndex = 8;
             this.telephoneButton.Text = "Telephone";
             this.telephoneButton.UseVisualStyleBackColor = true;
+            this.telephoneButton.Click += new System.EventHandler(this.telephoneButton_Click);
             // 
             // lastNameButton
             // 
@@ -241,6 +248,7 @@
             this.lastNameButton.TabIndex = 7;
             this.lastNameButton.Text = "Last Name";
             this.lastNameButton.UseVisualStyleBackColor = true;
+            this.lastNameButton.Click += new System.EventHandler(this.lastNameButton_Click);
             // 
             // firstNameButton
             // 
@@ -250,6 +258,7 @@
             this.firstNameButton.TabIndex = 6;
             this.firstNameButton.Text = "First Name";
             this.firstNameButton.UseVisualStyleBackColor = true;
+            this.firstNameButton.Click += new System.EventHandler(this.firstNameButton_Click);
             // 
             // studentNumberbutton
             // 
@@ -259,6 +268,7 @@
             this.studentNumberbutton.TabIndex = 5;
             this.studentNumberbutton.Text = "Student Number";
             this.studentNumberbutton.UseVisualStyleBackColor = true;
+            this.studentNumberbutton.Click += new System.EventHandler(this.studentNumberbutton_Click);
             // 
             // pictureBox1
             // 
@@ -445,6 +455,7 @@
             this.listViewLecturers.TabIndex = 0;
             this.listViewLecturers.UseCompatibleStateImageBehavior = false;
             this.listViewLecturers.View = System.Windows.Forms.View.Details;
+            this.listViewLecturers.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewLecturers_ColumnClick);
             // 
             // firstName
             // 
@@ -494,6 +505,10 @@
             // 
             // pnlDrinks
             // 
+            this.pnlDrinks.Controls.Add(this.btn_Refresh);
+            this.pnlDrinks.Controls.Add(this.bnUpdate);
+            this.pnlDrinks.Controls.Add(this.btnDelete);
+            this.pnlDrinks.Controls.Add(this.btnAdd);
             this.pnlDrinks.Controls.Add(this.pictureBox4);
             this.pnlDrinks.Controls.Add(this.listViewDrinks);
             this.pnlDrinks.Controls.Add(this.Drinks);
@@ -502,6 +517,48 @@
             this.pnlDrinks.Name = "pnlDrinks";
             this.pnlDrinks.Size = new System.Drawing.Size(1072, 622);
             this.pnlDrinks.TabIndex = 11;
+            // 
+            // btn_Refresh
+            // 
+            this.btn_Refresh.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_Refresh.Location = new System.Drawing.Point(411, 492);
+            this.btn_Refresh.Name = "btn_Refresh";
+            this.btn_Refresh.Size = new System.Drawing.Size(124, 41);
+            this.btn_Refresh.TabIndex = 6;
+            this.btn_Refresh.Text = "Refresh List";
+            this.btn_Refresh.UseVisualStyleBackColor = true;
+            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
+            // 
+            // bnUpdate
+            // 
+            this.bnUpdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bnUpdate.Location = new System.Drawing.Point(171, 492);
+            this.bnUpdate.Name = "bnUpdate";
+            this.bnUpdate.Size = new System.Drawing.Size(106, 41);
+            this.bnUpdate.TabIndex = 5;
+            this.bnUpdate.Text = "Update";
+            this.bnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDelete.Location = new System.Drawing.Point(290, 492);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(106, 41);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.Location = new System.Drawing.Point(46, 492);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(106, 41);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // pictureBox4
             // 
@@ -529,6 +586,7 @@
             this.listViewDrinks.TabIndex = 1;
             this.listViewDrinks.UseCompatibleStateImageBehavior = false;
             this.listViewDrinks.View = System.Windows.Forms.View.Details;
+            this.listViewDrinks.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewDrinks_ColumnClick);
             // 
             // columnHeader1
             // 
@@ -580,8 +638,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 674);
-            this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.pnlLecturers);
@@ -669,5 +727,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.ColumnHeader columnHeader17;
         private System.Windows.Forms.Label Drinks;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button bnUpdate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btn_Refresh;
     }
 }

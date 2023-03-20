@@ -281,3 +281,4 @@ C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-
 C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.pdb
 C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.genruntimeconfig.cache
 C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\ref\SomerenUI.dll
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkAdd.resources
