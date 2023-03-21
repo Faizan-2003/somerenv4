@@ -124,10 +124,12 @@ namespace SomerenUI
                 if (room.roomType == true)
                 {
                     li.SubItems.Add("Single (Lecturer)");
+                    // ...
                 }
                 else
                 {
                     li.SubItems.Add("Dormitory (Students)");
+                    // ....
                 }
                 // adding the capacity of the room depending on the room type 1 = Single and 8 = Dormitory
                 if (room.roomType == true)
