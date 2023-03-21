@@ -284,3 +284,6 @@ C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-
 C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkAdd.resources
 C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkDelete.resources
 C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkUpdate.resources
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkAdd.resources
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkDelete.resources
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkUpdate.resources

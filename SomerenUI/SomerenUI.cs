@@ -179,7 +179,7 @@ namespace SomerenUI
             catch (Exception e)
             {
                 // show error message box if there is an error
-                MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
+                MessageBox.Show("Something went wrong while loading the lecturers: " + e.Message);
             }
         }
         private List<Lecturer> GetLecturers()
@@ -273,6 +273,11 @@ namespace SomerenUI
             }
         }
 
+        public void DisplayCashRegister()
+        {
+            //..
+        }
+
         private void dashboardToolStripMenuItem1_Click_2(object sender, EventArgs e)
         {
             ShowDashboardPanel();
@@ -361,7 +366,7 @@ namespace SomerenUI
                 return returnVal;
             }
         }
-        
+
 
         private void listViewDrinks_ColumnClick(object sender, ColumnClickEventArgs e)
         {
@@ -533,6 +538,16 @@ namespace SomerenUI
             Drinks drink = new Drinks();
             DrinkUpdate drinkUpdate = new DrinkUpdate(drink);
             drinkUpdate.ShowDialog();
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlCashRegister_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
