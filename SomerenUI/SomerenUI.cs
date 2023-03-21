@@ -6,6 +6,8 @@ using System;
 using System.Collections;
 using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Microsoft.VisualBasic.Devices;
+using System.Drawing;
 
 namespace SomerenUI
 {
@@ -254,7 +256,17 @@ namespace SomerenUI
                 li.SubItems.Add(drink.price.ToString());
                 li.SubItems.Add(drink.stock.ToString());
                 li.SubItems.Add(drink.VAT.ToString());
-                li.SubItems.Add("Not Implemented");
+                if (drink.stock < 10)
+                {
+                    li.SubItems.Add("Stock nearly depleted");
+                    li.SubItems[0].ForeColor = System.Drawing.Color.Red;
+
+                }
+                else
+                {
+                    li.SubItems.Add("Stock sufficient");
+                    li.SubItems[0].ForeColor = System.Drawing.Color.Green;
+                }
                 listViewDrinks.Items.Add(li);
             }
         }
