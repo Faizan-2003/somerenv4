@@ -8,6 +8,9 @@ using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.Devices;
 using System.Drawing;
+using SomerenDAL;
+using System.Linq;
+using static System.Windows.Forms.LinkLabel;
 
 namespace SomerenUI
 {
@@ -26,9 +29,35 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlLecturers.Hide();
             pnlDrinks.Hide();
+            pnlRevenue.Hide();
 
             // show dashboard
             pnlDashboard.Show();
+        }
+
+        private RevenueService revenueService = new RevenueService();
+        private List<Revenue> allRevenues;
+        private void ShowRevenuePanel()
+        {
+            pnlDashboard.Hide();
+            pnlRooms.Hide();
+            pnlLecturers.Hide();
+            pnlDrinks.Hide();
+
+            pnlRevenue.Show();
+            try
+            {
+                // Set the DateTimePicker's value to the current date
+                dateTimePicker1.Value = DateTime.Now;
+
+                // Get and display revenues for the current date
+                List<Revenue> revenues = revenueService.GetRevenues(dateTimePicker1.Value);
+                DisplayRevenue(revenues);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the revenues: " + e.Message);
+            }
         }
 
         private void ShowStudentsPanel()
@@ -38,6 +67,7 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlLecturers.Hide();
             pnlDrinks.Hide();
+            pnlRevenue.Hide();
 
             // show students
             pnlStudents.Show();
@@ -60,6 +90,7 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlLecturers.Hide();
             pnlDrinks.Hide();
+            pnlRevenue.Hide();
 
             // show the room panel
             pnlRooms.Show();
@@ -83,6 +114,15 @@ namespace SomerenUI
             List<Student> students = studentService.GetStudents();
             return students;
         }
+
+        public List<Revenue> GetRevenues(DateTime selectedDate)
+        {
+            RevenueService revenueService = new RevenueService();
+            List<Revenue> revenues = revenueService.GetRevenues(selectedDate);
+            return revenues;
+        }
+
+
 
         private void DisplayStudents(List<Student> students)
         {
@@ -164,6 +204,7 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlRooms.Hide();
             pnlDrinks.Hide();
+            pnlRevenue.Hide();
 
             // show lecturer panel
 
@@ -218,6 +259,7 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlRooms.Hide();
             pnlLecturers.Hide();
+            pnlRevenue.Hide();
 
             // show drinks panel
 
@@ -272,6 +314,36 @@ namespace SomerenUI
                 listViewDrinks.Items.Add(li);
             }
         }
+
+        private void DisplayRevenue(List<Revenue> revenues)
+        {
+            // Clearing the list before displaying
+            listViewRevenue.Items.Clear();
+
+            foreach (Revenue revenue in revenues)
+            {
+                ListViewItem li = new ListViewItem(revenue.drinkName.ToString());
+                li.Tag = revenue;
+                li.SubItems.Add(revenue.drinkType);
+                li.SubItems.Add($"{revenue.price:C}");
+                li.SubItems.Add(revenue.stock.ToString());
+                li.SubItems.Add(revenue.sales.ToString());
+                float overallProfit = 0;
+                // Calculate and display the profit for the current drink
+                float drinkProfit = revenue.price * revenue.sales;
+
+                for (int i = 0; i < revenues.Count; i++)
+                {
+                    overallProfit = +drinkProfit;
+                }
+                overallProfit = drinkProfit - drinkProfit + overallProfit;
+                label7.Text = overallProfit.ToString("C");
+                li.SubItems.Add($"{drinkProfit:C}");
+                listViewRevenue.Items.Add(li);
+            }
+        }
+
+
 
         public void DisplayCashRegister()
         {
@@ -546,6 +618,40 @@ namespace SomerenUI
         }
 
         private void pnlCashRegister_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void revenueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowRevenuePanel();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DateTime selectedDate = dateTimePicker1.Value;
+
+            if (selectedDate.Date > DateTime.Now.Date)
+            {
+                MessageBox.Show("Please select a date that is in the current or past.", "Warning!");
+                return;
+            }
+            else
+            {
+                allRevenues = revenueService.GetRevenues(selectedDate);
+
+                DisplayRevenue(allRevenues);
+
+            }
+        }
+
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            allRevenues = revenueService.GetRevenues(dateTimePicker1.Value);
+        }
+
+        private void pnlRevenue_Paint(object sender, PaintEventArgs e)
         {
 
         }
