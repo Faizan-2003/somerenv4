@@ -82,3 +82,15 @@ C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenModel\obj\Debug\net6
 C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenModel\obj\Debug\net6.0\refint\SomerenModel.dll
 C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.pdb
 C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenModel\obj\Debug\net6.0\ref\SomerenModel.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenModel\bin\Debug\net6.0\SomerenModel.deps.json
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenModel\bin\Debug\net6.0\SomerenModel.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenModel\bin\Debug\net6.0\SomerenModel.pdb
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.csproj.AssemblyReference.cache
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.AssemblyInfoInputs.cache
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.AssemblyInfo.cs
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.csproj.CoreCompileInputs.cache
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenModel\obj\Debug\net6.0\refint\SomerenModel.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenModel\obj\Debug\net6.0\SomerenModel.pdb
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenModel\obj\Debug\net6.0\ref\SomerenModel.dll

@@ -103,3 +103,18 @@ C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenDAL\obj\Debug\net6.0
 C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenDAL\obj\Debug\net6.0\refint\SomerenDAL.dll
 C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenDAL\obj\Debug\net6.0\SomerenDAL.pdb
 C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenDAL\obj\Debug\net6.0\ref\SomerenDAL.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\bin\Debug\net6.0\SomerenDAL.deps.json
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\bin\Debug\net6.0\SomerenDAL.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\bin\Debug\net6.0\SomerenDAL.pdb
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\bin\Debug\net6.0\SomerenModel.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\bin\Debug\net6.0\SomerenModel.pdb
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\obj\Debug\net6.0\SomerenDAL.csproj.AssemblyReference.cache
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\obj\Debug\net6.0\SomerenDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\obj\Debug\net6.0\SomerenDAL.AssemblyInfoInputs.cache
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\obj\Debug\net6.0\SomerenDAL.AssemblyInfo.cs
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\obj\Debug\net6.0\SomerenDAL.csproj.CoreCompileInputs.cache
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\obj\Debug\net6.0\SomerenDAL.csproj.CopyComplete
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\obj\Debug\net6.0\SomerenDAL.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\obj\Debug\net6.0\refint\SomerenDAL.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\obj\Debug\net6.0\SomerenDAL.pdb
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenDAL\obj\Debug\net6.0\ref\SomerenDAL.dll
