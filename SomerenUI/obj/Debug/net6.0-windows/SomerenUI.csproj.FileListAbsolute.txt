@@ -201,3 +201,134 @@ C:\Users\Home\source\repos\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\Som
 C:\Users\Home\source\repos\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.CopyComplete
 C:\Users\Home\source\repos\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.genruntimeconfig.cache
 C:\Users\Home\source\repos\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\ref\SomerenUI.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.exe
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.dll.config
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.deps.json
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.runtimeconfig.json
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.pdb
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\Microsoft.Win32.SystemEvents.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\System.Configuration.ConfigurationManager.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\System.Drawing.Common.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\System.Security.Permissions.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\System.Windows.Extensions.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\SomerenDAL.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\SomerenModel.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\SomerenService.dll
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\SomerenModel.pdb
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\SomerenService.pdb
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\bin\Debug\net6.0-windows\SomerenDAL.pdb
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.Properties.Resources.resources
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.SomerenUI.resources
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.GenerateResource.cache
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.AssemblyInfoInputs.cache
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.AssemblyInfo.cs
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.CoreCompileInputs.cache
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.CopyComplete
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.genruntimeconfig.cache
+C:\Users\Home\Documents\Desktop\somerenv4-main\SomerenUI\obj\Debug\net6.0-windows\ref\SomerenUI.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.exe
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.dll.config
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.deps.json
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.runtimeconfig.json
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.pdb
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\Microsoft.Win32.SystemEvents.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\System.Configuration.ConfigurationManager.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\System.Drawing.Common.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\System.Security.Permissions.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\System.Windows.Extensions.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenDAL.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenModel.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenService.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenModel.pdb
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenService.pdb
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenDAL.pdb
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.AssemblyReference.cache
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.Properties.Resources.resources
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.SomerenUI.resources
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.GenerateResource.cache
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.AssemblyInfoInputs.cache
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.AssemblyInfo.cs
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.CoreCompileInputs.cache
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.CopyComplete
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\refint\SomerenUI.dll
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.pdb
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.genruntimeconfig.cache
+C:\Users\Home\Documents\Desktop\New folder\somerenv4\SomerenUI\obj\Debug\net6.0-windows\ref\SomerenUI.dll
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkAdd.resources
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkDelete.resources
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkUpdate.resources
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkAdd.resources
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkDelete.resources
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkUpdate.resources
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.exe
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.dll.config
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.deps.json
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.runtimeconfig.json
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenUI.pdb
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\Microsoft.Win32.SystemEvents.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\System.Configuration.ConfigurationManager.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\System.Drawing.Common.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\System.Security.Cryptography.ProtectedData.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\System.Security.Permissions.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\System.Windows.Extensions.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenDAL.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenModel.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenService.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenModel.pdb
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenService.pdb
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\bin\Debug\net6.0-windows\SomerenDAL.pdb
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.AssemblyReference.cache
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkAdd.resources
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkDelete.resources
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.DrinkUpdate.resources
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.Properties.Resources.resources
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.SomerenUI.resources
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.GenerateResource.cache
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.AssemblyInfoInputs.cache
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.AssemblyInfo.cs
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.CoreCompileInputs.cache
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.csproj.CopyComplete
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\refint\SomerenUI.dll
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.pdb
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.genruntimeconfig.cache
+C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\ref\SomerenUI.dll

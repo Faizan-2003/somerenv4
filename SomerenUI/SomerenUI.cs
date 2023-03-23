@@ -4,6 +4,13 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System;
 using System.Collections;
+using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Microsoft.VisualBasic.Devices;
+using System.Drawing;
+using SomerenDAL;
+using System.Linq;
+using static System.Windows.Forms.LinkLabel;
 
 namespace SomerenUI
 {
@@ -21,9 +28,36 @@ namespace SomerenUI
             pnlStudents.Hide();
             pnlRooms.Hide();
             pnlLecturers.Hide();
+            pnlDrinks.Hide();
+            pnlRevenue.Hide();
 
             // show dashboard
             pnlDashboard.Show();
+        }
+
+        private RevenueService revenueService = new RevenueService();
+        private List<Revenue> allRevenues;
+        private void ShowRevenuePanel()
+        {
+            pnlDashboard.Hide();
+            pnlRooms.Hide();
+            pnlLecturers.Hide();
+            pnlDrinks.Hide();
+
+            pnlRevenue.Show();
+            try
+            {
+                // Set the DateTimePicker's value to the current date
+                dateTimePicker1.Value = DateTime.Now;
+
+                // Get and display revenues for the current date
+                List<Revenue> revenues = revenueService.GetRevenues(dateTimePicker1.Value);
+                DisplayRevenue(revenues);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the revenues: " + e.Message);
+            }
         }
 
         private void ShowStudentsPanel()
@@ -32,6 +66,8 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlRooms.Hide();
             pnlLecturers.Hide();
+            pnlDrinks.Hide();
+            pnlRevenue.Hide();
 
             // show students
             pnlStudents.Show();
@@ -49,19 +85,25 @@ namespace SomerenUI
         }
         public void ShowRoomPanel()
         {
+            // hide the rest of the panels
             pnlStudents.Hide();
             pnlDashboard.Hide();
             pnlLecturers.Hide();
+            pnlDrinks.Hide();
+            pnlRevenue.Hide();
 
+            // show the room panel
             pnlRooms.Show();
             try
             {
+                // getting the rooms form the GetRooms method and sending it to the list and then displaying the rooms.
                 List<Room> rooms = GetRooms();
                 DisplayRoom(rooms);
             }
 
             catch (Exception e)
             {
+                // show error message box if there is an error
                 MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
             }
         }
@@ -72,6 +114,15 @@ namespace SomerenUI
             List<Student> students = studentService.GetStudents();
             return students;
         }
+
+        public List<Revenue> GetRevenues(DateTime selectedDate)
+        {
+            RevenueService revenueService = new RevenueService();
+            List<Revenue> revenues = revenueService.GetRevenues(selectedDate);
+            return revenues;
+        }
+
+
 
         private void DisplayStudents(List<Student> students)
         {
@@ -93,33 +144,54 @@ namespace SomerenUI
         }
         private List<Room> GetRooms()
         {
+            // creating variables "roomService" from class "RoomService"
             RoomService roomService = new RoomService();
+            // getting room from the method GetRooms in roomService and adding them to the list room and returning them
             List<Room> rooms = roomService.GetRooms();
             return rooms;
-
-
         }
         private void DisplayRoom(List<Room> rooms)
         {
+            // clearing the list before displaying
             listViewRooms.Items.Clear();
 
             foreach (Room room in rooms)
             {
-                ListViewItem li = new ListViewItem(room.roomNumber.ToString());
+
+                ListViewItem li = new ListViewItem(room.roomId.ToString());
+                li.Tag = room;   // link student object to listview item
+                //li.SubItems.Add(room.Number.ToString());
+
+                // adding roomNumber to listview
+                li = new ListViewItem(room.roomNumber.ToString());
 
                 li.Tag = room;
 
+                // adding either the room is Single or Dormitory 
                 if (room.roomType == true)
                 {
-                    li.SubItems.Add("Single");
+                    li.SubItems.Add("Single (Lecturer)");
+                    // ...
                 }
                 else
                 {
-                    li.SubItems.Add("Dormitory");
+                    li.SubItems.Add("Dormitory (Students)");
+                    // ....
                 }
-
+                // adding the capacity of the room depending on the room type 1 = Single and 8 = Dormitory
+                if (room.roomType == true)
+                {
+                    li.SubItems.Add("1");
+                }
+                else
+                {
+                    li.SubItems.Add("8");
+                }
+                // adding the floor number and building ID
                 li.SubItems.Add(room.floor.ToString());
                 li.SubItems.Add(room.buildingId.ToString());
+
+                // adding all the item to the list view
 
                 listViewRooms.Items.Add(li);
             }
@@ -127,20 +199,28 @@ namespace SomerenUI
 
         public void ShowLecturerPanel()
         {
+            // hide all other panels
             pnlStudents.Hide();
             pnlDashboard.Hide();
             pnlRooms.Hide();
+            pnlDrinks.Hide();
+            pnlRevenue.Hide();
+
+            // show lecturer panel
 
             pnlLecturers.Show();
+
             try
             {
+                // getting the lecturers form the GetLecturers method and sending it to the list and then displaying
                 List<Lecturer> lecturers = GetLecturers();
                 DisplayLecturers(lecturers);
             }
 
             catch (Exception e)
             {
-                MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
+                // show error message box if there is an error
+                MessageBox.Show("Something went wrong while loading the lecturers: " + e.Message);
             }
         }
         private List<Lecturer> GetLecturers()
@@ -151,88 +231,151 @@ namespace SomerenUI
         }
         private void DisplayLecturers(List<Lecturer> lecturers)
         {
+            // clearing the list before displaying
             listViewLecturers.Items.Clear();
 
             foreach (Lecturer lecturer in lecturers)
             {
+                // adding firstName to listview
                 ListViewItem li = new ListViewItem(lecturer.firstName.ToString());
                 li.Tag = lecturer;
 
+                // adding data to the listview 
                 li.SubItems.Add(lecturer.lastName.ToString());
                 li.SubItems.Add(lecturer.telephone.ToString());
                 li.SubItems.Add(lecturer.age.ToString());
                 li.SubItems.Add(lecturer.roomId.ToString());
+                if (lecturer.isSupervisor == false)
+                    li.SubItems.Add("No");
+                else
+                    li.SubItems.Add("Yes");
                 listViewLecturers.Items.Add(li);
+            }
+        }
+        public void ShowDrinksPanel()
+        {
+            // hide all other panels
+            pnlStudents.Hide();
+            pnlDashboard.Hide();
+            pnlRooms.Hide();
+            pnlLecturers.Hide();
+            pnlRevenue.Hide();
+
+            // show drinks panel
+
+            pnlDrinks.Show();
+
+            try
+            {
+                // getting the drinks form the GetDrinks method and sending it to the list and then displaying
+                List<Drinks> drinks = GetDrinks();
+                DisplayDrinks(drinks);
+            }
+
+            catch (Exception e)
+            {
+                // show error message box if there is an error
+                MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
+            }
+        }
+        private List<Drinks> GetDrinks()
+        {
+            DrinksService drinkService = new DrinksService();
+            List<Drinks> drinks = drinkService.GetDrinks();
+            return drinks;
+        }
+        private void DisplayDrinks(List<Drinks> drinks)
+        {
+            // clearing the list before displaying
+            listViewDrinks.Items.Clear();
+
+            foreach (Drinks drink in drinks)
+            {
+                // adding drinkName to listview
+                ListViewItem li = new ListViewItem(drink.drinkName.ToString());
+                li.Tag = drink;
+
+                // adding data to the listview 
+                li.SubItems.Add(drink.drinkType.ToString());
+                li.SubItems.Add(drink.price.ToString());
+                li.SubItems.Add(drink.stock.ToString());
+                li.SubItems.Add(drink.VAT.ToString());
+                if (drink.stock < 10)
+                {
+                    li.SubItems.Add("Stock nearly depleted");
+                    li.SubItems[0].ForeColor = System.Drawing.Color.Red;
+
+                }
+                else
+                {
+                    li.SubItems.Add("Stock sufficient");
+                    li.SubItems[0].ForeColor = System.Drawing.Color.Green;
+                }
+                listViewDrinks.Items.Add(li);
+            }
+        }
+
+        private void DisplayRevenue(List<Revenue> revenues)
+        {
+            // Clearing the list before displaying
+            listViewRevenue.Items.Clear();
+
+            foreach (Revenue revenue in revenues)
+            {
+                ListViewItem li = new ListViewItem(revenue.drinkName.ToString());
+                li.Tag = revenue;
+                li.SubItems.Add(revenue.drinkType);
+                li.SubItems.Add($"{revenue.price:C}");
+                li.SubItems.Add(revenue.stock.ToString());
+                li.SubItems.Add(revenue.sales.ToString());
+                float overallProfit = 0;
+                // Calculate and display the profit for the current drink
+                float drinkProfit = revenue.price * revenue.sales;
+
+                for (int i = 0; i < revenues.Count; i++)
+                {
+                    overallProfit = +drinkProfit;
+                }
+                overallProfit = drinkProfit - drinkProfit + overallProfit;
+                label7.Text = overallProfit.ToString("C");
+                li.SubItems.Add($"{drinkProfit:C}");
+                listViewRevenue.Items.Add(li);
             }
         }
 
 
 
-        private void dashboardToolStripMenuItem1_Click(object sender, System.EventArgs e)
+        public void DisplayCashRegister()
+        {
+            //..
+        }
+
+        private void dashboardToolStripMenuItem1_Click_2(object sender, EventArgs e)
         {
             ShowDashboardPanel();
         }
-
-        private void exitToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void exitToolStripMenuItem_Click_2(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-        private void studentsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowStudentsPanel();
         }
 
-        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowRoomPanel();
-        }
-
-        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void lecturersToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowLecturerPanel();
         }
 
-        private void dashboardToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        private void roomsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            ShowDashboardPanel();
+            ShowRoomPanel();
         }
 
-        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void pnlRooms_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private int _sortColumnIndex = -1;
-
-        private void listViewLecturers_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            if (e.Column != _sortColumnIndex)
-            {
-                // Set the sort column to the new column.
-                _sortColumnIndex = e.Column;
-                // Set the sort order to ascending by default.
-                listViewLecturers.Sorting = SortOrder.Ascending;
-            }
-            else
-            {
-                // Determine what the last sort order was and change it.
-                if (listViewLecturers.Sorting == SortOrder.Ascending)
-                    listViewLecturers.Sorting = SortOrder.Descending;
-                else
-                    listViewLecturers.Sorting = SortOrder.Ascending;
-            }
-
-            // Call the sort method to manually sort.
-            listViewLecturers.Sort();
-
-            // Set the ListViewItemSorter property to a new ListViewItemComparer object.
-            listViewLecturers.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewLecturers.Sorting);
+            ShowDrinksPanel();
         }
 
         class ListViewItemStringComparer : IComparer
@@ -264,6 +407,253 @@ namespace SomerenUI
 
                 return returnVal;
             }
+        }
+
+        class ListViewItemIntComparer : IComparer
+        {
+            private int col;
+            private SortOrder order;
+
+            public ListViewItemIntComparer(int column, SortOrder order)
+            {
+                col = column;
+                this.order = order;
+            }
+
+            public int Compare(object x, object y)
+            {
+                int returnVal = -1;
+                int value1, value2;
+
+                if (int.TryParse(((ListViewItem)x).SubItems[col].Text, out value1) && int.TryParse(((ListViewItem)y).SubItems[col].Text, out value2))
+                {
+                    returnVal = value1.CompareTo(value2);
+                }
+
+                if (order == SortOrder.Descending)
+                {
+                    returnVal *= -1;
+                }
+
+                return returnVal;
+            }
+        }
+
+
+        private void listViewDrinks_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (e.Column != _sortColumnIndex)
+            {
+                // Set the sort column to the new column.
+                _sortColumnIndex = e.Column;
+                // Set the sort order to ascending by default.
+                listViewDrinks.Sorting = SortOrder.Ascending;
+            }
+            else
+            {
+                // Determine what the last sort order was and change it.
+                if (listViewDrinks.Sorting == SortOrder.Ascending)
+                    listViewDrinks.Sorting = SortOrder.Descending;
+                else
+                    listViewDrinks.Sorting = SortOrder.Ascending;
+            }
+
+            // Call the sort method to manually sort.
+            listViewDrinks.Sort();
+
+            // Set the ListViewItemSorter property to a new ListViewItemComparer object.
+            listViewDrinks.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewDrinks.Sorting);
+        }
+
+        private SortOrder studentSortOrder = SortOrder.Ascending;
+        private void studentNumberbutton_Click(object sender, EventArgs e)
+        {
+            if (studentSortOrder == SortOrder.Ascending)
+            {
+                studentSortOrder = SortOrder.Descending;
+            }
+            else
+            {
+                studentSortOrder = SortOrder.Ascending;
+            }
+            // Sort students by their ID
+            listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(0, studentSortOrder);
+            listViewStudents.Sort();
+        }
+
+        private void firstNameButton_Click(object sender, EventArgs e)
+        {
+            // Toggle between ascending and descending order
+            if (studentSortOrder == SortOrder.Ascending)
+            {
+                studentSortOrder = SortOrder.Descending;
+            }
+            else
+            {
+                studentSortOrder = SortOrder.Ascending;
+            }
+            // Sort students by their name (first name column is index 1)
+            listViewStudents.ListViewItemSorter = new ListViewItemStringComparer(1, studentSortOrder);
+            listViewStudents.Sort();
+        }
+
+        private void lastNameButton_Click(object sender, EventArgs e)
+        {
+            // Toggle between ascending and descending order
+            if (studentSortOrder == SortOrder.Ascending)
+            {
+                studentSortOrder = SortOrder.Descending;
+            }
+            else
+            {
+                studentSortOrder = SortOrder.Ascending;
+            }
+            // Sort students by their last name (last name column is index 2)
+            listViewStudents.ListViewItemSorter = new ListViewItemStringComparer(2, studentSortOrder);
+            listViewStudents.Sort();
+        }
+
+        private void telephoneButton_Click(object sender, EventArgs e)
+        {
+            // Toggle between ascending and descending order
+            if (studentSortOrder == SortOrder.Ascending)
+            {
+                studentSortOrder = SortOrder.Descending;
+            }
+            else
+            {
+                studentSortOrder = SortOrder.Ascending;
+            }
+            // Sort students by their phone (phone column is index 3)
+            listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(3, studentSortOrder);
+            listViewStudents.Sort();
+        }
+
+        private void classButton_Click(object sender, EventArgs e)
+        {
+            // Toggle between ascending and descending order
+            if (studentSortOrder == SortOrder.Ascending)
+            {
+                studentSortOrder = SortOrder.Descending;
+            }
+            else
+            {
+                studentSortOrder = SortOrder.Ascending;
+            }
+            // Sort students by their class (class column is index 4)
+            listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(4, studentSortOrder);
+            listViewStudents.Sort();
+        }
+
+        private void roomIDbutton_Click(object sender, EventArgs e)
+        {
+            if (studentSortOrder == SortOrder.Ascending)
+            {
+                studentSortOrder = SortOrder.Descending;
+            }
+            else
+            {
+                studentSortOrder = SortOrder.Ascending;
+            }
+            // Sort students by their class (class column is index 4)
+            listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(5, studentSortOrder);
+            listViewStudents.Sort();
+        }
+
+        int _sortColumnIndex = -1;
+        private void listViewLecturers_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (e.Column != _sortColumnIndex)
+            {
+                // Set the sort column to the new column.
+                _sortColumnIndex = e.Column;
+                // Set the sort order to ascending by default.
+                listViewLecturers.Sorting = SortOrder.Ascending;
+            }
+            else
+            {
+                // Determine what the last sort order was and change it.
+                if (listViewLecturers.Sorting == SortOrder.Ascending)
+                    listViewLecturers.Sorting = SortOrder.Descending;
+                else
+                    listViewLecturers.Sorting = SortOrder.Ascending;
+            }
+
+            // Call the sort method to manually sort.
+            listViewLecturers.Sort();
+
+            // Set the ListViewItemSorter property to a new ListViewItemComparer object.
+            listViewLecturers.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewLecturers.Sorting);
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Drinks drink = new Drinks();
+            DrinkAdd drinkAdd = new DrinkAdd(drink);
+            drinkAdd.ShowDialog();
+
+        }
+
+        private void btn_Refresh_Click(object sender, EventArgs e)
+        {
+            ShowDrinksPanel();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Drinks drink = new Drinks();
+            DrinkDelete drinkDelete = new DrinkDelete(drink);
+            drinkDelete.ShowDialog();
+        }
+
+        private void bnUpdate_Click(object sender, EventArgs e)
+        {
+            Drinks drink = new Drinks();
+            DrinkUpdate drinkUpdate = new DrinkUpdate(drink);
+            drinkUpdate.ShowDialog();
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlCashRegister_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void revenueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowRevenuePanel();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DateTime selectedDate = dateTimePicker1.Value;
+
+            if (selectedDate.Date > DateTime.Now.Date)
+            {
+                MessageBox.Show("Please select a date that is in the current or past.", "Warning!");
+                return;
+            }
+            else
+            {
+                allRevenues = revenueService.GetRevenues(selectedDate);
+
+                DisplayRevenue(allRevenues);
+
+            }
+        }
+
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            allRevenues = revenueService.GetRevenues(dateTimePicker1.Value);
+        }
+
+        private void pnlRevenue_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

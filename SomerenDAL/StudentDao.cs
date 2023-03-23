@@ -28,7 +28,7 @@ namespace SomerenDAL
                     LastName = dr["lastName"].ToString(),
                     telephone = (int)dr["telephone"],
                     Class = dr["class"].ToString(),
-                    RoomID = (int)dr["roomId"]
+                    RoomID = (int)dr["roomId"],
                 };
                 students.Add(student);
             }
