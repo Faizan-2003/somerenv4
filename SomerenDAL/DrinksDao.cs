@@ -6,6 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Win32;
+using System.Security.Policy;
 
 namespace SomerenDAL
 {
@@ -19,7 +21,7 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private List<Drinks> ReadTables(DataTable dataTable)
+        public List<Drinks> ReadTables(DataTable dataTable)
         {
             // Creating a list for drinks
             List<Drinks> drinks = new List<Drinks>();
@@ -42,5 +44,27 @@ namespace SomerenDAL
             }
             return drinks;
         }
+
+        public string GetSales(string drinkName)
+        {
+            SqlConnection cnn;
+            SqlCommand cmd;
+
+
+            string ConnectionString = "Data Source=group5databaseproject.database.windows.net; Initial Catalog=group5Database; User=group5; Password='PFYproject5'";
+            string sql ="SELECT SUM(sales) FROM[Cash Register] WHERE drinkName = '" +drinkName+"'";
+
+
+            cnn = new SqlConnection(ConnectionString);
+            cnn.Open();
+            cmd = new SqlCommand(sql, cnn);
+            string value = cmd.ExecuteScalar().ToString();
+            cmd.Dispose();
+            cnn.Close();
+
+
+            return value;
+        }
+        
     }
 }

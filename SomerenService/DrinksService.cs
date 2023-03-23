@@ -23,5 +23,10 @@ namespace SomerenService
             List<Drinks> drinks = drinksdb.GetAllDrinks();
             return drinks;
         }
+
+        public string GetTotalSales(string drinkName)
+        {
+            return drinksdb.GetSales(drinkName);
+        }
     }
 }

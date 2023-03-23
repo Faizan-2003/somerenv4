@@ -8,6 +8,7 @@ using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.Devices;
 using System.Drawing;
+using SomerenDAL;
 
 namespace SomerenUI
 {
@@ -26,6 +27,7 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlLecturers.Hide();
             pnlDrinks.Hide();
+            pnlCashRegister.Hide();
 
             // show dashboard
             pnlDashboard.Show();
@@ -38,6 +40,7 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlLecturers.Hide();
             pnlDrinks.Hide();
+            pnlCashRegister.Hide();
 
             // show students
             pnlStudents.Show();
@@ -60,6 +63,7 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlLecturers.Hide();
             pnlDrinks.Hide();
+            pnlCashRegister.Hide();
 
             // show the room panel
             pnlRooms.Show();
@@ -164,6 +168,7 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlRooms.Hide();
             pnlDrinks.Hide();
+            pnlCashRegister.Hide();
 
             // show lecturer panel
 
@@ -218,6 +223,7 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlRooms.Hide();
             pnlLecturers.Hide();
+            pnlCashRegister.Hide();
 
             // show drinks panel
 
@@ -247,17 +253,20 @@ namespace SomerenUI
             // clearing the list before displaying
             listViewDrinks.Items.Clear();
 
+            DrinksService drinksService = new DrinksService();
             foreach (Drinks drink in drinks)
             {
                 // adding drinkName to listview
                 ListViewItem li = new ListViewItem(drink.drinkName.ToString());
                 li.Tag = drink;
 
+
                 // adding data to the listview 
                 li.SubItems.Add(drink.drinkType.ToString());
                 li.SubItems.Add(drink.price.ToString());
                 li.SubItems.Add(drink.stock.ToString());
                 li.SubItems.Add(drink.VAT.ToString());
+                li.SubItems.Add(drinksService.GetTotalSales(drink.drinkName));
                 if (drink.stock < 10)
                 {
                     li.SubItems.Add("Stock nearly depleted");
@@ -273,38 +282,51 @@ namespace SomerenUI
             }
         }
 
-        public void DisplayCashRegister()
-        {
-            //..
-        }
 
-        private void dashboardToolStripMenuItem1_Click_2(object sender, EventArgs e)
+
+        private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ShowDashboardPanel();
         }
-        private void exitToolStripMenuItem_Click_2(object sender, EventArgs e)
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void studentsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowStudentsPanel();
         }
 
-        private void lecturersToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowLecturerPanel();
         }
 
-        private void roomsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowRoomPanel();
         }
 
-        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
+        private void drinksToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowDrinksPanel();
         }
+
+        private void cashRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnlStudents.Hide();
+            pnlDashboard.Hide();
+            pnlRooms.Hide();
+            pnlLecturers.Hide();
+            pnlDrinks.Hide();
+
+            // show drinks panel
+
+            pnlCashRegister.Show();
+        }
+        
 
         class ListViewItemStringComparer : IComparer
         {
@@ -540,14 +562,6 @@ namespace SomerenUI
             drinkUpdate.ShowDialog();
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void pnlCashRegister_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
