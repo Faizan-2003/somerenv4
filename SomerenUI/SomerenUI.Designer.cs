@@ -88,6 +88,7 @@
             this.columnHeader14 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader15 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader16 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader17 = new System.Windows.Forms.ColumnHeader();
             this.Drinks = new System.Windows.Forms.Label();
             this.pnlCashRegister = new System.Windows.Forms.Panel();
@@ -102,7 +103,6 @@
             this.btncheckout = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
             this.pnlStudents.SuspendLayout();
@@ -544,6 +544,7 @@
             this.btn_Refresh.TabIndex = 6;
             this.btn_Refresh.Text = "Refresh List";
             this.btn_Refresh.UseVisualStyleBackColor = true;
+            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
             // 
             // bnUpdate
             // 
@@ -554,6 +555,7 @@
             this.bnUpdate.TabIndex = 5;
             this.bnUpdate.Text = "Update";
             this.bnUpdate.UseVisualStyleBackColor = true;
+            this.bnUpdate.Click += new System.EventHandler(this.bnUpdate_Click_1);
             // 
             // btnDelete
             // 
@@ -564,6 +566,7 @@
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
             // btnAdd
             // 
@@ -574,6 +577,7 @@
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
             // pictureBox4
             // 
@@ -631,6 +635,12 @@
             this.columnHeader16.Text = "VAT";
             this.columnHeader16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader16.Width = 90;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Sales";
+            this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader8.Width = 100;
             // 
             // columnHeader17
             // 
@@ -751,12 +761,6 @@
             this.label4.Size = new System.Drawing.Size(197, 41);
             this.label4.TabIndex = 0;
             this.label4.Text = "Cash Register";
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Sales";
-            this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader8.Width = 100;
             // 
             // SomerenUI
             // 

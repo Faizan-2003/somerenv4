@@ -535,33 +535,32 @@ namespace SomerenUI
             // Set the ListViewItemSorter property to a new ListViewItemComparer object.
             listViewLecturers.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewLecturers.Sorting);
         }
-        private void btnAdd_Click(object sender, EventArgs e)
+
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
         {
             Drinks drink = new Drinks();
             DrinkAdd drinkAdd = new DrinkAdd(drink);
             drinkAdd.ShowDialog();
-
         }
 
-        private void btn_Refresh_Click(object sender, EventArgs e)
-        {
-            ShowDrinksPanel();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            Drinks drink = new Drinks();
-            DrinkDelete drinkDelete = new DrinkDelete(drink);
-            drinkDelete.ShowDialog();
-        }
-
-        private void bnUpdate_Click(object sender, EventArgs e)
+        private void bnUpdate_Click_1(object sender, EventArgs e)
         {
             Drinks drink = new Drinks();
             DrinkUpdate drinkUpdate = new DrinkUpdate(drink);
             drinkUpdate.ShowDialog();
         }
 
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            Drinks drink = new Drinks();
+            DrinkDelete drinkDelete = new DrinkDelete(drink);
+            drinkDelete.ShowDialog();
+        }
 
+        private void btn_Refresh_Click(object sender, EventArgs e)
+        {
+            ShowDrinksPanel();
+        }
     }
 }

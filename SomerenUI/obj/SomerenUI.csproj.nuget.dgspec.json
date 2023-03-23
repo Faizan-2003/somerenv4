@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenUI\\SomerenUI.csproj": {}
+    "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenUI\\SomerenUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenDAL\\SomerenDAL.csproj": {
+    "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenDAL\\SomerenDAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenDAL\\SomerenDAL.csproj",
+        "projectUniqueName": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenDAL\\SomerenDAL.csproj",
         "projectName": "SomerenDAL",
-        "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenDAL\\SomerenDAL.csproj",
-        "packagesPath": "C:\\Users\\prota\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenDAL\\obj\\",
+        "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenDAL\\SomerenDAL.csproj",
+        "packagesPath": "C:\\Users\\yanid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenDAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\prota\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yanid\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
-                "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj"
+              "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
+                "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj"
               }
             }
           }
@@ -69,21 +69,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
+    "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj",
+        "projectUniqueName": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj",
         "projectName": "SomerenModel",
-        "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj",
-        "packagesPath": "C:\\Users\\prota\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\obj\\",
+        "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj",
+        "packagesPath": "C:\\Users\\yanid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\prota\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yanid\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -124,21 +124,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenService\\SomerenService.csproj": {
+    "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenService\\SomerenService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenService\\SomerenService.csproj",
+        "projectUniqueName": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenService\\SomerenService.csproj",
         "projectName": "SomerenService",
-        "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenService\\SomerenService.csproj",
-        "packagesPath": "C:\\Users\\prota\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenService\\obj\\",
+        "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenService\\SomerenService.csproj",
+        "packagesPath": "C:\\Users\\yanid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\prota\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yanid\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -152,11 +152,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenDAL\\SomerenDAL.csproj": {
-                "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenDAL\\SomerenDAL.csproj"
+              "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenDAL\\SomerenDAL.csproj": {
+                "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenDAL\\SomerenDAL.csproj"
               },
-              "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
-                "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj"
+              "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
+                "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj"
               }
             }
           }
@@ -186,21 +186,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenUI\\SomerenUI.csproj": {
+    "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenUI\\SomerenUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenUI\\SomerenUI.csproj",
+        "projectUniqueName": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenUI\\SomerenUI.csproj",
         "projectName": "SomerenUI",
-        "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenUI\\SomerenUI.csproj",
-        "packagesPath": "C:\\Users\\prota\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenUI\\obj\\",
+        "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenUI\\SomerenUI.csproj",
+        "packagesPath": "C:\\Users\\yanid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenUI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\prota\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yanid\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -214,11 +214,11 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
-                "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj"
+              "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
+                "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj"
               },
-              "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenService\\SomerenService.csproj": {
-                "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenService\\SomerenService.csproj"
+              "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenService\\SomerenService.csproj": {
+                "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenService\\SomerenService.csproj"
               }
             }
           }
@@ -251,7 +251,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

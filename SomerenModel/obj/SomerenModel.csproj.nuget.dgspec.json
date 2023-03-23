@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj": {}
+    "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
+    "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj",
+        "projectUniqueName": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj",
         "projectName": "SomerenModel",
-        "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj",
-        "packagesPath": "C:\\Users\\prota\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\obj\\",
+        "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj",
+        "packagesPath": "C:\\Users\\yanid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\prota\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yanid\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
