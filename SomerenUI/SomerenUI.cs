@@ -649,6 +649,6 @@ namespace SomerenUI
             ShowCashRegisterPanel();
         }
 
-       
+
     }
 }
