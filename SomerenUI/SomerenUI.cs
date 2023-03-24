@@ -306,7 +306,6 @@ namespace SomerenUI
                 list.SubItems.Add(drink.price.ToString());
                 list.SubItems.Add(drink.stock.ToString());
 
-
                 // adding drink items in list
                 listViewdrinkcash.Items.Add(list);
             }
@@ -320,7 +319,7 @@ namespace SomerenUI
             if ((listviewnames.SelectedItems.Count == 1) && (listViewdrinkcash.SelectedItems.Count == 1))
             {
                 //getting the selected data  from the listview
-                selectedName = listviewnames.SelectedItems[0].Text;
+                selectedName = listviewnames.SelectedItems[0].SubItems[0].Text;
                 selectedDrink = listViewdrinkcash.SelectedItems[0].Text;
 
                 DialogResult result = MessageBox.Show($"{selectedName} is buying {txtQuantity.Text} {selectedDrink}", "CheckOut");
@@ -336,14 +335,7 @@ namespace SomerenUI
                 {
                     MessageBox.Show("Not Enough Students or Drinks Selected", "Error!");
                 }
-            }
-            if ((listviewnames.SelectedItems.Count >= 1) && (listViewdrinkcash.SelectedItems.Count >= 1))          
-            {
-                //Order order = selectedName;
-
-                //OrdeAddData();
-            }
-          
+            }   
         }
         public void HideAllpanel()
         {

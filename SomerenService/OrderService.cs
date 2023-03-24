@@ -16,12 +16,6 @@ namespace SomerenService
         {
             ordersdb = new OrderDao();
         }
-
-        public static void AddData(Order order)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Order> GetOrders()
         {
             List<Order> orders = ordersdb.GetAllOrders();
