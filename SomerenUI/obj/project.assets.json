@@ -837,19 +837,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\prota\\.nuget\\packages\\": {}
+    "C:\\Users\\mf384\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenUI\\SomerenUI.csproj",
+      "projectUniqueName": "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenUI\\SomerenUI.csproj",
       "projectName": "SomerenUI",
-      "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenUI\\SomerenUI.csproj",
-      "packagesPath": "C:\\Users\\prota\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenUI\\obj\\",
+      "projectPath": "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenUI\\SomerenUI.csproj",
+      "packagesPath": "C:\\Users\\mf384\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenUI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\prota\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mf384\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -857,17 +862,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
-              "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj"
+            "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
+              "projectPath": "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenModel\\SomerenModel.csproj"
             },
-            "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenService\\SomerenService.csproj": {
-              "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenService\\SomerenService.csproj"
+            "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenService\\SomerenService.csproj": {
+              "projectPath": "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenService\\SomerenService.csproj"
             }
           }
         }
