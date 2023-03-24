@@ -12,7 +12,7 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\yanid\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\mf384\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\yanid\\.nuget\\packages"
     ],
     "configProperties": {
