@@ -8,6 +8,12 @@ using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.Devices;
 using System.Drawing;
+using System.Web;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using static System.Windows.Forms.LinkLabel;
+using System.Data.SqlClient;
+using SortOrder = System.Windows.Forms.SortOrder;
+using System.Data.Common;
 
 namespace SomerenUI
 {
@@ -133,22 +139,14 @@ namespace SomerenUI
                 if (room.roomType == true)
                 {
                     li.SubItems.Add("Single (Lecturer)");
-                    // ...
-                }
-                else
-                {
-                    li.SubItems.Add("Dormitory (Students)");
-                    // ....
-                }
-                // adding the capacity of the room depending on the room type 1 = Single and 8 = Dormitory
-                if (room.roomType == true)
-                {
                     li.SubItems.Add("1");
                 }
                 else
                 {
+                    li.SubItems.Add("Dormitory (Students)");
                     li.SubItems.Add("8");
                 }
+
                 // adding the floor number and building ID
                 li.SubItems.Add(room.floor.ToString());
                 li.SubItems.Add(room.buildingId.ToString());
@@ -158,7 +156,6 @@ namespace SomerenUI
                 listViewRooms.Items.Add(li);
             }
         }
-
         public void ShowLecturerPanel()
         {
             // hide all other panels
@@ -169,7 +166,6 @@ namespace SomerenUI
             pnlCashRegister.Hide();
 
             // show lecturer panel
-
             pnlLecturers.Show();
 
             try
@@ -226,7 +222,6 @@ namespace SomerenUI
             // show drinks panel
 
             pnlDrinks.Show();
-
             try
             {
                 // getting the drinks form the GetDrinks method and sending it to the list and then displaying
@@ -246,10 +241,10 @@ namespace SomerenUI
             List<Drinks> drinks = drinkService.GetDrinks();
             return drinks;
         }
-        private void DisplayDrinks(List<Drinks> drinks)
+        public void DisplayDrinks(List<Drinks> drinks)
         {
             // clearing the list before displaying
-            listViewDrinks.Items.Clear();
+            listViewname.Items.Clear();
 
             foreach (Drinks drink in drinks)
             {
@@ -266,52 +261,93 @@ namespace SomerenUI
                 {
                     li.SubItems.Add("Stock nearly depleted");
                     li.SubItems[0].ForeColor = System.Drawing.Color.Red;
-
                 }
                 else
                 {
                     li.SubItems.Add("Stock sufficient");
                     li.SubItems[0].ForeColor = System.Drawing.Color.Green;
                 }
-                listViewDrinks.Items.Add(li);
+                listViewname.Items.Add(li);
             }
         }
         private void cashRegisterToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Showing the cash register panel
             ShowCashRegisterPanel();
-
         }
-        public void DisplayCashRegister(List<Student> students, List<Drinks> drinks)
+        private void DisplayCashRegister(List<Student> students, List<Drinks> drinks)
         {
+
             listviewnames.Items.Clear();
 
+            // getting students data
             foreach (Student student in students)
             {
-
+                // student data in list view
                 ListViewItem list = new ListViewItem(student.FirstName.ToString());
                 list.Tag = students;
 
                 list.SubItems.Add(student.LastName.ToString());
 
+                // adding student items in list
                 listviewnames.Items.Add(list);
             }
+
             listViewdrinkcash.Items.Clear();
 
+            // getting drinks data
             foreach (Drinks drink in drinks)
             {
-
+                // drinks data in list view
                 ListViewItem list = new ListViewItem(drink.drinkName.ToString());
                 list.Tag = drink;
 
+                list.SubItems.Add(drink.drinkType.ToString());
                 list.SubItems.Add(drink.price.ToString());
                 list.SubItems.Add(drink.stock.ToString());
-                list.SubItems.Add(drink.drinkType.ToString());
 
+
+                // adding drink items in list
                 listViewdrinkcash.Items.Add(list);
             }
         }
+        private void btncheckout_Click(object sender, EventArgs e)
+        { 
+
+            string selectedName;
+            string selectedDrink;
+
+            if ((listviewnames.SelectedItems.Count == 1) && (listViewdrinkcash.SelectedItems.Count == 1))
+            {
+                //getting the selected data  from the listview
+                selectedName = listviewnames.SelectedItems[0].Text;
+                selectedDrink = listViewdrinkcash.SelectedItems[0].Text;
+
+                DialogResult result = MessageBox.Show($"{selectedName} is buying {txtQuantity.Text} {selectedDrink}", "CheckOut");
+            }
+            else
+            {
+                //Showing Errors
+                if ((listviewnames.SelectedItems.Count > 1) || (listViewdrinkcash.SelectedItems.Count > 1))
+                {
+                    MessageBox.Show("Too Many Students or Drinks Selected", "Error!");
+                }
+                else if ((listviewnames.SelectedItems.Count < 1) || (listViewdrinkcash.SelectedItems.Count < 1))
+                {
+                    MessageBox.Show("Not Enough Students or Drinks Selected", "Error!");
+                }
+            }
+            if ((listviewnames.SelectedItems.Count >= 1) && (listViewdrinkcash.SelectedItems.Count >= 1))          
+            {
+                //Order order = selectedName;
+
+                //OrdeAddData();
+            }
+          
+        }
         public void HideAllpanel()
         {
+            //hidinG ALL OTHER panels
             pnlStudents.Hide();
             pnlLecturers.Hide();
             pnlRooms.Hide();
@@ -323,6 +359,7 @@ namespace SomerenUI
             // hide all panels
             HideAllpanel();
 
+            // show cash register panel
             pnlCashRegister.Show();
 
             try
@@ -332,15 +369,14 @@ namespace SomerenUI
                 List<Drinks> drink = GetDrinks();
                 DisplayCashRegister(students, drink);
             }
-
             catch (Exception e)
             {
                 // show error message box if there is an error
                 MessageBox.Show("Something went wrong while loading the Cash Register: " + e.Message);
             }
-
-
         }
+
+
         private void dashboardToolStripMenuItem1_Click_2(object sender, EventArgs e)
         {
             ShowDashboardPanel();
@@ -438,22 +474,22 @@ namespace SomerenUI
                 // Set the sort column to the new column.
                 _sortColumnIndex = e.Column;
                 // Set the sort order to ascending by default.
-                listViewDrinks.Sorting = SortOrder.Ascending;
+                listViewname.Sorting = SortOrder.Ascending;
             }
             else
             {
                 // Determine what the last sort order was and change it.
-                if (listViewDrinks.Sorting == SortOrder.Ascending)
-                    listViewDrinks.Sorting = SortOrder.Descending;
+                if (listViewname.Sorting == SortOrder.Ascending)
+                    listViewname.Sorting = SortOrder.Descending;
                 else
-                    listViewDrinks.Sorting = SortOrder.Ascending;
+                    listViewname.Sorting = SortOrder.Ascending;
             }
 
             // Call the sort method to manually sort.
-            listViewDrinks.Sort();
+            listViewname.Sort();
 
             // Set the ListViewItemSorter property to a new ListViewItemComparer object.
-            listViewDrinks.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewDrinks.Sorting);
+            listViewname.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewname.Sorting);
         }
 
         private SortOrder studentSortOrder = SortOrder.Ascending;
@@ -602,17 +638,5 @@ namespace SomerenUI
             DrinkUpdate drinkUpdate = new DrinkUpdate(drink);
             drinkUpdate.ShowDialog();
         }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlCashRegister_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
     }
 }
