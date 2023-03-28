@@ -105,6 +105,18 @@
             btncheckout = new System.Windows.Forms.Button();
             pictureBox5 = new System.Windows.Forms.PictureBox();
             label4 = new System.Windows.Forms.Label();
+            pnlActivity = new System.Windows.Forms.Panel();
+            btnRefreshlist = new System.Windows.Forms.Button();
+            btnUpdateItem = new System.Windows.Forms.Button();
+            btnDeleteItem = new System.Windows.Forms.Button();
+            btnAddItem = new System.Windows.Forms.Button();
+            pictureBox6 = new System.Windows.Forms.PictureBox();
+            listViewActivity = new System.Windows.Forms.ListView();
+            activityID = new System.Windows.Forms.ColumnHeader();
+            activityName = new System.Windows.Forms.ColumnHeader();
+            Starttime = new System.Windows.Forms.ColumnHeader();
+            endTime = new System.Windows.Forms.ColumnHeader();
+            label6 = new System.Windows.Forms.Label();
             menuStrip1.SuspendLayout();
             pnlDashboard.SuspendLayout();
             pnlStudents.SuspendLayout();
@@ -117,6 +129,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             pnlCashRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            pnlActivity.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -230,50 +244,50 @@
             // 
             // roomIDbutton
             // 
-            roomIDbutton.Location = new System.Drawing.Point(971, 70);
+            roomIDbutton.Location = new System.Drawing.Point(785, 70);
             roomIDbutton.Margin = new System.Windows.Forms.Padding(4);
             roomIDbutton.Name = "roomIDbutton";
-            roomIDbutton.Size = new System.Drawing.Size(145, 36);
+            roomIDbutton.Size = new System.Drawing.Size(139, 36);
             roomIDbutton.TabIndex = 10;
             roomIDbutton.Text = "Room ID";
             roomIDbutton.UseVisualStyleBackColor = true;
             // 
             // classButton
             // 
-            classButton.Location = new System.Drawing.Point(784, 70);
+            classButton.Location = new System.Drawing.Point(631, 70);
             classButton.Margin = new System.Windows.Forms.Padding(4);
             classButton.Name = "classButton";
-            classButton.Size = new System.Drawing.Size(180, 36);
+            classButton.Size = new System.Drawing.Size(146, 36);
             classButton.TabIndex = 9;
             classButton.Text = "Class";
             classButton.UseVisualStyleBackColor = true;
             // 
             // telephoneButton
             // 
-            telephoneButton.Location = new System.Drawing.Point(598, 70);
+            telephoneButton.Location = new System.Drawing.Point(487, 70);
             telephoneButton.Margin = new System.Windows.Forms.Padding(4);
             telephoneButton.Name = "telephoneButton";
-            telephoneButton.Size = new System.Drawing.Size(179, 36);
+            telephoneButton.Size = new System.Drawing.Size(136, 36);
             telephoneButton.TabIndex = 8;
             telephoneButton.Text = "Telephone";
             telephoneButton.UseVisualStyleBackColor = true;
             // 
             // lastNameButton
             // 
-            lastNameButton.Location = new System.Drawing.Point(409, 70);
+            lastNameButton.Location = new System.Drawing.Point(340, 70);
             lastNameButton.Margin = new System.Windows.Forms.Padding(4);
             lastNameButton.Name = "lastNameButton";
-            lastNameButton.Size = new System.Drawing.Size(181, 36);
+            lastNameButton.Size = new System.Drawing.Size(139, 36);
             lastNameButton.TabIndex = 7;
             lastNameButton.Text = "Last Name";
             lastNameButton.UseVisualStyleBackColor = true;
             // 
             // firstNameButton
             // 
-            firstNameButton.Location = new System.Drawing.Point(220, 70);
+            firstNameButton.Location = new System.Drawing.Point(187, 70);
             firstNameButton.Margin = new System.Windows.Forms.Padding(4);
             firstNameButton.Name = "firstNameButton";
-            firstNameButton.Size = new System.Drawing.Size(181, 36);
+            firstNameButton.Size = new System.Drawing.Size(145, 36);
             firstNameButton.TabIndex = 6;
             firstNameButton.Text = "First Name";
             firstNameButton.UseVisualStyleBackColor = true;
@@ -283,7 +297,7 @@
             studentNumberbutton.Location = new System.Drawing.Point(22, 70);
             studentNumberbutton.Margin = new System.Windows.Forms.Padding(4);
             studentNumberbutton.Name = "studentNumberbutton";
-            studentNumberbutton.Size = new System.Drawing.Size(190, 36);
+            studentNumberbutton.Size = new System.Drawing.Size(157, 36);
             studentNumberbutton.TabIndex = 5;
             studentNumberbutton.Text = "Student Number";
             studentNumberbutton.UseVisualStyleBackColor = true;
@@ -763,18 +777,133 @@
             label4.TabIndex = 0;
             label4.Text = "Cash Register";
             // 
+            // pnlActivity
+            // 
+            pnlActivity.Controls.Add(btnRefreshlist);
+            pnlActivity.Controls.Add(btnUpdateItem);
+            pnlActivity.Controls.Add(btnDeleteItem);
+            pnlActivity.Controls.Add(btnAddItem);
+            pnlActivity.Controls.Add(pictureBox6);
+            pnlActivity.Controls.Add(listViewActivity);
+            pnlActivity.Controls.Add(label6);
+            pnlActivity.Location = new System.Drawing.Point(18, 45);
+            pnlActivity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            pnlActivity.Name = "pnlActivity";
+            pnlActivity.Size = new System.Drawing.Size(1340, 778);
+            pnlActivity.TabIndex = 12;
+            // 
+            // btnRefreshlist
+            // 
+            btnRefreshlist.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnRefreshlist.Location = new System.Drawing.Point(514, 615);
+            btnRefreshlist.Margin = new System.Windows.Forms.Padding(4);
+            btnRefreshlist.Name = "btnRefreshlist";
+            btnRefreshlist.Size = new System.Drawing.Size(155, 51);
+            btnRefreshlist.TabIndex = 6;
+            btnRefreshlist.Text = "Refresh List";
+            btnRefreshlist.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdateItem
+            // 
+            btnUpdateItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnUpdateItem.Location = new System.Drawing.Point(214, 615);
+            btnUpdateItem.Margin = new System.Windows.Forms.Padding(4);
+            btnUpdateItem.Name = "btnUpdateItem";
+            btnUpdateItem.Size = new System.Drawing.Size(132, 51);
+            btnUpdateItem.TabIndex = 5;
+            btnUpdateItem.Text = "Update";
+            btnUpdateItem.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteItem
+            // 
+            btnDeleteItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnDeleteItem.Location = new System.Drawing.Point(362, 615);
+            btnDeleteItem.Margin = new System.Windows.Forms.Padding(4);
+            btnDeleteItem.Name = "btnDeleteItem";
+            btnDeleteItem.Size = new System.Drawing.Size(132, 51);
+            btnDeleteItem.TabIndex = 4;
+            btnDeleteItem.Text = "Delete";
+            btnDeleteItem.UseVisualStyleBackColor = true;
+            // 
+            // btnAddItem
+            // 
+            btnAddItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnAddItem.Location = new System.Drawing.Point(58, 615);
+            btnAddItem.Margin = new System.Windows.Forms.Padding(4);
+            btnAddItem.Name = "btnAddItem";
+            btnAddItem.Size = new System.Drawing.Size(132, 51);
+            btnAddItem.TabIndex = 3;
+            btnAddItem.Text = "Add";
+            btnAddItem.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Image = (System.Drawing.Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new System.Drawing.Point(1150, 0);
+            pictureBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new System.Drawing.Size(186, 205);
+            pictureBox6.TabIndex = 2;
+            pictureBox6.TabStop = false;
+            // 
+            // listViewActivity
+            // 
+            listViewActivity.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { activityID, activityName, Starttime, endTime });
+            listViewActivity.Location = new System.Drawing.Point(22, 70);
+            listViewActivity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            listViewActivity.Name = "listViewActivity";
+            listViewActivity.Size = new System.Drawing.Size(1093, 509);
+            listViewActivity.TabIndex = 1;
+            listViewActivity.UseCompatibleStateImageBehavior = false;
+            listViewActivity.View = System.Windows.Forms.View.Details;
+            // 
+            // activityID
+            // 
+            activityID.Text = "Activity ID";
+            activityID.Width = 150;
+            // 
+            // activityName
+            // 
+            activityName.Text = "Activity Name";
+            activityName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            activityName.Width = 150;
+            // 
+            // Starttime
+            // 
+            Starttime.Text = "Start Time";
+            Starttime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            Starttime.Width = 150;
+            // 
+            // endTime
+            // 
+            endTime.Text = "End Time";
+            endTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            endTime.Width = 150;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label6.Location = new System.Drawing.Point(22, 14);
+            label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(162, 48);
+            label6.TabIndex = 0;
+            label6.Text = "Activities";
+            // 
             // SomerenUI
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1374, 842);
             Controls.Add(menuStrip1);
-            Controls.Add(pnlLecturers);
-            Controls.Add(pnlRooms);
-            Controls.Add(pnlCashRegister);
+            Controls.Add(pnlActivity);
             Controls.Add(pnlDrinks);
             Controls.Add(pnlStudents);
             Controls.Add(pnlDashboard);
+            Controls.Add(pnlLecturers);
+            Controls.Add(pnlRooms);
+            Controls.Add(pnlCashRegister);
             MainMenuStrip = menuStrip1;
             Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             Name = "SomerenUI";
@@ -798,6 +927,9 @@
             pnlCashRegister.ResumeLayout(false);
             pnlCashRegister.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            pnlActivity.ResumeLayout(false);
+            pnlActivity.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -880,5 +1012,17 @@
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.Panel pnlActivity;
+        private System.Windows.Forms.Button btnRefreshlist;
+        private System.Windows.Forms.Button btnUpdateItem;
+        private System.Windows.Forms.Button btnDeleteItem;
+        private System.Windows.Forms.Button btnAddItem;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.ListView listViewActivity;
+        private System.Windows.Forms.ColumnHeader activityID;
+        private System.Windows.Forms.ColumnHeader activityName;
+        private System.Windows.Forms.ColumnHeader Starttime;
+        private System.Windows.Forms.ColumnHeader endTime;
+        private System.Windows.Forms.Label label6;
     }
 }
