@@ -10,6 +10,9 @@
     <Compile Update="DrinkUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="AddRemoveStudnet.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="SomerenUI.cs">
       <SubType>Form</SubType>
     </Compile>

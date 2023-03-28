@@ -11,7 +11,7 @@
         "projectName": "SomerenDAL",
         "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenDAL\\SomerenDAL.csproj",
         "packagesPath": "C:\\Users\\prota\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenDAL\\obj\\",
+        "outputPath": "C:\\Users\\prota\\source\\repos\\Faizan-2003\\somerenv4\\SomerenDAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\prota\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -80,7 +80,7 @@
         "projectName": "SomerenModel",
         "projectPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\SomerenModel.csproj",
         "packagesPath": "C:\\Users\\prota\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\prota\\Source\\Repos\\Faizan-2003\\somerenv4\\SomerenModel\\obj\\",
+        "outputPath": "C:\\Users\\prota\\source\\repos\\Faizan-2003\\somerenv4\\SomerenModel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\prota\\AppData\\Roaming\\NuGet\\NuGet.Config",
