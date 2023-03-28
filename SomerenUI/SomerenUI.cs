@@ -9,7 +9,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.Devices;
 using System.Drawing;
 using SomerenDAL;
-using Activity = System.Diagnostics.Activity;
 
 namespace SomerenUI
 {
@@ -181,7 +180,6 @@ namespace SomerenUI
                 List<Lecturer> lecturers = GetLecturers();
                 DisplayLecturers(lecturers);
             }
-
             catch (Exception e)
             {
                 // show error message box if there is an error
@@ -356,7 +354,7 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlDashboard.Hide();
             pnlDrinks.Hide();
-           
+
         }
         private void ShowActivitiesPanel()
         {
@@ -367,7 +365,7 @@ namespace SomerenUI
             try
             {
                 // getting the activities form the GetActivities method and sending it to the list and then displaying
-                List<Activity> activities = GetActivities();
+                List<SomerenModel.Activity> activities = GetActivities();
                 DisplayActivities(activities);
             }
 
@@ -377,26 +375,26 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the Activities: " + e.Message);
             }
         }
-        private List<Activity> GetActivities()
+        private List<SomerenModel.Activity> GetActivities()
         {
             ActivityService activityService = new ActivityService();
-            List<Activity> activities = activityService.GetActivities();
+            List<SomerenModel.Activity> activities = activityService.GetActivities();
             return activities;
         }
 
-        private void DisplayActivities(List<Activity> activities)
+        private void DisplayActivities(List<SomerenModel.Activity> activities)
         {
             // clear the listview before filling it
             listViewActivity.Items.Clear();
 
-            foreach (Activity activity in activities)
+            foreach (SomerenModel.Activity activity in activities)
             {
                 ListViewItem li = new ListViewItem(activity.activityId.ToString());
                 li.Tag = activity;
 
                 li.SubItems.Add(activity.activityName.ToString());
-                li.SubItems.Add(activity.(DateTime)startTime.ToString());
-                li.SubItems.Add(activity.(DateTime)endTime.ToString());
+                li.SubItems.Add(activity.startTime.ToString());
+                li.SubItems.Add(activity.endTime.ToString());
 
                 listViewActivity.Items.Add(li);
             }
