@@ -28,6 +28,7 @@ namespace SomerenUI
             pnlLecturers.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
+            pnlActivity.Hide();
 
             // show dashboard
             pnlDashboard.Show();
@@ -223,6 +224,7 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlLecturers.Hide();
             pnlCashRegister.Hide();
+            pnlActivity.Hide();
 
             // show drinks panel
 
@@ -355,6 +357,10 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlDrinks.Hide();
         }
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowActivitiesPanel();
+        }
         public void HideAllpanelForActivity()
         {
             //hidinG ALL OTHER panels
@@ -363,7 +369,6 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlDashboard.Hide();
             pnlDrinks.Hide();
-
         }
         private void ShowActivitiesPanel()
         {
@@ -701,9 +706,6 @@ namespace SomerenUI
             ShowCashRegisterPanel();
         }
 
-        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowActivitiesPanel();
-        }
+
     }
 }
