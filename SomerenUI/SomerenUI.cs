@@ -9,6 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.Devices;
 using System.Drawing;
 using SomerenDAL;
+using Activity = System.Diagnostics.Activity;
 
 namespace SomerenUI
 {
@@ -355,6 +356,50 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlDashboard.Hide();
             pnlDrinks.Hide();
+           
+        }
+        private void ShowActivitiesPanel()
+        {
+            HideAllpanel();
+
+            pnlActivity.Show();
+
+            try
+            {
+                // getting the activities form the GetActivities method and sending it to the list and then displaying
+                List<Activity> activities = GetActivities();
+                DisplayActivities(activities);
+            }
+
+            catch (Exception e)
+            {
+                // show error message box if there is an error
+                MessageBox.Show("Something went wrong while loading the Activities: " + e.Message);
+            }
+        }
+        private List<Activity> GetActivities()
+        {
+            ActivityService activityService = new ActivityService();
+            List<Activity> activities = activityService.GetActivities();
+            return activities;
+        }
+
+        private void DisplayActivities(List<Activity> activities)
+        {
+            // clear the listview before filling it
+            listViewActivity.Items.Clear();
+
+            foreach (Activity activity in activities)
+            {
+                ListViewItem li = new ListViewItem(activity.activityId.ToString());
+                li.Tag = activity;
+
+                li.SubItems.Add(activity.activityName.ToString());
+                li.SubItems.Add(activity.(DateTime)startTime.ToString());
+                li.SubItems.Add(activity.(DateTime)endTime.ToString());
+
+                listViewActivity.Items.Add(li);
+            }
         }
         private void ShowCashRegisterPanel()
         {
@@ -649,6 +694,9 @@ namespace SomerenUI
             ShowCashRegisterPanel();
         }
 
-
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowActivitiesPanel();
+        }
     }
 }

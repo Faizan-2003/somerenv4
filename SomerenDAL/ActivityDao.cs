@@ -22,7 +22,7 @@ namespace SomerenDAL
         private List<Activity> ReadTables(DataTable dataTable)
         {
             //creating a list activities
-            List<Activity> activities= new List<Activity>();
+            List<Activity> activities = new List<Activity>();
 
             foreach (DataRow dr in dataTable.Rows)
             {

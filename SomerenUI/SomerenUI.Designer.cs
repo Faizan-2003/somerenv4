@@ -184,6 +184,7 @@
             activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
             activitiesToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
             activitiesToolStripMenuItem.Text = "Activities";
+            activitiesToolStripMenuItem.Click += activitiesToolStripMenuItem_Click;
             // 
             // roomsToolStripMenuItem
             // 

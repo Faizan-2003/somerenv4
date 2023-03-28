@@ -8,18 +8,18 @@ using SomerenModel;
 
 namespace SomerenService
 {
-    public class AcitvityService
+    public class ActivityService
     {
-        // creating field drinksdb form class DrinksDao
+        // creating field activitydb form class ActivityDao
         private ActivityDao activitydb;
 
-        public AcitvityService()
+        public ActivityService()
         {
             activitydb = new ActivityDao();
         }
         public List<Activity> GetActivities()
         {
-            // getting drinks data from the database
+            // getting activities data from the database
             List<Activity> activities = activitydb.GetAllActivities();
             return activities;
         }
