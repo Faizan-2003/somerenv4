@@ -346,7 +346,16 @@ namespace SomerenUI
                 }
             }
         }
-        public void HideAllpanel()
+        public void HideAllpanelForCash()
+        {
+            //hidinG ALL OTHER panels
+            pnlStudents.Hide();
+            pnlLecturers.Hide();
+            pnlRooms.Hide();
+            pnlDashboard.Hide();
+            pnlDrinks.Hide();
+        }
+        public void HideAllpanelForActivity()
         {
             //hidinG ALL OTHER panels
             pnlStudents.Hide();
@@ -358,7 +367,7 @@ namespace SomerenUI
         }
         private void ShowActivitiesPanel()
         {
-            HideAllpanel();
+            HideAllpanelForActivity();
 
             pnlActivity.Show();
 
@@ -402,7 +411,7 @@ namespace SomerenUI
         private void ShowCashRegisterPanel()
         {
             // hide all panels
-            HideAllpanel();
+            HideAllpanelForCash();
 
             // show cash register panel
             pnlCashRegister.Show();

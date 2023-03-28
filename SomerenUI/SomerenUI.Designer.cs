@@ -861,7 +861,7 @@
             // activityID
             // 
             activityID.Text = "Activity ID";
-            activityID.Width = 150;
+            activityID.Width = 100;
             // 
             // activityName
             // 
@@ -873,13 +873,13 @@
             // 
             Starttime.Text = "Start Time";
             Starttime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            Starttime.Width = 150;
+            Starttime.Width = 200;
             // 
             // endTime
             // 
             endTime.Text = "End Time";
             endTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            endTime.Width = 150;
+            endTime.Width = 200;
             // 
             // label6
             // 
@@ -898,13 +898,13 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1374, 842);
             Controls.Add(menuStrip1);
+            Controls.Add(pnlDrinks);
             Controls.Add(pnlStudents);
             Controls.Add(pnlDashboard);
             Controls.Add(pnlLecturers);
             Controls.Add(pnlRooms);
             Controls.Add(pnlCashRegister);
             Controls.Add(pnlActivity);
-            Controls.Add(pnlDrinks);
             MainMenuStrip = menuStrip1;
             Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             Name = "SomerenUI";
