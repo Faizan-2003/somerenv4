@@ -9,8 +9,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.Devices;
 using System.Drawing;
 using SomerenDAL;
-using System.Linq;
-using static System.Windows.Forms.LinkLabel;
 
 namespace SomerenUI
 {
@@ -29,37 +27,10 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlLecturers.Hide();
             pnlDrinks.Hide();
-            pnlRevenue.Hide();
-            pnlParticipents.Hide();
+            pnlCashRegister.Hide();
 
             // show dashboard
             pnlDashboard.Show();
-        }
-
-        private RevenueService revenueService = new RevenueService();
-        private List<Revenue> allRevenues;
-        private void ShowRevenuePanel()
-        {
-            pnlDashboard.Hide();
-            pnlRooms.Hide();
-            pnlLecturers.Hide();
-            pnlDrinks.Hide();
-            pnlParticipents.Hide();
-
-            pnlRevenue.Show();
-            try
-            {
-                // Set the DateTimePicker's value to the current date
-                dateTimePicker1.Value = DateTime.Now;
-
-                // Get and display revenues for the current date
-                List<Revenue> revenues = revenueService.GetRevenues(dateTimePicker1.Value);
-                DisplayRevenue(revenues);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Something went wrong while loading the revenues: " + e.Message);
-            }
         }
 
         private void ShowStudentsPanel()
@@ -69,8 +40,7 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlLecturers.Hide();
             pnlDrinks.Hide();
-            pnlRevenue.Hide();
-            pnlParticipents.Hide();
+            pnlCashRegister.Hide();
 
             // show students
             pnlStudents.Show();
@@ -93,8 +63,7 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlLecturers.Hide();
             pnlDrinks.Hide();
-            pnlRevenue.Hide();
-            pnlParticipents.Hide();
+            pnlCashRegister.Hide();
 
             // show the room panel
             pnlRooms.Show();
@@ -118,15 +87,6 @@ namespace SomerenUI
             List<Student> students = studentService.GetStudents();
             return students;
         }
-
-        public List<Revenue> GetRevenues(DateTime selectedDate)
-        {
-            RevenueService revenueService = new RevenueService();
-            List<Revenue> revenues = revenueService.GetRevenues(selectedDate);
-            return revenues;
-        }
-
-
 
         private void DisplayStudents(List<Student> students)
         {
@@ -208,8 +168,7 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlRooms.Hide();
             pnlDrinks.Hide();
-            pnlRevenue.Hide();
-            pnlParticipents.Hide();
+            pnlCashRegister.Hide();
 
             // show lecturer panel
 
@@ -221,37 +180,10 @@ namespace SomerenUI
                 List<Lecturer> lecturers = GetLecturers();
                 DisplayLecturers(lecturers);
             }
-
             catch (Exception e)
             {
                 // show error message box if there is an error
                 MessageBox.Show("Something went wrong while loading the lecturers: " + e.Message);
-            }
-        }
-
-        public void ShowStudentParticipation()
-        {
-            pnlDashboard.Hide();
-            pnlRooms.Hide();
-            pnlLecturers.Hide();
-            pnlDrinks.Hide();
-            pnlRevenue.Hide();
-            pnlCashRegister.Hide();
-            pnlStudents.Hide();
-
-            pnlParticipents.Show();
-
-            try
-            {
-                // getting the lecturers form the GetLecturers method and sending it to the list and then displaying
-                List<studentParticipationModel> studenntsParticipents = GetStudentParticipents();
-                DisplayStudentParticipents(studenntsParticipents);
-            }
-
-            catch (Exception e)
-            {
-                // show error message box if there is an error
-                MessageBox.Show("Something went wrong while loading the studentParticipents: " + e.Message);
             }
         }
         private List<Lecturer> GetLecturers()
@@ -283,22 +215,6 @@ namespace SomerenUI
                 listViewLecturers.Items.Add(li);
             }
         }
-
-        private void DisplayStudentParticipents(List<studentParticipationModel> studentParticipations)
-        {
-            listView2.Items.Clear();
-
-            foreach (studentParticipationModel student in studentParticipations)
-            {
-                ListViewItem li = new ListViewItem(student.ActivityName.ToString());
-                li.Tag = student;
-
-                li.SubItems.Add(student.FirstName.ToString());
-                li.SubItems.Add(student.LastName.ToString());
-
-                listView2.Items.Add(li);
-            }
-        }
         public void ShowDrinksPanel()
         {
             // hide all other panels
@@ -306,8 +222,7 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlRooms.Hide();
             pnlLecturers.Hide();
-            pnlRevenue.Hide();
-            pnlParticipents.Hide();
+            pnlCashRegister.Hide();
 
             // show drinks panel
 
@@ -332,29 +247,25 @@ namespace SomerenUI
             List<Drinks> drinks = drinkService.GetDrinks();
             return drinks;
         }
-
-        private List<studentParticipationModel> GetStudentParticipents()
-        {
-            StudnetParticipationService studentParticipents = new StudnetParticipationService();
-            List<studentParticipationModel> students = studentParticipents.GetStudnetParticipetns();
-            return students;
-        }
         private void DisplayDrinks(List<Drinks> drinks)
         {
             // clearing the list before displaying
             listViewDrinks.Items.Clear();
 
+            DrinksService drinksService = new DrinksService();
             foreach (Drinks drink in drinks)
             {
                 // adding drinkName to listview
                 ListViewItem li = new ListViewItem(drink.drinkName.ToString());
                 li.Tag = drink;
 
+
                 // adding data to the listview 
                 li.SubItems.Add(drink.drinkType.ToString());
                 li.SubItems.Add(drink.price.ToString());
                 li.SubItems.Add(drink.stock.ToString());
                 li.SubItems.Add(drink.VAT.ToString());
+                li.SubItems.Add(drinksService.GetTotalSales(drink.drinkName));
                 if (drink.stock < 10)
                 {
                     li.SubItems.Add("Stock nearly depleted");
@@ -369,60 +280,183 @@ namespace SomerenUI
                 listViewDrinks.Items.Add(li);
             }
         }
-
-        private void DisplayRevenue(List<Revenue> revenues)
+        private void cashRegisterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Clearing the list before displaying
-            listViewRevenue.Items.Clear();
-            float overallProfit = 0;
-            foreach (Revenue revenue in revenues)
+            // Showing the cash register panel
+            ShowCashRegisterPanel();
+        }
+        private void DisplayCashRegister(List<Student> students, List<Drinks> drinks)
+        {
+
+            listviewnames.Items.Clear();
+
+            // getting students data
+            foreach (Student student in students)
             {
-                ListViewItem li = new ListViewItem(revenue.drinkName.ToString());
-                li.Tag = revenue;
-                li.SubItems.Add(revenue.drinkType);
-                li.SubItems.Add($"{revenue.price:C}");
-                li.SubItems.Add(revenue.stock.ToString());
-                li.SubItems.Add(revenue.sales.ToString());
-                float drinkProfit = revenue.price * revenue.sales;
+                // student data in list view
+                ListViewItem list = new ListViewItem(student.FirstName.ToString());
+                list.Tag = students;
 
-                overallProfit = overallProfit + drinkProfit;
+                list.SubItems.Add(student.LastName.ToString());
 
-                li.SubItems.Add($"{drinkProfit:C}");
-                listViewRevenue.Items.Add(li);
+                // adding student items in list
+                listviewnames.Items.Add(list);
             }
-            // Update label7.Text to display the overall profit
-            label7.Text = overallProfit.ToString("C");
-        }
 
-        public void DisplayCashRegister()
+            listViewdrinkcash.Items.Clear();
+
+            // getting drinks data
+            foreach (Drinks drink in drinks)
+            {
+                // drinks data in list view
+                ListViewItem list = new ListViewItem(drink.drinkName.ToString());
+                list.Tag = drink;
+
+                list.SubItems.Add(drink.drinkType.ToString());
+                list.SubItems.Add(drink.price.ToString());
+                list.SubItems.Add(drink.stock.ToString());
+
+                // adding drink items in list
+                listViewdrinkcash.Items.Add(list);
+            }
+        }
+        private void btncheckout_Click_1(object sender, EventArgs e)
         {
-            //..
+            string selectedName;
+            string selectedDrink;
+
+            if ((listviewnames.SelectedItems.Count == 1) && (listViewdrinkcash.SelectedItems.Count == 1))
+            {
+                //getting the selected data  from the listview
+                selectedName = listviewnames.SelectedItems[0].SubItems[0].Text;
+                selectedDrink = listViewdrinkcash.SelectedItems[0].Text;
+
+                DialogResult result = MessageBox.Show($"{selectedName} is buying {txtQuantity.Text} {selectedDrink}", "CheckOut");
+            }
+            else
+            {
+                //Showing Errors
+                if ((listviewnames.SelectedItems.Count > 1) || (listViewdrinkcash.SelectedItems.Count > 1))
+                {
+                    MessageBox.Show("Too Many Students or Drinks Selected", "Error!");
+                }
+                else if ((listviewnames.SelectedItems.Count < 1) || (listViewdrinkcash.SelectedItems.Count < 1))
+                {
+                    MessageBox.Show("Not Enough Students or Drinks Selected", "Error!");
+                }
+            }
+        }
+        public void HideAllpanelForCash()
+        {
+            //hidinG ALL OTHER panels
+            pnlStudents.Hide();
+            pnlLecturers.Hide();
+            pnlRooms.Hide();
+            pnlDashboard.Hide();
+            pnlDrinks.Hide();
+        }
+        public void HideAllpanelForActivity()
+        {
+            //hidinG ALL OTHER panels
+            pnlStudents.Hide();
+            pnlLecturers.Hide();
+            pnlRooms.Hide();
+            pnlDashboard.Hide();
+            pnlDrinks.Hide();
+
+        }
+        private void ShowActivitiesPanel()
+        {
+            HideAllpanelForActivity();
+
+            pnlActivity.Show();
+
+            try
+            {
+                // getting the activities form the GetActivities method and sending it to the list and then displaying
+                List<SomerenModel.Activity> activities = GetActivities();
+                DisplayActivities(activities);
+            }
+
+            catch (Exception e)
+            {
+                // show error message box if there is an error
+                MessageBox.Show("Something went wrong while loading the Activities: " + e.Message);
+            }
+        }
+        private List<SomerenModel.Activity> GetActivities()
+        {
+            ActivityService activityService = new ActivityService();
+            List<SomerenModel.Activity> activities = activityService.GetActivities();
+            return activities;
         }
 
-        private void dashboardToolStripMenuItem1_Click_2(object sender, EventArgs e)
+        private void DisplayActivities(List<SomerenModel.Activity> activities)
+        {
+            // clear the listview before filling it
+            listViewActivity.Items.Clear();
+
+            foreach (SomerenModel.Activity activity in activities)
+            {
+                ListViewItem li = new ListViewItem(activity.activityId.ToString());
+                li.Tag = activity;
+
+                li.SubItems.Add(activity.activityName.ToString());
+                li.SubItems.Add(activity.startTime.ToString());
+                li.SubItems.Add(activity.endTime.ToString());
+
+                listViewActivity.Items.Add(li);
+            }
+        }
+        private void ShowCashRegisterPanel()
+        {
+            // hide all panels
+            HideAllpanelForCash();
+
+            // show cash register panel
+            pnlCashRegister.Show();
+
+            try
+            {
+                // getting the students form the GetStudents method and sending it to the list and then displaying in cash register
+                List<Student> students = GetStudents();
+                List<Drinks> drink = GetDrinks();
+                DisplayCashRegister(students, drink);
+            }
+            catch (Exception e)
+            {
+                // show error message box if there is an error
+                MessageBox.Show("Something went wrong while loading the Cash Register: " + e.Message);
+            }
+        }
+
+
+        private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ShowDashboardPanel();
         }
-        private void exitToolStripMenuItem_Click_2(object sender, EventArgs e)
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void studentsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowStudentsPanel();
         }
 
-        private void lecturersToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowLecturerPanel();
         }
 
-        private void roomsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowRoomPanel();
         }
 
-        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
+        private void drinksToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowDrinksPanel();
         }
@@ -634,12 +668,27 @@ namespace SomerenUI
             // Set the ListViewItemSorter property to a new ListViewItemComparer object.
             listViewLecturers.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewLecturers.Sorting);
         }
-        private void btnAdd_Click(object sender, EventArgs e)
+
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
         {
             Drinks drink = new Drinks();
             DrinkAdd drinkAdd = new DrinkAdd(drink);
             drinkAdd.ShowDialog();
+        }
 
+        private void bnUpdate_Click_1(object sender, EventArgs e)
+        {
+            Drinks drink = new Drinks();
+            DrinkUpdate drinkUpdate = new DrinkUpdate(drink);
+            drinkUpdate.ShowDialog();
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            Drinks drink = new Drinks();
+            DrinkDelete drinkDelete = new DrinkDelete(drink);
+            drinkDelete.ShowDialog();
         }
 
         private void btn_Refresh_Click(object sender, EventArgs e)
@@ -647,84 +696,14 @@ namespace SomerenUI
             ShowDrinksPanel();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void cashRegisterToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            Drinks drink = new Drinks();
-            DrinkDelete drinkDelete = new DrinkDelete(drink);
-            drinkDelete.ShowDialog();
+            ShowCashRegisterPanel();
         }
 
-        private void bnUpdate_Click(object sender, EventArgs e)
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Drinks drink = new Drinks();
-            DrinkUpdate drinkUpdate = new DrinkUpdate(drink);
-            drinkUpdate.ShowDialog();
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlCashRegister_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void revenueToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowRevenuePanel();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DateTime selectedDate = dateTimePicker1.Value;
-
-            if (selectedDate.Date > DateTime.Now.Date)
-            {
-                MessageBox.Show("Please select a date that is in the current or past.", "Warning!");
-                return;
-            }
-            else
-            {
-                allRevenues = revenueService.GetRevenues(selectedDate);
-
-                DisplayRevenue(allRevenues);
-
-            }
-        }
-
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            allRevenues = revenueService.GetRevenues(dateTimePicker1.Value);
-        }
-
-        private void pnlRevenue_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void studentsToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            ShowStudentParticipation();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            AddRemoveStudnet addRemoveStudnet = new AddRemoveStudnet();
-            addRemoveStudnet.ShowDialog();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            List<string> sports = new List<string>() { "No activity", "Zumba", "Football", "HandBall", "Kickbox", "Boxing" };
-
-            if (comboBox1.SelectedIndex == 0)
-            {
-                listView2.ListViewItemSorter = new ListViewItemStringComparer(2, SortOrder.Ascending);
-                listView2.Sort();
-            }
+            ShowActivitiesPanel();
         }
     }
 }

@@ -332,4 +332,4 @@ C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-win
 C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.pdb
 C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.genruntimeconfig.cache
 C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\ref\SomerenUI.dll
-C:\Users\prota\source\repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.AddRemoveStudnet.resources
+C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.ActivityAdd.resources
