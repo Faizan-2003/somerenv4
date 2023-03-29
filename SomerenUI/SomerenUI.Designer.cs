@@ -803,6 +803,7 @@
             btnRefreshlist.TabIndex = 6;
             btnRefreshlist.Text = "Refresh List";
             btnRefreshlist.UseVisualStyleBackColor = true;
+            btnRefreshlist.Click += btnRefreshlist_Click;
             // 
             // btnUpdateItem
             // 
@@ -814,6 +815,7 @@
             btnUpdateItem.TabIndex = 5;
             btnUpdateItem.Text = "Update";
             btnUpdateItem.UseVisualStyleBackColor = true;
+            btnUpdateItem.Click += btnUpdateItem_Click;
             // 
             // btnDeleteItem
             // 
@@ -825,6 +827,7 @@
             btnDeleteItem.TabIndex = 4;
             btnDeleteItem.Text = "Delete";
             btnDeleteItem.UseVisualStyleBackColor = true;
+            btnDeleteItem.Click += btnDeleteItem_Click;
             // 
             // btnAddItem
             // 
@@ -836,6 +839,7 @@
             btnAddItem.TabIndex = 3;
             btnAddItem.Text = "Add";
             btnAddItem.UseVisualStyleBackColor = true;
+            btnAddItem.Click += btnAddItem_Click;
             // 
             // pictureBox6
             // 
@@ -898,13 +902,13 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1374, 842);
             Controls.Add(menuStrip1);
+            Controls.Add(pnlActivity);
             Controls.Add(pnlDrinks);
             Controls.Add(pnlStudents);
             Controls.Add(pnlDashboard);
             Controls.Add(pnlLecturers);
             Controls.Add(pnlRooms);
             Controls.Add(pnlCashRegister);
-            Controls.Add(pnlActivity);
             MainMenuStrip = menuStrip1;
             Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             Name = "SomerenUI";

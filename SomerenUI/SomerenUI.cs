@@ -674,7 +674,25 @@ namespace SomerenUI
             listViewLecturers.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewLecturers.Sorting);
         }
 
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            SomerenModel.Activity activity = new SomerenModel.Activity();
+            ActivityAddForm activityAdd = new ActivityAddForm(activity);
+            activityAdd.ShowDialog();
+        }
+        private void btnUpdateItem_Click(object sender, EventArgs e)
+        {
 
+            SomerenModel.Activity activity = new SomerenModel.Activity();
+            ActivityUpdateForm activityUpdate = new ActivityUpdateForm(activity);
+            activityUpdate.ShowDialog();
+        }
+        private void btnDeleteItem_Click(object sender, EventArgs e)
+        {
+            SomerenModel.Activity activity = new SomerenModel.Activity();
+            ActivityDeleteForm activityDelete = new ActivityDeleteForm(activity);
+            activityDelete.ShowDialog();
+        }
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
             Drinks drink = new Drinks();
@@ -704,6 +722,11 @@ namespace SomerenUI
         private void cashRegisterToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowCashRegisterPanel();
+        }
+
+        private void btnRefreshlist_Click(object sender, EventArgs e)
+        {
+            ShowActivitiesPanel();
         }
     }
 }

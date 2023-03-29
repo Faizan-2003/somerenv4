@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="ActivityAdd.cs">
+    <Compile Update="ActivityAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ActivityUpdate.cs">
+    <Compile Update="ActivityUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="DrinkAdd.cs">
@@ -16,7 +16,7 @@
     <Compile Update="DrinkUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ActivityDelete.cs">
+    <Compile Update="ActivityDeleteForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="SomerenUI.cs">
