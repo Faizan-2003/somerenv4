@@ -705,7 +705,5 @@ namespace SomerenUI
         {
             ShowCashRegisterPanel();
         }
-
-
     }
 }

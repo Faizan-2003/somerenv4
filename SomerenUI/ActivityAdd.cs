@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SomerenModel;
 
 namespace SomerenUI
 {
@@ -15,6 +16,12 @@ namespace SomerenUI
         public ActivityAdd()
         {
             InitializeComponent();
+        }
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            Activity activity = new Activity();
+            ActivityAdd activityAdd = new ActivityAdd(activity);
+            ActivityAdd.ShowDialog();
         }
     }
 }
