@@ -28,7 +28,7 @@ namespace SomerenUI
             pnlLecturers.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
-            pnlSupervisors.Hide();
+            pnlActivity.Hide();
 
             // show dashboard
             pnlDashboard.Show();
@@ -42,7 +42,6 @@ namespace SomerenUI
             pnlLecturers.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
-            pnlSupervisors.Hide();
 
             // show students
             pnlStudents.Show();
@@ -66,7 +65,6 @@ namespace SomerenUI
             pnlLecturers.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
-            pnlSupervisors.Hide();
 
             // show the room panel
             pnlRooms.Show();
@@ -172,7 +170,6 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
-            pnlSupervisors.Hide();
 
             // show lecturer panel
 
@@ -184,7 +181,6 @@ namespace SomerenUI
                 List<Lecturer> lecturers = GetLecturers();
                 DisplayLecturers(lecturers);
             }
-
             catch (Exception e)
             {
                 // show error message box if there is an error
@@ -228,7 +224,7 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlLecturers.Hide();
             pnlCashRegister.Hide();
-            pnlSupervisors.Hide();
+            pnlActivity.Hide();
 
             // show drinks panel
 
@@ -352,7 +348,7 @@ namespace SomerenUI
                 }
             }
         }
-        public void HideAllpanel()
+        public void HideAllpanelForCash()
         {
             //hidinG ALL OTHER panels
             pnlStudents.Hide();
@@ -360,12 +356,67 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlDashboard.Hide();
             pnlDrinks.Hide();
-            pnlSupervisors.Hide();
+        }
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowActivitiesPanel();
+        }
+        public void HideAllpanelForActivity()
+        {
+            //hidinG ALL OTHER panels
+            pnlStudents.Hide();
+            pnlLecturers.Hide();
+            pnlRooms.Hide();
+            pnlDashboard.Hide();
+            pnlDrinks.Hide();
+        }
+        private void ShowActivitiesPanel()
+        {
+            HideAllpanelForActivity();
+
+            pnlActivity.Show();
+
+            try
+            {
+                // getting the activities form the GetActivities method and sending it to the list and then displaying
+                List<SomerenModel.Activity> activities = GetActivities();
+                DisplayActivities(activities);
+            }
+
+            catch (Exception e)
+            {
+                // show error message box if there is an error
+                MessageBox.Show("Something went wrong while loading the Activities: " + e.Message);
+            }
+        }
+        private List<SomerenModel.Activity> GetActivities()
+        {
+            ActivityService activityService = new ActivityService();
+            List<SomerenModel.Activity> activities = activityService.GetActivities();
+            return activities;
+        }
+
+        private void DisplayActivities(List<SomerenModel.Activity> activities)
+        {
+            // clear the listview before filling it
+            listViewActivity.Items.Clear();
+
+            foreach (SomerenModel.Activity activity in activities)
+            {
+                ListViewItem li = new ListViewItem(activity.activityId.ToString());
+                li.Tag = activity;
+
+                li.SubItems.Add(activity.activityName.ToString());
+                li.SubItems.Add(activity.startTime.ToString());
+                li.SubItems.Add(activity.endTime.ToString());
+
+                listViewActivity.Items.Add(li);
+            }
         }
         private void ShowCashRegisterPanel()
         {
             // hide all panels
-            HideAllpanel();
+            HideAllpanelForCash();
 
             // show cash register panel
             pnlCashRegister.Show();
@@ -385,39 +436,34 @@ namespace SomerenUI
         }
 
 
-        private void dashboardToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ShowDashboardPanel();
         }
 
-        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void studentsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowStudentsPanel();
         }
 
-        private void lecturersToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowLecturerPanel();
         }
 
-        private void roomsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowRoomPanel();
         }
 
-        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
+        private void drinksToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowDrinksPanel();
-        }
-
-        private void cashRegisterToolStripMenuItem_Click_2(object sender, EventArgs e)
-        {
-            ShowCashRegisterPanel();
         }
 
         class ListViewItemStringComparer : IComparer
@@ -628,7 +674,25 @@ namespace SomerenUI
             listViewLecturers.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewLecturers.Sorting);
         }
 
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            SomerenModel.Activity activity = new SomerenModel.Activity();
+            ActivityAddForm activityAdd = new ActivityAddForm(activity);
+            activityAdd.ShowDialog();
+        }
+        private void btnUpdateItem_Click(object sender, EventArgs e)
+        {
 
+            SomerenModel.Activity activity = new SomerenModel.Activity();
+            ActivityUpdateForm activityUpdate = new ActivityUpdateForm(activity);
+            activityUpdate.ShowDialog();
+        }
+        private void btnDeleteItem_Click(object sender, EventArgs e)
+        {
+            SomerenModel.Activity activity = new SomerenModel.Activity();
+            ActivityDeleteForm activityDelete = new ActivityDeleteForm(activity);
+            activityDelete.ShowDialog();
+        }
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
             Drinks drink = new Drinks();
@@ -655,25 +719,14 @@ namespace SomerenUI
             ShowDrinksPanel();
         }
 
-        private void ShowSupervisorsPanel()
+        private void cashRegisterToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            // hide all other panels
-            pnlStudents.Hide();
-            pnlDashboard.Hide();
-            pnlRooms.Hide();
-            pnlLecturers.Hide();
-            pnlCashRegister.Hide();
-            pnlDrinks.Hide();
-
-            // show Supervisors panel
-
-            pnlSupervisors.Show();
+            ShowCashRegisterPanel();
         }
 
-
-        private void lecturersToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void btnRefreshlist_Click(object sender, EventArgs e)
         {
-            ShowSupervisorsPanel();
+            ShowActivitiesPanel();
         }
     }
 }
