@@ -335,3 +335,6 @@ C:\Users\prota\Source\Repos\Faizan-2003\somerenv4\SomerenUI\obj\Debug\net6.0-win
 C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.ActivityAddForm.resources
 C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.ActivityDeleteForm.resources
 C:\Users\mf384\OneDrive\Desktop\DataBase Project\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.ActivityUpdateForm.resources
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.ActivityAddForm.resources
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.ActivityDeleteForm.resources
+C:\Users\yanid\OneDrive\Desktop\Someren Project\GitHub\somerenv4\SomerenUI\obj\Debug\net6.0-windows\SomerenUI.ActivityUpdateForm.resources
