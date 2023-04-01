@@ -12,19 +12,19 @@ namespace SomerenDAL
 {
     public class SupervisorsDao : BaseDao
     {
-        public List<Supervisors> GetSupervisor(Activity activity)
+        public List<Supervisors> GetSupervisor(SomerenModel.Activity activity)
         {
-            string query = "SELECT lecturerId FROM SUPERVISE WHERE activityId=@activityId";
+            string query = "SELECT lecturerId, firstName, lastName FROM SUPERVISE WHERE activityId=@activityId";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@activityId", activity.activityId);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public List<Supervisors> GetNotSupervisor(Activity activity)
+        public List<Supervisors> GetNotSupervisor(SomerenModel.Activity activity)
         {
-            string query = "SELECT lecturerId FROM LECTURER WHERE LecturerId not in  (SELECT lecturerId FROM SUPERVISE WHERE activityID = @activityId)";
+            string query = "SELECT lecturerId, firstName, lastName FROM LECTURER WHERE LecturerId not in  (SELECT lecturerId FROM SUPERVISE WHERE activityID = @activityId)";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@activityID", activity.activityID);
+            sqlParameters[0] = new SqlParameter("@activityID", activity.activityId);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 

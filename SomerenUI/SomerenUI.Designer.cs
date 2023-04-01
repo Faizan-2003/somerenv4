@@ -119,6 +119,14 @@
             this.endTime = new System.Windows.Forms.ColumnHeader();
             this.label6 = new System.Windows.Forms.Label();
             this.pnlSupervisors = new System.Windows.Forms.Panel();
+            this.listIsNotSupervisor = new System.Windows.Forms.ListView();
+            this.columnHeader18 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader19 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader20 = new System.Windows.Forms.ColumnHeader();
+            this.listIsSupervisor = new System.Windows.Forms.ListView();
+            this.columnHeader22 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader23 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader24 = new System.Windows.Forms.ColumnHeader();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.listActivity_Supervisor = new System.Windows.Forms.ListView();
             this.columnHeader9 = new System.Windows.Forms.ColumnHeader();
@@ -932,6 +940,8 @@
             // 
             // pnlSupervisors
             // 
+            this.pnlSupervisors.Controls.Add(this.listIsNotSupervisor);
+            this.pnlSupervisors.Controls.Add(this.listIsSupervisor);
             this.pnlSupervisors.Controls.Add(this.pictureBox7);
             this.pnlSupervisors.Controls.Add(this.listActivity_Supervisor);
             this.pnlSupervisors.Controls.Add(this.label7);
@@ -940,6 +950,68 @@
             this.pnlSupervisors.Name = "pnlSupervisors";
             this.pnlSupervisors.Size = new System.Drawing.Size(1072, 622);
             this.pnlSupervisors.TabIndex = 13;
+            // 
+            // listIsNotSupervisor
+            // 
+            this.listIsNotSupervisor.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader18,
+            this.columnHeader19,
+            this.columnHeader20});
+            this.listIsNotSupervisor.Location = new System.Drawing.Point(541, 286);
+            this.listIsNotSupervisor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listIsNotSupervisor.Name = "listIsNotSupervisor";
+            this.listIsNotSupervisor.Size = new System.Drawing.Size(484, 211);
+            this.listIsNotSupervisor.TabIndex = 5;
+            this.listIsNotSupervisor.UseCompatibleStateImageBehavior = false;
+            this.listIsNotSupervisor.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Supervisor ID";
+            this.columnHeader18.Width = 100;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "First Name";
+            this.columnHeader19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader19.Width = 150;
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "Last Name";
+            this.columnHeader20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader20.Width = 200;
+            // 
+            // listIsSupervisor
+            // 
+            this.listIsSupervisor.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader22,
+            this.columnHeader23,
+            this.columnHeader24});
+            this.listIsSupervisor.Location = new System.Drawing.Point(15, 286);
+            this.listIsSupervisor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listIsSupervisor.Name = "listIsSupervisor";
+            this.listIsSupervisor.Size = new System.Drawing.Size(484, 211);
+            this.listIsSupervisor.TabIndex = 4;
+            this.listIsSupervisor.UseCompatibleStateImageBehavior = false;
+            this.listIsSupervisor.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "Supervisor ID";
+            this.columnHeader22.Width = 100;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "First Name";
+            this.columnHeader23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader23.Width = 150;
+            // 
+            // columnHeader24
+            // 
+            this.columnHeader24.Text = "Last Name";
+            this.columnHeader24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader24.Width = 200;
             // 
             // pictureBox7
             // 
@@ -965,6 +1037,7 @@
             this.listActivity_Supervisor.TabIndex = 1;
             this.listActivity_Supervisor.UseCompatibleStateImageBehavior = false;
             this.listActivity_Supervisor.View = System.Windows.Forms.View.Details;
+            this.listActivity_Supervisor.SelectedIndexChanged += new System.EventHandler(this.listActivity_Supervisor_SelectedIndexChanged);
             // 
             // columnHeader9
             // 
@@ -1146,5 +1219,13 @@
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripMenuItem supervisorsToolStripMenuItem;
+        private System.Windows.Forms.ListView listIsSupervisor;
+        private System.Windows.Forms.ColumnHeader columnHeader22;
+        private System.Windows.Forms.ColumnHeader columnHeader23;
+        private System.Windows.Forms.ColumnHeader columnHeader24;
+        private System.Windows.Forms.ListView listIsNotSupervisor;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.ColumnHeader columnHeader19;
+        private System.Windows.Forms.ColumnHeader columnHeader20;
     }
 }
