@@ -24,15 +24,14 @@ namespace SomerenService
             List<Activities> activities = activitydb.GetAllActivities();
             return activities;
         }
-        public void Add(Activities activity)
+
+        public void ActivityAdd(Activities activity)
         {
-            var activityinstance = new ActivityDao();
-            activityinstance.AddActivity(activity);
+          activitydb.AddActivity(activity); 
         }
-        public void Delete(Activities activity)
+        public void ActivityDelete(Activities activity)
         {
-            var activityinstance = new ActivityDao();
-            activityinstance.DeleteActivity(activity);
+            activitydb.DeleteActivity(activity);
         }
     }
 }

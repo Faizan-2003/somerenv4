@@ -106,6 +106,14 @@
             pictureBox5 = new System.Windows.Forms.PictureBox();
             label4 = new System.Windows.Forms.Label();
             pnlActivity = new System.Windows.Forms.Panel();
+            label10 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            dateTimeStart = new System.Windows.Forms.DateTimePicker();
+            dateTimeEnd = new System.Windows.Forms.DateTimePicker();
+            txtActivityName = new System.Windows.Forms.TextBox();
+            txtActivityID = new System.Windows.Forms.TextBox();
             btnRefreshlist = new System.Windows.Forms.Button();
             btnUpdateItem = new System.Windows.Forms.Button();
             btnDeleteItem = new System.Windows.Forms.Button();
@@ -117,14 +125,6 @@
             Starttime = new System.Windows.Forms.ColumnHeader();
             endTime = new System.Windows.Forms.ColumnHeader();
             label6 = new System.Windows.Forms.Label();
-            txtActivityID = new System.Windows.Forms.TextBox();
-            txtActivityName = new System.Windows.Forms.TextBox();
-            dateTimeEnd = new System.Windows.Forms.DateTimePicker();
-            dateTimeStart = new System.Windows.Forms.DateTimePicker();
-            label7 = new System.Windows.Forms.Label();
-            label9 = new System.Windows.Forms.Label();
-            label10 = new System.Windows.Forms.Label();
-            label8 = new System.Windows.Forms.Label();
             menuStrip1.SuspendLayout();
             pnlDashboard.SuspendLayout();
             pnlStudents.SuspendLayout();
@@ -809,6 +809,75 @@
             pnlActivity.Size = new System.Drawing.Size(1340, 778);
             pnlActivity.TabIndex = 12;
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(34, 670);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(85, 25);
+            label10.TabIndex = 14;
+            label10.Text = "End Time";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(34, 615);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(91, 25);
+            label9.TabIndex = 13;
+            label9.Text = "Start Time";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(34, 562);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(122, 25);
+            label8.TabIndex = 12;
+            label8.Text = "Activity Name";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(34, 505);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(93, 25);
+            label7.TabIndex = 11;
+            label7.Text = "Activity ID";
+            // 
+            // dateTimeStart
+            // 
+            dateTimeStart.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            dateTimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            dateTimeStart.Location = new System.Drawing.Point(244, 610);
+            dateTimeStart.Name = "dateTimeStart";
+            dateTimeStart.Size = new System.Drawing.Size(300, 31);
+            dateTimeStart.TabIndex = 10;
+            dateTimeStart.Value = new System.DateTime(2023, 4, 4, 0, 0, 0, 0);
+            // 
+            // dateTimeEnd
+            // 
+            dateTimeEnd.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            dateTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            dateTimeEnd.Location = new System.Drawing.Point(244, 664);
+            dateTimeEnd.Name = "dateTimeEnd";
+            dateTimeEnd.Size = new System.Drawing.Size(300, 31);
+            dateTimeEnd.TabIndex = 9;
+            // 
+            // txtActivityName
+            // 
+            txtActivityName.Location = new System.Drawing.Point(243, 559);
+            txtActivityName.Name = "txtActivityName";
+            txtActivityName.Size = new System.Drawing.Size(202, 31);
+            txtActivityName.TabIndex = 8;
+            // 
+            // txtActivityID
+            // 
+            txtActivityID.Location = new System.Drawing.Point(243, 500);
+            txtActivityID.Name = "txtActivityID";
+            txtActivityID.Size = new System.Drawing.Size(103, 31);
+            txtActivityID.TabIndex = 7;
+            // 
             // btnRefreshlist
             // 
             btnRefreshlist.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -913,70 +982,6 @@
             label6.Size = new System.Drawing.Size(162, 48);
             label6.TabIndex = 0;
             label6.Text = "Activities";
-            // 
-            // txtActivityID
-            // 
-            txtActivityID.Location = new System.Drawing.Point(243, 500);
-            txtActivityID.Name = "txtActivityID";
-            txtActivityID.Size = new System.Drawing.Size(150, 31);
-            txtActivityID.TabIndex = 7;
-            // 
-            // txtActivityName
-            // 
-            txtActivityName.Location = new System.Drawing.Point(243, 559);
-            txtActivityName.Name = "txtActivityName";
-            txtActivityName.Size = new System.Drawing.Size(150, 31);
-            txtActivityName.TabIndex = 8;
-            // 
-            // dateTimeEnd
-            // 
-            dateTimeEnd.Location = new System.Drawing.Point(244, 664);
-            dateTimeEnd.Name = "dateTimeEnd";
-            dateTimeEnd.Size = new System.Drawing.Size(300, 31);
-            dateTimeEnd.TabIndex = 9;
-            // 
-            // dateTimeStart
-            // 
-            dateTimeStart.Location = new System.Drawing.Point(244, 610);
-            dateTimeStart.Name = "dateTimeStart";
-            dateTimeStart.Size = new System.Drawing.Size(300, 31);
-            dateTimeStart.TabIndex = 10;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(34, 505);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(93, 25);
-            label7.TabIndex = 11;
-            label7.Text = "Activity ID";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(34, 615);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(91, 25);
-            label9.TabIndex = 13;
-            label9.Text = "Start Time";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(34, 670);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(85, 25);
-            label10.TabIndex = 14;
-            label10.Text = "End Time";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(34, 562);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(122, 25);
-            label8.TabIndex = 12;
-            label8.Text = "Activity Name";
             // 
             // SomerenUI
             // 
@@ -1115,9 +1120,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dateTimeStart;
         private System.Windows.Forms.DateTimePicker dateTimeEnd;
         private System.Windows.Forms.TextBox txtActivityName;
         private System.Windows.Forms.TextBox txtActivityID;
+        private System.Windows.Forms.DateTimePicker dateTimeStart;
     }
 }

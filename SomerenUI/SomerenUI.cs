@@ -9,6 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.Devices;
 using System.Drawing;
 using SomerenDAL;
+using System.Windows.Forms.VisualStyles;
 
 namespace SomerenUI
 {
@@ -684,7 +685,26 @@ namespace SomerenUI
         }
         private void btnDeleteItem_Click(object sender, EventArgs e)
         {
+            int activityId = int.Parse(listViewActivity.SelectedItems[0].SubItems[0].Text);
 
+            Activities activities = new Activities();
+
+            activities.activityId = activityId;
+
+            try
+            {
+                ActivityService activity = new ActivityService();
+                activity.ActivityDelete(activities);
+                MessageBox.Show("Activity delete successful");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong while deleting" + ex.Message);
+            }
+
+            //refresh the listview
+            ShowActivitiesPanel();
         }
         private void btnAdd_Click_1(object sender, EventArgs e)
         {

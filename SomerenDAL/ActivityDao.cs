@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SomerenModel;
 using System.Data.Common;
+using System.Diagnostics;
 
 namespace SomerenDAL
 {
@@ -84,6 +85,11 @@ namespace SomerenDAL
         }
 
         public static void AddActivity(object activity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void DeleteActivity(Activity activity)
         {
             throw new NotImplementedException();
         }
