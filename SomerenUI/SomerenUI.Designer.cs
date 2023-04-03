@@ -117,6 +117,14 @@
             Starttime = new System.Windows.Forms.ColumnHeader();
             endTime = new System.Windows.Forms.ColumnHeader();
             label6 = new System.Windows.Forms.Label();
+            txtActivityID = new System.Windows.Forms.TextBox();
+            txtActivityName = new System.Windows.Forms.TextBox();
+            dateTimeEnd = new System.Windows.Forms.DateTimePicker();
+            dateTimeStart = new System.Windows.Forms.DateTimePicker();
+            label7 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            label10 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
             menuStrip1.SuspendLayout();
             pnlDashboard.SuspendLayout();
             pnlStudents.SuspendLayout();
@@ -780,6 +788,14 @@
             // 
             // pnlActivity
             // 
+            pnlActivity.Controls.Add(label10);
+            pnlActivity.Controls.Add(label9);
+            pnlActivity.Controls.Add(label8);
+            pnlActivity.Controls.Add(label7);
+            pnlActivity.Controls.Add(dateTimeStart);
+            pnlActivity.Controls.Add(dateTimeEnd);
+            pnlActivity.Controls.Add(txtActivityName);
+            pnlActivity.Controls.Add(txtActivityID);
             pnlActivity.Controls.Add(btnRefreshlist);
             pnlActivity.Controls.Add(btnUpdateItem);
             pnlActivity.Controls.Add(btnDeleteItem);
@@ -796,7 +812,7 @@
             // btnRefreshlist
             // 
             btnRefreshlist.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnRefreshlist.Location = new System.Drawing.Point(514, 615);
+            btnRefreshlist.Location = new System.Drawing.Point(969, 500);
             btnRefreshlist.Margin = new System.Windows.Forms.Padding(4);
             btnRefreshlist.Name = "btnRefreshlist";
             btnRefreshlist.Size = new System.Drawing.Size(155, 51);
@@ -808,7 +824,7 @@
             // btnUpdateItem
             // 
             btnUpdateItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnUpdateItem.Location = new System.Drawing.Point(214, 615);
+            btnUpdateItem.Location = new System.Drawing.Point(848, 691);
             btnUpdateItem.Margin = new System.Windows.Forms.Padding(4);
             btnUpdateItem.Name = "btnUpdateItem";
             btnUpdateItem.Size = new System.Drawing.Size(132, 51);
@@ -820,7 +836,7 @@
             // btnDeleteItem
             // 
             btnDeleteItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnDeleteItem.Location = new System.Drawing.Point(362, 615);
+            btnDeleteItem.Location = new System.Drawing.Point(1067, 691);
             btnDeleteItem.Margin = new System.Windows.Forms.Padding(4);
             btnDeleteItem.Name = "btnDeleteItem";
             btnDeleteItem.Size = new System.Drawing.Size(132, 51);
@@ -832,7 +848,7 @@
             // btnAddItem
             // 
             btnAddItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnAddItem.Location = new System.Drawing.Point(58, 615);
+            btnAddItem.Location = new System.Drawing.Point(631, 691);
             btnAddItem.Margin = new System.Windows.Forms.Padding(4);
             btnAddItem.Name = "btnAddItem";
             btnAddItem.Size = new System.Drawing.Size(132, 51);
@@ -854,13 +870,15 @@
             // listViewActivity
             // 
             listViewActivity.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { activityID, activityName, Starttime, endTime });
+            listViewActivity.FullRowSelect = true;
             listViewActivity.Location = new System.Drawing.Point(22, 70);
             listViewActivity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             listViewActivity.Name = "listViewActivity";
-            listViewActivity.Size = new System.Drawing.Size(1093, 509);
+            listViewActivity.Size = new System.Drawing.Size(1102, 406);
             listViewActivity.TabIndex = 1;
             listViewActivity.UseCompatibleStateImageBehavior = false;
             listViewActivity.View = System.Windows.Forms.View.Details;
+            listViewActivity.SelectedIndexChanged += listViewActivity_SelectedIndexChanged;
             // 
             // activityID
             // 
@@ -895,6 +913,70 @@
             label6.Size = new System.Drawing.Size(162, 48);
             label6.TabIndex = 0;
             label6.Text = "Activities";
+            // 
+            // txtActivityID
+            // 
+            txtActivityID.Location = new System.Drawing.Point(243, 500);
+            txtActivityID.Name = "txtActivityID";
+            txtActivityID.Size = new System.Drawing.Size(150, 31);
+            txtActivityID.TabIndex = 7;
+            // 
+            // txtActivityName
+            // 
+            txtActivityName.Location = new System.Drawing.Point(243, 559);
+            txtActivityName.Name = "txtActivityName";
+            txtActivityName.Size = new System.Drawing.Size(150, 31);
+            txtActivityName.TabIndex = 8;
+            // 
+            // dateTimeEnd
+            // 
+            dateTimeEnd.Location = new System.Drawing.Point(244, 664);
+            dateTimeEnd.Name = "dateTimeEnd";
+            dateTimeEnd.Size = new System.Drawing.Size(300, 31);
+            dateTimeEnd.TabIndex = 9;
+            // 
+            // dateTimeStart
+            // 
+            dateTimeStart.Location = new System.Drawing.Point(244, 610);
+            dateTimeStart.Name = "dateTimeStart";
+            dateTimeStart.Size = new System.Drawing.Size(300, 31);
+            dateTimeStart.TabIndex = 10;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(34, 505);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(93, 25);
+            label7.TabIndex = 11;
+            label7.Text = "Activity ID";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(34, 615);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(91, 25);
+            label9.TabIndex = 13;
+            label9.Text = "Start Time";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(34, 670);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(85, 25);
+            label10.TabIndex = 14;
+            label10.Text = "End Time";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(34, 562);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(122, 25);
+            label8.TabIndex = 12;
+            label8.Text = "Activity Name";
             // 
             // SomerenUI
             // 
@@ -1029,5 +1111,13 @@
         private System.Windows.Forms.ColumnHeader Starttime;
         private System.Windows.Forms.ColumnHeader endTime;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dateTimeStart;
+        private System.Windows.Forms.DateTimePicker dateTimeEnd;
+        private System.Windows.Forms.TextBox txtActivityName;
+        private System.Windows.Forms.TextBox txtActivityID;
     }
 }

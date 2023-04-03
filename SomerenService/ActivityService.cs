@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,21 @@ namespace SomerenService
         {
             activitydb = new ActivityDao();
         }
-        public List<Activity> GetActivities()
+        public List<Activities> GetActivities()
         {
             // getting activities data from the database
-            List<Activity> activities = activitydb.GetAllActivities();
+            List<Activities> activities = activitydb.GetAllActivities();
             return activities;
+        }
+        public void Add(Activities activity)
+        {
+            var activityinstance = new ActivityDao();
+            activityinstance.AddActivity(activity);
+        }
+        public void Delete(Activities activity)
+        {
+            var activityinstance = new ActivityDao();
+            activityinstance.DeleteActivity(activity);
         }
     }
 }

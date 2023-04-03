@@ -379,7 +379,7 @@ namespace SomerenUI
             try
             {
                 // getting the activities form the GetActivities method and sending it to the list and then displaying
-                List<SomerenModel.Activity> activities = GetActivities();
+                List<SomerenModel.Activities> activities = GetActivities();
                 DisplayActivities(activities);
             }
 
@@ -389,19 +389,19 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the Activities: " + e.Message);
             }
         }
-        private List<SomerenModel.Activity> GetActivities()
+        private List<SomerenModel.Activities> GetActivities()
         {
             ActivityService activityService = new ActivityService();
-            List<SomerenModel.Activity> activities = activityService.GetActivities();
+            List<SomerenModel.Activities> activities = activityService.GetActivities();
             return activities;
         }
 
-        private void DisplayActivities(List<SomerenModel.Activity> activities)
+        private void DisplayActivities(List<SomerenModel.Activities> activities)
         {
             // clear the listview before filling it
             listViewActivity.Items.Clear();
 
-            foreach (SomerenModel.Activity activity in activities)
+            foreach (SomerenModel.Activities activity in activities)
             {
                 ListViewItem li = new ListViewItem(activity.activityId.ToString());
                 li.Tag = activity;
@@ -676,22 +676,15 @@ namespace SomerenUI
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            SomerenModel.Activity activity = new SomerenModel.Activity();
-            ActivityAddForm activityAdd = new ActivityAddForm(activity);
-            activityAdd.ShowDialog();
+
         }
         private void btnUpdateItem_Click(object sender, EventArgs e)
         {
 
-            SomerenModel.Activity activity = new SomerenModel.Activity();
-            ActivityUpdateForm activityUpdate = new ActivityUpdateForm(activity);
-            activityUpdate.ShowDialog();
         }
         private void btnDeleteItem_Click(object sender, EventArgs e)
         {
-            SomerenModel.Activity activity = new SomerenModel.Activity();
-            ActivityDeleteForm activityDelete = new ActivityDeleteForm(activity);
-            activityDelete.ShowDialog();
+
         }
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
@@ -727,6 +720,11 @@ namespace SomerenUI
         private void btnRefreshlist_Click(object sender, EventArgs e)
         {
             ShowActivitiesPanel();
+        }
+
+        private void listViewActivity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
