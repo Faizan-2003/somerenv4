@@ -9,6 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.Devices;
 using System.Drawing;
 using SomerenDAL;
+using System.Windows.Forms.VisualStyles;
 
 namespace SomerenUI
 {
@@ -18,6 +19,7 @@ namespace SomerenUI
         {
             InitializeComponent();
             ShowDashboardPanel();
+            btnDeleteItem.Enabled = false;
         }
 
         private void ShowDashboardPanel()
@@ -28,6 +30,7 @@ namespace SomerenUI
             pnlLecturers.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
+            pnlActivity.Hide();
 
             // show dashboard
             pnlDashboard.Show();
@@ -180,7 +183,6 @@ namespace SomerenUI
                 List<Lecturer> lecturers = GetLecturers();
                 DisplayLecturers(lecturers);
             }
-
             catch (Exception e)
             {
                 // show error message box if there is an error
@@ -224,6 +226,7 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlLecturers.Hide();
             pnlCashRegister.Hide();
+            pnlActivity.Hide();
 
             // show drinks panel
 
@@ -347,7 +350,7 @@ namespace SomerenUI
                 }
             }
         }
-        public void HideAllpanel()
+        public void HideAllpanelForCash()
         {
             //hidinG ALL OTHER panels
             pnlStudents.Hide();
@@ -356,10 +359,66 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlDrinks.Hide();
         }
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowActivitiesPanel();
+        }
+        public void HideAllpanelForActivity()
+        {
+            //hidinG ALL OTHER panels
+            pnlStudents.Hide();
+            pnlLecturers.Hide();
+            pnlRooms.Hide();
+            pnlDashboard.Hide();
+            pnlDrinks.Hide();
+        }
+        private void ShowActivitiesPanel()
+        {
+            HideAllpanelForActivity();
+
+            pnlActivity.Show();
+
+            try
+            {
+                // getting the activities form the GetActivities method and sending it to the list and then displaying
+                List<SomerenModel.Activities> activities = GetActivities();
+                DisplayActivities(activities);
+            }
+
+            catch (Exception e)
+            {
+                // show error message box if there is an error
+                MessageBox.Show("Something went wrong while loading the Activities: " + e.Message);
+            }
+        }
+        private List<SomerenModel.Activities> GetActivities()
+        {
+            ActivityService activityService = new ActivityService();
+            List<SomerenModel.Activities> activities = activityService.GetActivities();
+            return activities;
+        }
+
+        private void DisplayActivities(List<SomerenModel.Activities> activities)
+        {
+            // clear the listview before filling it
+            listViewActivity.Items.Clear();
+
+            foreach (SomerenModel.Activities activity in activities)
+            {
+                ListViewItem li = new ListViewItem(activity.activityId.ToString());
+                li.Tag = activity;
+
+                li.SubItems.Add(activity.activityName.ToString());
+                li.SubItems.Add(activity.startTime.ToString());
+                li.SubItems.Add(activity.endTime.ToString());
+
+                listViewActivity.Items.Add(li);
+            }
+        }
         private void ShowCashRegisterPanel()
         {
             // hide all panels
-            HideAllpanel();
+            HideAllpanelForCash();
 
             // show cash register panel
             pnlCashRegister.Show();
@@ -617,7 +676,45 @@ namespace SomerenUI
             listViewLecturers.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewLecturers.Sorting);
         }
 
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            //..
+        }
+        private void btnUpdateItem_Click(object sender, EventArgs e)
+        {
+            //..
+        }
+     
+        private void btnDeleteItem_Click(object sender, EventArgs e)
+        {
+            int activityId = int.Parse(listViewActivity.SelectedItems[0].SubItems[0].Text);
 
+            Activities activities = new Activities();
+            activities.activityId = activityId;
+
+            try
+            {
+                ActivityService activity = new ActivityService();
+
+                DialogResult dialogResult = MessageBox.Show("Are you Sure you want to delete this Activity?", "Confirmation",  MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    activity.ActivityDelete(activities);
+                    MessageBox.Show("Activity deleted successfully", "Success");
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("Activity is not deleted", "Success");
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show("Something went wrong while deleting an Activity! \n" + exp.Message, "Error!");
+            }
+
+            //refresh the list
+            ShowActivitiesPanel();
+        }
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
             Drinks drink = new Drinks();
@@ -638,7 +735,10 @@ namespace SomerenUI
             DrinkDelete drinkDelete = new DrinkDelete(drink);
             drinkDelete.ShowDialog();
         }
-
+        private void listViewActivity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnDeleteItem.Enabled = (listViewActivity.SelectedItems.Count >= 0);
+        }
         private void btn_Refresh_Click(object sender, EventArgs e)
         {
             ShowDrinksPanel();
@@ -649,6 +749,11 @@ namespace SomerenUI
             ShowCashRegisterPanel();
         }
 
+        private void btnRefreshlist_Click(object sender, EventArgs e)
+        {
+            ShowActivitiesPanel();
+        }
 
+       
     }
 }
