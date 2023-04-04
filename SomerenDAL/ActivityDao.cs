@@ -87,9 +87,12 @@ namespace SomerenDAL
             }
             catch (Exception exp)
             {
-                conn.Close();
-                throw;
-            }            
+                throw new Exception("Deleting Activity Failed!");
+            }  
+            finally 
+            {
+                conn.Close(); 
+            }   
         }
 
         public static void AddActivity(object activity)
