@@ -851,7 +851,7 @@
             dateTimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             dateTimeStart.Location = new System.Drawing.Point(244, 610);
             dateTimeStart.Name = "dateTimeStart";
-            dateTimeStart.Size = new System.Drawing.Size(300, 31);
+            dateTimeStart.Size = new System.Drawing.Size(250, 31);
             dateTimeStart.TabIndex = 10;
             dateTimeStart.Value = new System.DateTime(2023, 4, 4, 0, 0, 0, 0);
             // 
@@ -861,7 +861,7 @@
             dateTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             dateTimeEnd.Location = new System.Drawing.Point(244, 664);
             dateTimeEnd.Name = "dateTimeEnd";
-            dateTimeEnd.Size = new System.Drawing.Size(300, 31);
+            dateTimeEnd.Size = new System.Drawing.Size(250, 31);
             dateTimeEnd.TabIndex = 9;
             // 
             // txtActivityName

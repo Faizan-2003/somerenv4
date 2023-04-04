@@ -19,6 +19,7 @@ namespace SomerenUI
         {
             InitializeComponent();
             ShowDashboardPanel();
+            btnDeleteItem.Enabled = false;
         }
 
         private void ShowDashboardPanel()
@@ -677,18 +678,18 @@ namespace SomerenUI
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-
+            //..
         }
         private void btnUpdateItem_Click(object sender, EventArgs e)
         {
-
+            //..
         }
+     
         private void btnDeleteItem_Click(object sender, EventArgs e)
         {
             int activityId = int.Parse(listViewActivity.SelectedItems[0].SubItems[0].Text);
 
             Activities activities = new Activities();
-
             activities.activityId = activityId;
 
             try
@@ -703,7 +704,7 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while deleting" + ex.Message);
             }
 
-            //refresh the listview
+            //refresh the list
             ShowActivitiesPanel();
         }
         private void btnAdd_Click_1(object sender, EventArgs e)
@@ -726,7 +727,10 @@ namespace SomerenUI
             DrinkDelete drinkDelete = new DrinkDelete(drink);
             drinkDelete.ShowDialog();
         }
-
+        private void listViewActivity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnDeleteItem.Enabled = (listViewActivity.SelectedItems.Count >= 0);
+        }
         private void btn_Refresh_Click(object sender, EventArgs e)
         {
             ShowDrinksPanel();
@@ -742,9 +746,6 @@ namespace SomerenUI
             ShowActivitiesPanel();
         }
 
-        private void listViewActivity_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
