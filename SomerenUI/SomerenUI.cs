@@ -695,13 +695,21 @@ namespace SomerenUI
             try
             {
                 ActivityService activity = new ActivityService();
-                activity.ActivityDelete(activities);
-                MessageBox.Show("Activity delete successful");
 
+                DialogResult dialogResult = MessageBox.Show("Are you Sure you want to delete this Activity?", "Confirmation",  MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    activity.ActivityDelete(activities);
+                    MessageBox.Show("Activity deleted successfully", "Success");
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("Activity is not deleted", "Success");
+                }
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                MessageBox.Show("Something went wrong while deleting" + ex.Message);
+                MessageBox.Show("Something went wrong while deleting an Activity! \n" + exp.Message, "Error!");
             }
 
             //refresh the list

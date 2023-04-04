@@ -74,14 +74,22 @@ namespace SomerenDAL
         }
         public void DeleteActivity(Activities activity)
         {
-            conn.Open();
-            SqlCommand command = new SqlCommand(
-            "DELETE FROM ACTIVITIES WHERE activityId = @ActivityId",
-            conn);
-            command.Parameters.AddWithValue("@ActivityId", activity.activityId);
-            int nrOfRowsAffected = command.ExecuteNonQuery();
-            conn.Close();
-            // TODO: nrOfRowsAffected... (throw exception, or return boolean, ...)
+            try
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand(
+                "DELETE FROM ACTIVITIES WHERE activityId = @ActivityId",
+                conn);
+                command.Parameters.AddWithValue("@ActivityId", activity.activityId);
+                int nrOfRowsAffected = command.ExecuteNonQuery();
+                conn.Close();
+                // TODO: nrOfRowsAffected... (throw exception, or return boolean, ...)
+            }
+            catch (Exception exp)
+            {
+                conn.Close();
+                throw;
+            }            
         }
 
         public static void AddActivity(object activity)
