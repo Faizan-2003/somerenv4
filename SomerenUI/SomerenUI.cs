@@ -780,42 +780,45 @@ namespace SomerenUI
                 li.Tag = activity;
 
                 li.SubItems.Add(activity.activityName.ToString());
-                li.SubItems.Add(activity.startTime.ToString());
-                li.SubItems.Add(activity.endTime.ToString());
+                li.SubItems.Add($"{activity.startTime:dd/MM/yyyy HH:mm}");
+                li.SubItems.Add($"{activity.endTime:dd/MM/yyyy HH:mm}");
 
                 listActivity_Supervisor.Items.Add(li);
             }
         }
-        private void DisplaySupervisors(List<SomerenModel.Supervisors> supervisors)
+        private SupervisorsService supervisorsService;
+        private void DisplaySupervisors(SomerenModel.Activity activity)
         {
             listIsSupervisor.Items.Clear();
 
+            List<Supervisors> supervisors = supervisorsService.GetSupervisors(activity);
+
             foreach (Supervisors supervisor in supervisors)
             {
-                ListViewItem li = new ListViewItem(supervisor.SupervisorId.ToString());
+                ListViewItem li = new ListViewItem(supervisor.Supervisor.lecturerId.ToString());
                 li.Tag = supervisor;
 
-                li.SubItems.Add(supervisor.SupervisorId.ToString());
-                li.SubItems.Add(supervisor.SupervisorFirstName.ToString());
-                li.SubItems.Add(supervisor.SupervisorLastName.ToString());
-
+                listViewItem.SubItems.Add(supervisor.Supervisor.firstName);
+                listViewItem.SubItems.Add(supervisor.Supervisor.lastName);
+                listViewItem.Tag = supervisor;
                 listIsSupervisor.Items.Add(li);
             }
         }
-        private void DisplayNotSupervisors(List<SomerenModel.Supervisors> supervisors)
+        private void DisplayNotSupervisors(SomerenModel.Activity activity)
         {
             listIsNotSupervisor.Items.Clear();
 
+            List<Supervisors> supervisors = supervisorsService.GetNotSupervisors(activity);
+
             foreach (Supervisors supervisor in supervisors)
             {
-                ListViewItem li = new ListViewItem(supervisor.SupervisorId.ToString());
+                ListViewItem li = new ListViewItem(supervisor.Supervisor.lecturerId.ToString());
                 li.Tag = supervisor;
 
-                li.SubItems.Add(supervisor.SupervisorId.ToString());
-                li.SubItems.Add(supervisor.SupervisorFirstName.ToString());
-                li.SubItems.Add(supervisor.SupervisorLastName.ToString());
-
-                listIsNotSupervisor.Items.Add(li);
+                listViewItem.SubItems.Add(supervisor.Supervisor.firstName);
+                listViewItem.SubItems.Add(supervisor.Supervisor.lastName);
+                listViewItem.Tag = supervisor;
+                listIsSupervisor.Items.Add(li);
             }
         }
 
@@ -835,17 +838,18 @@ namespace SomerenUI
 
         private void listActivity_Supervisor_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SomerenModel.Activity activity;
+
             if (listActivity_Supervisor.SelectedItems.Count == 0)
             {
-                return;
-            }
-            else if (listActivity_Supervisor.SelectedItems.Count != 0)
-            {
-                //making selection only one time 
                 DisplaySupervisorActivities();
             }
-            listViewItem = listActivity_Supervisor.SelectedItems[0];
-            selectedSupervisor = (Supervisors)listViewItem.Tag;
+            else
+            {
+                activity = (SomerenModel.Activity)listActivity_Supervisor.SelectedItems[0].Tag;
+            }
+            DisplaySupervisors(activity);
+            DisplayNotSupervisors(activity);
         }
     }
 }

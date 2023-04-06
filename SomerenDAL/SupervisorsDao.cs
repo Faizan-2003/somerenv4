@@ -27,6 +27,19 @@ namespace SomerenDAL
             sqlParameters[0] = new SqlParameter("@activityID", activity.activityId);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+        private List<Supervisors> ReadTables(DataTable dataTable)
+        {
+            List<Supervisors> supervisors = new List<Supervisors>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Supervisors activitySupervisor = new Supervisors();
+                int number = (int)dr["teacher_number"];
+                activitySupervisor.Supervisor = GetLecturer(number);
+                supervisors.Add(activitySupervisor);
+            }
+            return supervisors;
+        }
 
         private Lecturer GetLecturer(int lecturerId)
         {
@@ -45,20 +58,6 @@ namespace SomerenDAL
                 lecturer.lastName = (string)dr["lastName"];
             }
             return lecturer;
-        }
-
-        private List<Supervisors> ReadTables(DataTable dataTable)
-        {
-            List<Supervisors> supervisors = new List<Supervisors>();
-
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                Supervisors supervisor = new Supervisors();
-                int number = (int)dr["lecturerId"];
-                supervisor.Supervisor = GetLecturer(number);
-                supervisors.Add(supervisor);
-            }
-            return supervisors;
         }
     }
 }

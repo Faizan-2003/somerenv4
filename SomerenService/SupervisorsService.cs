@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SomerenService
 {
-    internal class SupervisorsService
+    public class SupervisorsService
     {
         private SupervisorsDao supervisorsdb;
 
@@ -23,7 +23,7 @@ namespace SomerenService
             return supervisors;
         }
 
-        public List<Supervisors> GetNotSupervisor(Activity activity)
+        public List<Supervisors> GetNotSupervisors(Activity activity)
         {
             List<Supervisors> supervisors = supervisorsdb.GetNotSupervisor(activity);
             return supervisors;
