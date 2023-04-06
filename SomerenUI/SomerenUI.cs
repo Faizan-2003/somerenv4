@@ -22,6 +22,7 @@ namespace SomerenUI
 
             // disable the delete button if no row is selected.
             btnDeleteItem.Enabled = false;
+            btncheckout.Enabled = false;
         }
 
         private void ShowDashboardPanel()
@@ -268,7 +269,7 @@ namespace SomerenUI
 
                 // adding data to the listview 
                 li.SubItems.Add(drink.drinkType.ToString());
-                li.SubItems.Add(drink.price.ToString());
+                li.SubItems.Add(drink.drinkPrice.ToString());
                 li.SubItems.Add(drink.stock.ToString());
                 li.SubItems.Add(drink.VAT.ToString());
                 li.SubItems.Add(drinksService.GetTotalSales(drink.drinkName));
@@ -300,9 +301,10 @@ namespace SomerenUI
             foreach (Student student in students)
             {
                 // student data in list view
-                ListViewItem list = new ListViewItem(student.FirstName.ToString());
+                ListViewItem list = new ListViewItem(student.StudentId.ToString());
                 list.Tag = students;
 
+                list.SubItems.Add(student.FirstName.ToString());
                 list.SubItems.Add(student.LastName.ToString());
 
                 // adding student items in list
@@ -315,43 +317,92 @@ namespace SomerenUI
             foreach (Drinks drink in drinks)
             {
                 // drinks data in list view
-                ListViewItem list = new ListViewItem(drink.drinkName.ToString());
+                ListViewItem list = new ListViewItem(drink.drinkId.ToString());
                 list.Tag = drink;
 
+                list.SubItems.Add(drink.drinkName.ToString());
                 list.SubItems.Add(drink.drinkType.ToString());
-                list.SubItems.Add(drink.price.ToString());
+                list.SubItems.Add(drink.drinkPrice.ToString());
                 list.SubItems.Add(drink.stock.ToString());
 
                 // adding drink items in list
                 listViewdrinkcash.Items.Add(list);
             }
         }
-        private void btncheckout_Click_1(object sender, EventArgs e)
+        private void CheckOutButtonEnable()
         {
-            string selectedName;
-            string selectedDrink;
-
-            if ((listviewnames.SelectedItems.Count == 1) && (listViewdrinkcash.SelectedItems.Count == 1))
+            if ((listViewdrinkcash.Items.Count > 0) && (listviewnames.SelectedItems.Count > 0))
             {
-                //getting the selected data  from the listview
-                selectedName = listviewnames.SelectedItems[0].SubItems[0].Text;
-                selectedDrink = listViewdrinkcash.SelectedItems[0].Text;
-
-                DialogResult result = MessageBox.Show($"{selectedName} is buying {txtQuantity.Text} {selectedDrink}", "CheckOut");
+                int price = int.Parse(listViewdrinkcash.SelectedItems[0].SubItems[3].Text);
+                txtTotalAmount.Text = price.ToString();
+                btncheckout.Enabled = true;
             }
             else
             {
-                //Showing Errors
-                if ((listviewnames.SelectedItems.Count > 1) || (listViewdrinkcash.SelectedItems.Count > 1))
-                {
-                    MessageBox.Show("Too Many Students or Drinks Selected", "Error!");
-                }
-                else if ((listviewnames.SelectedItems.Count < 1) || (listViewdrinkcash.SelectedItems.Count < 1))
-                {
-                    MessageBox.Show("Not Enough Students or Drinks Selected", "Error!");
-                }
+                txtTotalAmount.Text = "0.00";
+                btncheckout.Enabled = false;
             }
         }
+        private void UnselectListviewItem(System.Windows.Forms.ListView listView)
+        {
+            if (listView.SelectedIndices.Count > 0)
+            {
+                for (int i = 0; i < listView.SelectedIndices.Count; i++)
+                {
+                    listView.Items[listView.SelectedIndices[i]].Selected = false;
+                }
+
+            }
+        }
+
+        private void btncheckout_Click_1(object sender, EventArgs e)
+        {
+
+            //getting the selected data  from the listview
+            int studentID = int.Parse(listviewnames.SelectedItems[0].SubItems[0].Text);
+            int drinkID = int.Parse(listViewdrinkcash.SelectedItems[0].Text);
+
+
+            Order order = new Order();
+            order.studentID = studentID;
+            order.drinkID = drinkID;
+
+            try
+            {
+                OrderService orderService = new OrderService();
+                orderService.DrinkOrdering(order);
+                MessageBox.Show("Order CheckOut Successfully!");
+                UnselectListviewItem(listViewdrinkcash);
+                UnselectListviewItem(listviewnames);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show("Something went Wrong while checking out..." + exp.Message, "Error!");
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            //Showing Errors
+            if ((listviewnames.SelectedItems.Count > 1) || (listViewdrinkcash.SelectedItems.Count > 1))
+            {
+                MessageBox.Show("Too Many Students or Drinks Selected", "Error!");
+            }
+            else if ((listviewnames.SelectedItems.Count < 1) || (listViewdrinkcash.SelectedItems.Count < 1))
+            {
+                MessageBox.Show("Not Enough Students or Drinks Selected", "Error!");
+            }
+
+        }
+
         public void HideAllpanelForCash()
         {
             //hiding ALL OTHER panels
@@ -398,12 +449,12 @@ namespace SomerenUI
             return activities;
         }
 
-        private void DisplayActivities(List<SomerenModel.Activities> activities)
+        private void DisplayActivities(List<Activities> activities)
         {
             // clear the listview before filling it
             listViewActivity.Items.Clear();
 
-            foreach (SomerenModel.Activities activity in activities)
+            foreach (Activities activity in activities)
             {
                 ListViewItem li = new ListViewItem(activity.activityId.ToString());
                 li.Tag = activity;
@@ -809,7 +860,7 @@ namespace SomerenUI
             DrinkDelete drinkDelete = new DrinkDelete(drink);
             drinkDelete.ShowDialog();
         }
-      
+
         private void btn_Refresh_Click(object sender, EventArgs e)
         {
             // refresh the drink panel
@@ -854,5 +905,7 @@ namespace SomerenUI
             // refresh the cash register panel
             ShowCashRegisterPanel();
         }
+
+
     }
 }
