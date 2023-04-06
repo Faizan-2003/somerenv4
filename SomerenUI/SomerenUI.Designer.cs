@@ -882,7 +882,7 @@
             // btnRefreshlist
             // 
             btnRefreshlist.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnRefreshlist.Location = new System.Drawing.Point(969, 500);
+            btnRefreshlist.Location = new System.Drawing.Point(960, 547);
             btnRefreshlist.Margin = new System.Windows.Forms.Padding(4);
             btnRefreshlist.Name = "btnRefreshlist";
             btnRefreshlist.Size = new System.Drawing.Size(155, 51);
@@ -894,7 +894,7 @@
             // btnUpdateItem
             // 
             btnUpdateItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnUpdateItem.Location = new System.Drawing.Point(848, 691);
+            btnUpdateItem.Location = new System.Drawing.Point(655, 670);
             btnUpdateItem.Margin = new System.Windows.Forms.Padding(4);
             btnUpdateItem.Name = "btnUpdateItem";
             btnUpdateItem.Size = new System.Drawing.Size(132, 51);
@@ -906,7 +906,7 @@
             // btnDeleteItem
             // 
             btnDeleteItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnDeleteItem.Location = new System.Drawing.Point(1067, 691);
+            btnDeleteItem.Location = new System.Drawing.Point(992, 670);
             btnDeleteItem.Margin = new System.Windows.Forms.Padding(4);
             btnDeleteItem.Name = "btnDeleteItem";
             btnDeleteItem.Size = new System.Drawing.Size(132, 51);
@@ -918,7 +918,7 @@
             // btnAddItem
             // 
             btnAddItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnAddItem.Location = new System.Drawing.Point(631, 691);
+            btnAddItem.Location = new System.Drawing.Point(655, 547);
             btnAddItem.Margin = new System.Windows.Forms.Padding(4);
             btnAddItem.Name = "btnAddItem";
             btnAddItem.Size = new System.Drawing.Size(132, 51);

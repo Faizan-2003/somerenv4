@@ -19,6 +19,8 @@ namespace SomerenUI
         {
             InitializeComponent();
             ShowDashboardPanel();
+
+            // disable the delete button if no row is selected.
             btnDeleteItem.Enabled = false;
         }
 
@@ -352,20 +354,17 @@ namespace SomerenUI
         }
         public void HideAllpanelForCash()
         {
-            //hidinG ALL OTHER panels
+            //hiding ALL OTHER panels
             pnlStudents.Hide();
             pnlLecturers.Hide();
             pnlRooms.Hide();
             pnlDashboard.Hide();
             pnlDrinks.Hide();
         }
-        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowActivitiesPanel();
-        }
+
         public void HideAllpanelForActivity()
         {
-            //hidinG ALL OTHER panels
+            //hiding ALL OTHER panels
             pnlStudents.Hide();
             pnlLecturers.Hide();
             pnlRooms.Hide();
@@ -374,6 +373,7 @@ namespace SomerenUI
         }
         private void ShowActivitiesPanel()
         {
+
             HideAllpanelForActivity();
 
             pnlActivity.Show();
@@ -391,7 +391,7 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the Activities: " + e.Message);
             }
         }
-        private List<SomerenModel.Activities> GetActivities()
+        private List<Activities> GetActivities()
         {
             ActivityService activityService = new ActivityService();
             List<SomerenModel.Activities> activities = activityService.GetActivities();
@@ -435,37 +435,6 @@ namespace SomerenUI
                 // show error message box if there is an error
                 MessageBox.Show("Something went wrong while loading the Cash Register: " + e.Message);
             }
-        }
-
-
-        private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            ShowDashboardPanel();
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void studentsToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ShowStudentsPanel();
-        }
-
-        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowLecturerPanel();
-        }
-
-        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowRoomPanel();
-        }
-
-        private void drinksToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ShowDrinksPanel();
         }
 
         class ListViewItemStringComparer : IComparer
@@ -528,8 +497,6 @@ namespace SomerenUI
                 return returnVal;
             }
         }
-
-
         private void listViewDrinks_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             if (e.Column != _sortColumnIndex)
@@ -678,68 +645,108 @@ namespace SomerenUI
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+            // try to add an activity
+            try
+            {
+                // making a new variable from the class Activities.
+                Activities activities = new Activities();
 
-            Activities activities = new Activities();
+                // assigning the data entered in the textbox and datetimepicker to the variables in class Activities.
+                activities.activityName = txtActivityName.Text;
+                activities.startTime = DateTime.Parse(dateTimeStart.Text);
+                activities.endTime = DateTime.Parse(dateTimeEnd.Text);
 
-            //activities.activityId = int.Parse(txtActivityID.Text);
-            activities.activityName = txtActivityName.Text;
-            activities.startTime = DateTime.Parse(dateTimeStart.Text);
-            activities.endTime = DateTime.Parse(dateTimeEnd.Text);
+                // making a new variable from the class ActivitiesService to get the methood to Update.
+                ActivityService activity = new ActivityService();
 
-            ActivityService activity = new ActivityService();
-            // MessageBox.Show("Error");
-            activity.ActivityAdd(activities);
-            MessageBox.Show($"Activity: {txtActivityName.Text} Added successfully!", "Success");
+                // calling the method from the activity service which is made in DAO.
+                activity.ActivityAdd(activities);
+
+                // Show a message of success if the activity is addeed successfully...
+                MessageBox.Show($"New Activity: {txtActivityName.Text} is added successfully!", "Successful");
+            }
+
+            // throw an exception if the try doesn't work...
+            catch (Exception exp)
+            {
+                MessageBox.Show("Something went wrong while Adding an Activity! \n" + exp.Message, "Error!");
+            }
+
             //refresh the list
             ShowActivitiesPanel();
         }
         private void btnUpdateItem_Click(object sender, EventArgs e)
         {
-            if (listViewActivity.SelectedItems.Count > 0)
+            // try to update the selected activity
+            try
             {
-                Activities activities = (Activities)listViewActivity.SelectedItems[0].Tag;
+                // check if the selected number of greater then 0 to see if the row is selected or not...
+                if (listViewActivity.SelectedItems.Count > 0)
+                {
+                    // converting the selected item into (class)Activities and assigning the selected row to activities(variable)
+                    Activities activities = (Activities)listViewActivity.SelectedItems[0].Tag;
 
-               // activities.activityId = int.Parse(txtActivityID.Text);
-                activities.activityName = txtActivityName.Text;
-                activities.startTime = DateTime.Parse(dateTimeStart.Text);
-                activities.endTime = DateTime.Parse(dateTimeEnd.Text);
+                    // assigning the data entered in the textbox and datetimepicker to the variables in class Activities.
+                    activities.activityName = txtActivityName.Text;
+                    activities.startTime = DateTime.Parse(dateTimeStart.Text);
+                    activities.endTime = DateTime.Parse(dateTimeEnd.Text);
 
-                ActivityService activity = new ActivityService();
-                activity.ActivityUpdate(activities);
+                    // making a new variable from the class ActivitiesService to get the methood to Update.
+                    ActivityService activity = new ActivityService();
 
+                    // calling the method from the activity service which is made in DAO.
+                    activity.ActivityUpdate(activities);
+                }
+                //show an error if the above code doesn't work.
+                else
+                {
+                    // error message
+                    MessageBox.Show("No activity is Affected", "Failed!");
+
+                    // return as the code is not working
+                    return;
+                }
             }
-            else
+            // throw an exception if the try doesn't work...
+            catch (Exception exp)
             {
-                return;
+                MessageBox.Show("Something went wrong while Updating an Activity! \n" + exp.Message, "Error!");
             }
-
             // refresh the list
             ShowActivitiesPanel();
-
         }
 
         private void btnDeleteItem_Click(object sender, EventArgs e)
         {
+            // parse the selected row into int...
             int activityId = int.Parse(listViewActivity.SelectedItems[0].SubItems[0].Text);
 
+            // making a new variable from the class Activities.
             Activities activities = new Activities();
+
+            // assigning the selected row to the variable activityId in class Activities
             activities.activityId = activityId;
 
+            // try to delete the selected activity.
             try
             {
                 ActivityService activity = new ActivityService();
+                // ask to make sure if they want to delete.
+                DialogResult dialogResult = MessageBox.Show("Are you sure that you wish to remove this activity?", "Confirmation", MessageBoxButtons.YesNo);
 
-                DialogResult dialogResult = MessageBox.Show("Are you Sure you want to delete this Activity?", "Confirmation", MessageBoxButtons.YesNo);
+                // if they agree then delete the activity...
                 if (dialogResult == DialogResult.Yes)
                 {
                     activity.ActivityDelete(activities);
-                    MessageBox.Show("Activity deleted successfully", "Success");
+                    MessageBox.Show("Activity deleted successfully", "Successful");
                 }
+                //if they disagree then don't do anything...
                 else if (dialogResult == DialogResult.No)
                 {
-                    MessageBox.Show("Activity is not deleted", "Success");
+                    MessageBox.Show("Activity is not deleted", "Successful");
                 }
             }
+            // throw an exception if the try method doesn't work...
             catch (Exception exp)
             {
                 MessageBox.Show("Something went wrong while deleting an Activity! \n" + exp.Message, "Error!");
@@ -748,55 +755,104 @@ namespace SomerenUI
             //refresh the list
             ShowActivitiesPanel();
         }
+        private void btnRefreshlist_Click(object sender, EventArgs e)
+        {
+            // refresh the activity panel 
+            ShowActivitiesPanel();
+
+            // reset all the textboxes and dateatimepickers to add more data
+            txtActivityID.Clear();
+            txtActivityName.Clear();
+            dateTimeStart.ResetText();
+            dateTimeEnd.ResetText();
+        }
+        private void listViewActivity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // enable the delete button if the row is selected in acticities..
+            btnDeleteItem.Enabled = (listViewActivity.SelectedItems.Count >= 0);
+
+            // check the user has selected any row...
+            if (listViewActivity.SelectedItems.Count > 0)
+            {
+
+                // converting the selected item into (class)Activities and assigning the selected row to activities(variable)
+                Activities activities = (Activities)listViewActivity.SelectedItems[0].Tag;
+
+                // assigning the data entered in the textbox and datetimepicker to the variables in class Activities.
+                txtActivityID.Text = activities.activityId.ToString();
+                txtActivityName.Text = activities.activityName.ToString();
+                dateTimeStart.Text = activities.startTime.ToString();
+                dateTimeEnd.Text = activities.endTime.ToString();
+            }
+            // show an error and return if no enough no
+            else
+            {
+                MessageBox.Show("Not Enough Number of Row Selected", "Failed!");
+                return;
+            }
+        }
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
             Drinks drink = new Drinks();
             DrinkAdd drinkAdd = new DrinkAdd(drink);
             drinkAdd.ShowDialog();
         }
-
         private void bnUpdate_Click_1(object sender, EventArgs e)
         {
             Drinks drink = new Drinks();
             DrinkUpdate drinkUpdate = new DrinkUpdate(drink);
             drinkUpdate.ShowDialog();
         }
-
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
             Drinks drink = new Drinks();
             DrinkDelete drinkDelete = new DrinkDelete(drink);
             drinkDelete.ShowDialog();
         }
-        private void listViewActivity_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            btnDeleteItem.Enabled = (listViewActivity.SelectedItems.Count >= 0);
-
-            if (listViewActivity.SelectedItems.Count > 0)
-            {
-                Activities activities = (Activities)listViewActivity.SelectedItems[0].Tag;
-
-                txtActivityID.Text = activities.activityId.ToString();
-                txtActivityName.Text = activities.activityName.ToString();
-                dateTimeStart.Text = activities.startTime.ToString();
-                dateTimeEnd.Text = activities.endTime.ToString();
-            }
-            else
-            {
-                return;
-            }
-        }
+      
         private void btn_Refresh_Click(object sender, EventArgs e)
+        {
+            // refresh the drink panel
+            ShowDrinksPanel();
+        }
+
+        private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ShowDashboardPanel();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void studentsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ShowStudentsPanel();
+        }
+
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowLecturerPanel();
+        }
+
+        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowRoomPanel();
+        }
+
+        private void drinksToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowDrinksPanel();
         }
-        private void cashRegisterToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ShowCashRegisterPanel();
-        }
-        private void btnRefreshlist_Click(object sender, EventArgs e)
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowActivitiesPanel();
+        }
+        private void cashRegisterToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            // refresh the cash register panel
+            ShowCashRegisterPanel();
         }
     }
 }
