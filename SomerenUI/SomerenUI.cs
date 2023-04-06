@@ -354,20 +354,17 @@ namespace SomerenUI
         }
         public void HideAllpanelForCash()
         {
-            //hidinG ALL OTHER panels
+            //hiding ALL OTHER panels
             pnlStudents.Hide();
             pnlLecturers.Hide();
             pnlRooms.Hide();
             pnlDashboard.Hide();
             pnlDrinks.Hide();
         }
-        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowActivitiesPanel();
-        }
+
         public void HideAllpanelForActivity()
         {
-            //hidinG ALL OTHER panels
+            //hiding ALL OTHER panels
             pnlStudents.Hide();
             pnlLecturers.Hide();
             pnlRooms.Hide();
@@ -376,7 +373,7 @@ namespace SomerenUI
         }
         private void ShowActivitiesPanel()
         {
-            
+
             HideAllpanelForActivity();
 
             pnlActivity.Show();
@@ -438,37 +435,6 @@ namespace SomerenUI
                 // show error message box if there is an error
                 MessageBox.Show("Something went wrong while loading the Cash Register: " + e.Message);
             }
-        }
-
-
-        private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            ShowDashboardPanel();
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void studentsToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ShowStudentsPanel();
-        }
-
-        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowLecturerPanel();
-        }
-
-        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowRoomPanel();
-        }
-
-        private void drinksToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ShowDrinksPanel();
         }
 
         class ListViewItemStringComparer : IComparer
@@ -697,7 +663,7 @@ namespace SomerenUI
                 activity.ActivityAdd(activities);
 
                 // Show a message of success if the activity is addeed successfully...
-                MessageBox.Show($"Activity: {txtActivityName.Text} Added successfully!", "Success");
+                MessageBox.Show($"New Activity: {txtActivityName.Text} is added successfully!", "Successful");
             }
 
             // throw an exception if the try doesn't work...
@@ -717,7 +683,7 @@ namespace SomerenUI
                 // check if the selected number of greater then 0 to see if the row is selected or not...
                 if (listViewActivity.SelectedItems.Count > 0)
                 {
-
+                    // converting the selected item into (class)Activities and assigning the selected row to activities(variable)
                     Activities activities = (Activities)listViewActivity.SelectedItems[0].Tag;
 
                     // assigning the data entered in the textbox and datetimepicker to the variables in class Activities.
@@ -734,7 +700,10 @@ namespace SomerenUI
                 //show an error if the above code doesn't work.
                 else
                 {
-                    MessageBox.Show("No activity is Affected", "Failure!");
+                    // error message
+                    MessageBox.Show("No activity is Affected", "Failed!");
+
+                    // return as the code is not working
                     return;
                 }
             }
@@ -754,6 +723,7 @@ namespace SomerenUI
 
             // making a new variable from the class Activities.
             Activities activities = new Activities();
+
             // assigning the selected row to the variable activityId in class Activities
             activities.activityId = activityId;
 
@@ -762,18 +732,18 @@ namespace SomerenUI
             {
                 ActivityService activity = new ActivityService();
                 // ask to make sure if they want to delete.
-                DialogResult dialogResult = MessageBox.Show("Are you Sure you want to delete this Activity?", "Confirmation", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Are you sure that you wish to remove this activity?", "Confirmation", MessageBoxButtons.YesNo);
 
                 // if they agree then delete the activity...
                 if (dialogResult == DialogResult.Yes)
                 {
                     activity.ActivityDelete(activities);
-                    MessageBox.Show("Activity deleted successfully", "Success");
+                    MessageBox.Show("Activity deleted successfully", "Successful");
                 }
                 //if they disagree then don't do anything...
                 else if (dialogResult == DialogResult.No)
                 {
-                    MessageBox.Show("Activity is not deleted", "Success");
+                    MessageBox.Show("Activity is not deleted", "Successful");
                 }
             }
             // throw an exception if the try method doesn't work...
@@ -784,6 +754,42 @@ namespace SomerenUI
 
             //refresh the list
             ShowActivitiesPanel();
+        }
+        private void btnRefreshlist_Click(object sender, EventArgs e)
+        {
+            // refresh the activity panel 
+            ShowActivitiesPanel();
+
+            // reset all the textboxes and dateatimepickers to add more data
+            txtActivityID.Clear();
+            txtActivityName.Clear();
+            dateTimeStart.ResetText();
+            dateTimeEnd.ResetText();
+        }
+        private void listViewActivity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // enable the delete button if the row is selected in acticities..
+            btnDeleteItem.Enabled = (listViewActivity.SelectedItems.Count >= 0);
+
+            // check the user has selected any row...
+            if (listViewActivity.SelectedItems.Count > 0)
+            {
+
+                // converting the selected item into (class)Activities and assigning the selected row to activities(variable)
+                Activities activities = (Activities)listViewActivity.SelectedItems[0].Tag;
+
+                // assigning the data entered in the textbox and datetimepicker to the variables in class Activities.
+                txtActivityID.Text = activities.activityId.ToString();
+                txtActivityName.Text = activities.activityName.ToString();
+                dateTimeStart.Text = activities.startTime.ToString();
+                dateTimeEnd.Text = activities.endTime.ToString();
+            }
+            // show an error and return if no enough no
+            else
+            {
+                MessageBox.Show("Not Enough Number of Row Selected", "Failed!");
+                return;
+            }
         }
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
@@ -803,47 +809,50 @@ namespace SomerenUI
             DrinkDelete drinkDelete = new DrinkDelete(drink);
             drinkDelete.ShowDialog();
         }
-        private void listViewActivity_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // enable the delete button if the row is selected in acticities..
-            btnDeleteItem.Enabled = (listViewActivity.SelectedItems.Count >= 0);
-
-            // check the user has selected any row...
-            if (listViewActivity.SelectedItems.Count > 0)
-            {
-                Activities activities = (Activities)listViewActivity.SelectedItems[0].Tag;
-
-                // assigning the data entered in the textbox and datetimepicker to the variables in class Activities.
-                txtActivityID.Text = activities.activityId.ToString();
-                txtActivityName.Text = activities.activityName.ToString();
-                dateTimeStart.Text = activities.startTime.ToString();
-                dateTimeEnd.Text = activities.endTime.ToString();
-            }
-            // show an error and return if no enough no
-            else
-            {
-                MessageBox.Show("Not Enough Number of Row Selected", "Failure!");
-                return;
-            }
-        }
+      
         private void btn_Refresh_Click(object sender, EventArgs e)
+        {
+            // refresh the drink panel
+            ShowDrinksPanel();
+        }
+
+        private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ShowDashboardPanel();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void studentsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ShowStudentsPanel();
+        }
+
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowLecturerPanel();
+        }
+
+        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowRoomPanel();
+        }
+
+        private void drinksToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowDrinksPanel();
         }
-        private void cashRegisterToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ShowCashRegisterPanel();
-        }
-        private void btnRefreshlist_Click(object sender, EventArgs e)
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowActivitiesPanel();
-
-            txtActivityID.Clear();
-            txtActivityName.Clear();
-            dateTimeStart.ResetText();
-            dateTimeEnd.ResetText();    
-
-            dateTimeEnd.Refresh();  
+        }
+        private void cashRegisterToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            // refresh the cash register panel
+            ShowCashRegisterPanel();
         }
     }
 }

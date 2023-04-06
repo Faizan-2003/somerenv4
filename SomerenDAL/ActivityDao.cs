@@ -59,6 +59,7 @@ namespace SomerenDAL
                 command.Parameters.AddWithValue("@ActivityName", activity.activityName);
                 command.Parameters.AddWithValue("@StartDateTime", activity.startTime);
                 command.Parameters.AddWithValue("@EndDateTime", activity.endTime);
+
                 // execute the query...
                 command.ExecuteNonQuery();
             }
