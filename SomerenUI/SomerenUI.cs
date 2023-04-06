@@ -678,13 +678,46 @@ namespace SomerenUI
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            //..
+
+            Activities activities = new Activities();
+
+            //activities.activityId = int.Parse(txtActivityID.Text);
+            activities.activityName = txtActivityName.Text;
+            activities.startTime = DateTime.Parse(dateTimeStart.Text);
+            activities.endTime = DateTime.Parse(dateTimeEnd.Text);
+
+            ActivityService activity = new ActivityService();
+            // MessageBox.Show("Error");
+            activity.ActivityAdd(activities);
+            MessageBox.Show($"Activity:{txtActivityName.Text} Added successfully!", "Success");
+            //refresh the list
+            ShowActivitiesPanel();
         }
         private void btnUpdateItem_Click(object sender, EventArgs e)
         {
-            //..
+            if (listViewActivity.SelectedItems.Count > 0)
+            {
+                Activities activities = (Activities)listViewActivity.SelectedItems[0].Tag;
+
+               // activities.activityId = int.Parse(txtActivityID.Text);
+                activities.activityName = txtActivityName.Text;
+                activities.startTime = DateTime.Parse(dateTimeStart.Text);
+                activities.endTime = DateTime.Parse(dateTimeEnd.Text);
+
+                ActivityService activity = new ActivityService();
+                activity.ActivityUpdate(activities);
+
+            }
+            else
+            {
+                return;
+            }
+
+            // refresh the list
+            ShowActivitiesPanel();
+
         }
-     
+
         private void btnDeleteItem_Click(object sender, EventArgs e)
         {
             int activityId = int.Parse(listViewActivity.SelectedItems[0].SubItems[0].Text);
@@ -696,7 +729,7 @@ namespace SomerenUI
             {
                 ActivityService activity = new ActivityService();
 
-                DialogResult dialogResult = MessageBox.Show("Are you Sure you want to delete this Activity?", "Confirmation",  MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Are you Sure you want to delete this Activity?", "Confirmation", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     activity.ActivityDelete(activities);
@@ -738,22 +771,32 @@ namespace SomerenUI
         private void listViewActivity_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnDeleteItem.Enabled = (listViewActivity.SelectedItems.Count >= 0);
+
+            if (listViewActivity.SelectedItems.Count > 0)
+            {
+                Activities activities = (Activities)listViewActivity.SelectedItems[0].Tag;
+
+                txtActivityID.Text = activities.activityId.ToString();
+                txtActivityName.Text = activities.activityName.ToString();
+                dateTimeStart.Text = activities.startTime.ToString();
+                dateTimeEnd.Text = activities.endTime.ToString();
+            }
+            else
+            {
+                return;
+            }
         }
         private void btn_Refresh_Click(object sender, EventArgs e)
         {
             ShowDrinksPanel();
         }
-
         private void cashRegisterToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowCashRegisterPanel();
         }
-
         private void btnRefreshlist_Click(object sender, EventArgs e)
         {
             ShowActivitiesPanel();
         }
-
-       
     }
 }

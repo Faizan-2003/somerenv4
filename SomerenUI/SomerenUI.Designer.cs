@@ -875,6 +875,7 @@
             // 
             txtActivityID.Location = new System.Drawing.Point(243, 500);
             txtActivityID.Name = "txtActivityID";
+            txtActivityID.ReadOnly = true;
             txtActivityID.Size = new System.Drawing.Size(103, 31);
             txtActivityID.TabIndex = 7;
             // 

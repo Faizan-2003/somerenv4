@@ -44,24 +44,38 @@ namespace SomerenDAL
         }
         public void AddActivity(Activities activity)
         {
-            conn.Open();
-            SqlCommand command = new SqlCommand("INSERT INTO ACTIVITIES (activityId, activityName,startTime, endTime)" +
-                                                       "VALUES (@ActivityId, @ActivityName, @StartDateTime, @EndDateTime)" +
-                                                       "SELECT SCOPE_IDENTITY();",
-                                                         conn);
+            try
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand("INSERT INTO ACTIVITIES ( ActivityName, StartDateTime, EndDateTime)" +
+                                                           "VALUES ( @ActivityName, @StartDateTime, @EndDateTime)" +
+                                                           "SELECT SCOPE_IDENTITY();",
+                                                             conn);
 
-            command.Parameters.AddWithValue("@ActivityName", activity.activityName);
-            command.Parameters.AddWithValue("@StartDateTime", activity.startTime);
-            command.Parameters.AddWithValue("@EndDateTime", activity.endTime);
-            activity.activityId = Convert.ToInt32(command.ExecuteScalar());
-            conn.Close();
+                //command.Parameters.AddWithValue("@ActivityId", activity.activityId);
+                command.Parameters.AddWithValue("@ActivityName", activity.activityName);
+                command.Parameters.AddWithValue("@StartDateTime", activity.startTime);
+                command.Parameters.AddWithValue("@EndDateTime", activity.endTime);
+                //activity.activityId = Convert.ToInt32(command.ExecuteScalar());
+                command.ExecuteNonQuery();
+            }
+            catch (Exception exp)
+            {
+                throw new Exception("Adding Activity Failed!" + exp.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
         public void UpdateActivity(Activities activity)
         {
-            conn.Open();
+            try
+            {
+             conn.Open();
             SqlCommand command = new SqlCommand(
-            "UPDATE ACTIVITIES SET activityName = @ActivityName, startTime = @StartDateTime, endTime = @EndDateTime" +
-            "WHERE activityId = @ActivityId",
+            "UPDATE ACTIVITIES SET   ActivityName = @ActivityName, StartDateTime = @StartDateTime, EndDateTime = @EndDateTime" +
+             " WHERE activityId = @ActivityId",
             conn);
 
             command.Parameters.AddWithValue("@ActivityId", activity.activityId);
@@ -69,8 +83,20 @@ namespace SomerenDAL
             command.Parameters.AddWithValue("@StartDateTime", activity.startTime);
             command.Parameters.AddWithValue("@EndDateTime", activity.endTime);
             int nrOfRowsAffected = command.ExecuteNonQuery();
-            conn.Close();
-            // TODO: nrOfRowsAffected... (throw exception, or return boolean, ...)
+
+                if (nrOfRowsAffected == 0)
+                {
+                    throw new Exception("No Records Affected!");
+                }
+            }
+            catch (Exception exp)
+            {
+                throw new Exception("Updating Activity Failed!"+ exp.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
         public void DeleteActivity(Activities activity)
         {
@@ -82,8 +108,11 @@ namespace SomerenDAL
                 conn);
                 command.Parameters.AddWithValue("@ActivityId", activity.activityId);
                 int nrOfRowsAffected = command.ExecuteNonQuery();
-                conn.Close();
-                // TODO: nrOfRowsAffected... (throw exception, or return boolean, ...)
+
+                if (nrOfRowsAffected == 0)
+                {
+                    throw new Exception("No Records Affected!");
+                }
             }
             catch (Exception exp)
             {
@@ -93,16 +122,6 @@ namespace SomerenDAL
             {
                 conn.Close(); 
             }   
-        }
-
-        public static void AddActivity(object activity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static void DeleteActivity(Activity activity)
-        {
-            throw new NotImplementedException();
         }
     }
 }
