@@ -689,7 +689,7 @@ namespace SomerenUI
             ActivityService activity = new ActivityService();
             // MessageBox.Show("Error");
             activity.ActivityAdd(activities);
-            MessageBox.Show($"Activity:{txtActivityName.Text} Added successfully!", "Success");
+            MessageBox.Show($"Activity: {txtActivityName.Text} Added successfully!", "Success");
             //refresh the list
             ShowActivitiesPanel();
         }
