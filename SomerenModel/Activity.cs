@@ -11,6 +11,7 @@ namespace SomerenModel
         public int activityId {  get; set; }    
         public string activityName { get; set; }
         public DateTime startTime { get; set; } 
-        public DateTime endTime { get; set; }   
+        public DateTime endTime { get; set; }
+
     }
 }
