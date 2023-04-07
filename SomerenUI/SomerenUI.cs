@@ -49,7 +49,7 @@ namespace SomerenUI
             pnlLecturers.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
-            pnlActivity.Hide(); 
+            pnlActivity.Hide();
 
             // show students
             pnlStudents.Show();
@@ -179,7 +179,7 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
-            pnlActivity.Hide();    
+            pnlActivity.Hide();
 
             // show lecturer panel
 
@@ -404,15 +404,15 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlDashboard.Hide();
             pnlDrinks.Hide();
-            pnlActivity.Hide(); 
+            pnlActivity.Hide();
         }
 
         public void HideAllpanelForActivity()
         {
             //hiding ALL OTHER panels
             pnlStudents.Hide();
-            pnlLecturers.Hide();    
-            pnlRooms.Hide();    
+            pnlLecturers.Hide();
+            pnlRooms.Hide();
             pnlDashboard.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
