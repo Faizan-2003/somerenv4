@@ -28,150 +28,149 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox_DrinkID = new System.Windows.Forms.TextBox();
-            this.textBox_DrinkName = new System.Windows.Forms.TextBox();
-            this.textBox_DrinkType = new System.Windows.Forms.TextBox();
-            this.textBox_Price = new System.Windows.Forms.TextBox();
-            this.textBox_Stock = new System.Windows.Forms.TextBox();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox_VAT = new System.Windows.Forms.TextBox();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            textBox_DrinkID = new System.Windows.Forms.TextBox();
+            textBox_DrinkName = new System.Windows.Forms.TextBox();
+            textBox_DrinkType = new System.Windows.Forms.TextBox();
+            textBox_Price = new System.Windows.Forms.TextBox();
+            textBox_Stock = new System.Windows.Forms.TextBox();
+            btnSubmit = new System.Windows.Forms.Button();
+            label6 = new System.Windows.Forms.Label();
+            textBox_VAT = new System.Windows.Forms.TextBox();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 77);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Drink Name";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(31, 77);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(88, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Drink Name";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 117);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Drink Type";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(31, 117);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(79, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Drink Type";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 154);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Price";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(31, 154);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(41, 20);
+            label3.TabIndex = 2;
+            label3.Text = "Price";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 189);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Stock";
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(31, 189);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(45, 20);
+            label4.TabIndex = 3;
+            label4.Text = "Stock";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 227);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 20);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "VAT";
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(31, 227);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(34, 20);
+            label5.TabIndex = 4;
+            label5.Text = "VAT";
             // 
             // textBox_DrinkID
             // 
-            this.textBox_DrinkID.Location = new System.Drawing.Point(267, 32);
-            this.textBox_DrinkID.Name = "textBox_DrinkID";
-            this.textBox_DrinkID.Size = new System.Drawing.Size(125, 27);
-            this.textBox_DrinkID.TabIndex = 5;
+            textBox_DrinkID.Location = new System.Drawing.Point(267, 32);
+            textBox_DrinkID.Name = "textBox_DrinkID";
+            textBox_DrinkID.Size = new System.Drawing.Size(125, 27);
+            textBox_DrinkID.TabIndex = 5;
             // 
             // textBox_DrinkName
             // 
-            this.textBox_DrinkName.Location = new System.Drawing.Point(267, 70);
-            this.textBox_DrinkName.Name = "textBox_DrinkName";
-            this.textBox_DrinkName.Size = new System.Drawing.Size(125, 27);
-            this.textBox_DrinkName.TabIndex = 6;
+            textBox_DrinkName.Location = new System.Drawing.Point(267, 70);
+            textBox_DrinkName.Name = "textBox_DrinkName";
+            textBox_DrinkName.Size = new System.Drawing.Size(125, 27);
+            textBox_DrinkName.TabIndex = 6;
             // 
             // textBox_DrinkType
             // 
-            this.textBox_DrinkType.Location = new System.Drawing.Point(267, 110);
-            this.textBox_DrinkType.Name = "textBox_DrinkType";
-            this.textBox_DrinkType.Size = new System.Drawing.Size(125, 27);
-            this.textBox_DrinkType.TabIndex = 7;
+            textBox_DrinkType.Location = new System.Drawing.Point(267, 110);
+            textBox_DrinkType.Name = "textBox_DrinkType";
+            textBox_DrinkType.Size = new System.Drawing.Size(125, 27);
+            textBox_DrinkType.TabIndex = 7;
             // 
             // textBox_Price
             // 
-            this.textBox_Price.Location = new System.Drawing.Point(267, 147);
-            this.textBox_Price.Name = "textBox_Price";
-            this.textBox_Price.Size = new System.Drawing.Size(125, 27);
-            this.textBox_Price.TabIndex = 8;
+            textBox_Price.Location = new System.Drawing.Point(267, 147);
+            textBox_Price.Name = "textBox_Price";
+            textBox_Price.Size = new System.Drawing.Size(125, 27);
+            textBox_Price.TabIndex = 8;
             // 
             // textBox_Stock
             // 
-            this.textBox_Stock.Location = new System.Drawing.Point(267, 186);
-            this.textBox_Stock.Name = "textBox_Stock";
-            this.textBox_Stock.Size = new System.Drawing.Size(125, 27);
-            this.textBox_Stock.TabIndex = 9;
+            textBox_Stock.Location = new System.Drawing.Point(267, 186);
+            textBox_Stock.Name = "textBox_Stock";
+            textBox_Stock.Size = new System.Drawing.Size(125, 27);
+            textBox_Stock.TabIndex = 9;
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(31, 271);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(361, 29);
-            this.btnSubmit.TabIndex = 10;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            btnSubmit.Location = new System.Drawing.Point(31, 271);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.Size = new System.Drawing.Size(361, 29);
+            btnSubmit.TabIndex = 10;
+            btnSubmit.Text = "Submit";
+            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 35);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 20);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Drink ID";
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(31, 35);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(63, 20);
+            label6.TabIndex = 11;
+            label6.Text = "Drink ID";
             // 
             // textBox_VAT
             // 
-            this.textBox_VAT.Location = new System.Drawing.Point(267, 227);
-            this.textBox_VAT.Name = "textBox_VAT";
-            this.textBox_VAT.Size = new System.Drawing.Size(125, 27);
-            this.textBox_VAT.TabIndex = 12;
+            textBox_VAT.Location = new System.Drawing.Point(267, 227);
+            textBox_VAT.Name = "textBox_VAT";
+            textBox_VAT.Size = new System.Drawing.Size(125, 27);
+            textBox_VAT.TabIndex = 12;
             // 
             // DrinkAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 337);
-            this.Controls.Add(this.textBox_VAT);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.textBox_Stock);
-            this.Controls.Add(this.textBox_Price);
-            this.Controls.Add(this.textBox_DrinkType);
-            this.Controls.Add(this.textBox_DrinkName);
-            this.Controls.Add(this.textBox_DrinkID);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Name = "DrinkAdd";
-            this.Text = "DrinkAdd";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(438, 337);
+            Controls.Add(textBox_VAT);
+            Controls.Add(label6);
+            Controls.Add(btnSubmit);
+            Controls.Add(textBox_Stock);
+            Controls.Add(textBox_Price);
+            Controls.Add(textBox_DrinkType);
+            Controls.Add(textBox_DrinkName);
+            Controls.Add(textBox_DrinkID);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Name = "DrinkAdd";
+            Text = "DrinkAdd";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
