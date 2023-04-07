@@ -25,16 +25,24 @@ namespace SomerenService
             return activities;
         }
 
+        // making a new method to introduce the AddActivity used in DAO to use it in UI 
         public void ActivityAdd(Activities activity)
         {
+            // AddActivity method from the DAO
             activitydb.AddActivity(activity); 
         }
+
+        // making a new method to introduce the DeleteActivity used in DAO to use it in UI 
         public void ActivityDelete(Activities activity)
         {
+            // DeleteActivity method from the DAO
             activitydb.DeleteActivity(activity);
         }
+
+        // making a new method to introduce the UpdateActivity used in DAO to use it in UI
         public void ActivityUpdate(Activities activity)
         {
+            // UpdateActivity method from the DAO
             activitydb.UpdateActivity(activity);
         }
     }

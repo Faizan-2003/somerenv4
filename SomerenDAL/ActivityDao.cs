@@ -30,7 +30,7 @@ namespace SomerenDAL
             {
                 Activities activity = new Activities()
                 {
-                    // the content of the databse redirecrting to the variables given from the activities
+                    // the content of the databse assigning to the variables taken from the activities
                     activityId = (int)dr["ActivityId"],
                     activityName = dr["ActivityName"].ToString(),
                     startTime = (DateTime)dr["StartDateTime"],
@@ -55,7 +55,7 @@ namespace SomerenDAL
                                                            "SELECT SCOPE_IDENTITY();",
                                                              conn);
 
-                // adding the values in the database from the varibles...
+                // adding the values in the database from the variables...
                 command.Parameters.AddWithValue("@ActivityName", activity.activityName);
                 command.Parameters.AddWithValue("@StartDateTime", activity.startTime);
                 command.Parameters.AddWithValue("@EndDateTime", activity.endTime);
@@ -95,9 +95,10 @@ namespace SomerenDAL
                 // execute the query...
                 int nrOfRowsAffected = command.ExecuteNonQuery();
 
+                // check if any row is affected
                 if (nrOfRowsAffected == 0)
                 {
-                    // throw exception if any no row affected
+                    // throw exception if any no row was affected
                     throw new Exception("No Records Affected!");
                 }
             }
@@ -130,8 +131,10 @@ namespace SomerenDAL
                 // execute the query...
                 int nrOfRowsAffected = command.ExecuteNonQuery();
 
+                // check if any row is affected
                 if (nrOfRowsAffected == 0)
                 {
+                    // throw exception if any no row was affected
                     throw new Exception("No Records Affected!");
                 }
             }
