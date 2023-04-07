@@ -179,7 +179,7 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
-            pnlLecturers.Hide();    
+            pnlActivity.Hide();    
 
             // show lecturer panel
 
