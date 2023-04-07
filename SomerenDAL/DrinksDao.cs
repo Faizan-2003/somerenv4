@@ -44,14 +44,14 @@ namespace SomerenDAL
             return drinks;
         }
 
-        public string GetSales(string drinkName)
+        public string GetSales(int drinkId)
         {
             SqlConnection cnn;
             SqlCommand cmd;
 
 
             string ConnectionString = "Data Source=group5databaseproject.database.windows.net; Initial Catalog=group5Database; User=group5; Password='PFYproject5'";
-            string sql ="SELECT SUM(sales) FROM[Cash Register] WHERE drinkName = '" +drinkName+"'";
+            string sql = "SELECT COUNT(drinkId) FROM [Cash Register] WHERE drinkId=" + drinkId;
 
 
             cnn = new SqlConnection(ConnectionString);
