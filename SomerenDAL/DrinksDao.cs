@@ -38,7 +38,6 @@ namespace SomerenDAL
                     stock = (int)dr["stock"],
                     VAT = (int)dr["VAT"]
                 };
-
                 //adding the items to the drinks
                 drinks.Add(drink);
             }
