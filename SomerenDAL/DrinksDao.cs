@@ -34,11 +34,10 @@ namespace SomerenDAL
                     drinkId = (int)dr["drinkId"],
                     drinkName = dr["drinkName"].ToString(),
                     drinkType = dr["drinkType"].ToString(),
-                    price = (int)dr["price"],
+                    drinkPrice = (int)dr["price"],
                     stock = (int)dr["stock"],
                     VAT = (int)dr["VAT"]
                 };
-
                 //adding the items to the drinks
                 drinks.Add(drink);
             }

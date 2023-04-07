@@ -21,5 +21,9 @@ namespace SomerenService
             List<Order> orders = ordersdb.GetAllOrders();
             return orders;
         }
+        public void DrinkOrdering(Order order)
+        {
+            ordersdb.DrinkOrder(order);
+        }
     }
 }

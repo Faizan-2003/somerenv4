@@ -14,17 +14,11 @@ namespace SomerenDAL
 {
     public class OrderDao : BaseDao
     {
-        public void AddData(Order order)
-        {
-            string query = $"INSERT INTO [Cash Register] (orderId, firstName, lastName, drinkName, drinkType, price, stock, DateTime, sales) VALUES ('{order.firstName}', '{order.lastName}', '{order.drinkName}', '{order.drinkType}', '{order.price}', '{order.stock}', '{order.DateTime}', '{order.sales}')";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            ExecuteEditQuery(query, sqlParameters);
-        }
-
         public List<Order> GetAllOrders()
         {
             // selecting data from tables
-            string query = "SELECT orderId, firstName, lastName, drinkName, drinkType, price, stock, DateTime, sales FROM [Cash Register]";
+            string query = "SELECT firstName, lastName FROM [STUDENT] " +
+                "SELECT drinkName, drinkType, price, stock  FROM [DRINKS]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -38,20 +32,19 @@ namespace SomerenDAL
                 Order order = new Order()
                 {
                     // all the required data
-                    firstName = dr["firstName"].ToString(),
-                    lastName = dr["lastName"].ToString(),
-                    drinkName = dr["drinkName"].ToString(),
-                    drinkType = dr["drinkType"].ToString(),
-                    price = (int)dr["price"],
-                    stock = (int)dr["stock"],
+                    studentID = (int)dr["StudentId"],
+                    drinkID = (int)dr["drinkId"],
+                    OrderDateTime = DateTime.Parse(dr["dateTime"].ToString()),
                 };
                 orders.Add(order);
             }
             return orders;
         }
-
-   
-      
-
+        public void DrinkOrder(Order order)
+        {
+            string query = $"INSERT INTO [Cash Register] (drinkId, StudentId) VALUES ('{order.drinkID}', '{order.studentID}')";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
+        }
     }
 }

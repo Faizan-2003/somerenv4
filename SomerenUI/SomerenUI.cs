@@ -8,12 +8,8 @@ using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Microsoft.VisualBasic.Devices;
 using System.Drawing;
-using System.Web;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
-using static System.Windows.Forms.LinkLabel;
-using System.Data.SqlClient;
-using SortOrder = System.Windows.Forms.SortOrder;
-using System.Data.Common;
+using SomerenDAL;
+using System.Windows.Forms.VisualStyles;
 
 namespace SomerenUI
 {
@@ -23,6 +19,12 @@ namespace SomerenUI
         {
             InitializeComponent();
             ShowDashboardPanel();
+
+            // disable the delete button if no row is selected.
+            btnDeleteItem.Enabled = false;
+
+            // disable the checkout button if unsufficient rows are selected.
+            btncheckout.Enabled = false;
         }
 
         private void ShowDashboardPanel()
@@ -33,6 +35,7 @@ namespace SomerenUI
             pnlLecturers.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
+            pnlActivity.Hide();
 
             // show dashboard
             pnlDashboard.Show();
@@ -45,6 +48,8 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlLecturers.Hide();
             pnlDrinks.Hide();
+            pnlCashRegister.Hide();
+            pnlActivity.Hide(); 
 
             // show students
             pnlStudents.Show();
@@ -68,6 +73,7 @@ namespace SomerenUI
             pnlLecturers.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
+            pnlActivity.Hide();
 
             // show the room panel
             pnlRooms.Show();
@@ -139,14 +145,22 @@ namespace SomerenUI
                 if (room.roomType == true)
                 {
                     li.SubItems.Add("Single (Lecturer)");
-                    li.SubItems.Add("1");
+                    // ...
                 }
                 else
                 {
                     li.SubItems.Add("Dormitory (Students)");
+                    // ....
+                }
+                // adding the capacity of the room depending on the room type 1 = Single and 8 = Dormitory
+                if (room.roomType == true)
+                {
+                    li.SubItems.Add("1");
+                }
+                else
+                {
                     li.SubItems.Add("8");
                 }
-
                 // adding the floor number and building ID
                 li.SubItems.Add(room.floor.ToString());
                 li.SubItems.Add(room.buildingId.ToString());
@@ -156,6 +170,7 @@ namespace SomerenUI
                 listViewRooms.Items.Add(li);
             }
         }
+
         public void ShowLecturerPanel()
         {
             // hide all other panels
@@ -164,8 +179,10 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
+            pnlActivity.Hide();    
 
             // show lecturer panel
+
             pnlLecturers.Show();
 
             try
@@ -174,7 +191,6 @@ namespace SomerenUI
                 List<Lecturer> lecturers = GetLecturers();
                 DisplayLecturers(lecturers);
             }
-
             catch (Exception e)
             {
                 // show error message box if there is an error
@@ -218,10 +234,12 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlLecturers.Hide();
             pnlCashRegister.Hide();
+            pnlActivity.Hide();
 
             // show drinks panel
 
             pnlDrinks.Show();
+
             try
             {
                 // getting the drinks form the GetDrinks method and sending it to the list and then displaying
@@ -241,33 +259,37 @@ namespace SomerenUI
             List<Drinks> drinks = drinkService.GetDrinks();
             return drinks;
         }
-        public void DisplayDrinks(List<Drinks> drinks)
+        private void DisplayDrinks(List<Drinks> drinks)
         {
             // clearing the list before displaying
-            listViewname.Items.Clear();
+            listViewDrinks.Items.Clear();
 
+            DrinksService drinksService = new DrinksService();
             foreach (Drinks drink in drinks)
             {
                 // adding drinkName to listview
                 ListViewItem li = new ListViewItem(drink.drinkName.ToString());
                 li.Tag = drink;
 
+
                 // adding data to the listview 
                 li.SubItems.Add(drink.drinkType.ToString());
-                li.SubItems.Add(drink.price.ToString());
+                li.SubItems.Add(drink.drinkPrice.ToString());
                 li.SubItems.Add(drink.stock.ToString());
                 li.SubItems.Add(drink.VAT.ToString());
+                li.SubItems.Add(drinksService.GetTotalSales(drink.drinkName));
                 if (drink.stock < 10)
                 {
                     li.SubItems.Add("Stock nearly depleted");
                     li.SubItems[0].ForeColor = System.Drawing.Color.Red;
+
                 }
                 else
                 {
                     li.SubItems.Add("Stock sufficient");
                     li.SubItems[0].ForeColor = System.Drawing.Color.Green;
                 }
-                listViewname.Items.Add(li);
+                listViewDrinks.Items.Add(li);
             }
         }
         private void cashRegisterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -284,72 +306,172 @@ namespace SomerenUI
             foreach (Student student in students)
             {
                 // student data in list view
-                ListViewItem list = new ListViewItem(student.FirstName.ToString());
+                ListViewItem list = new ListViewItem(student.StudentId.ToString());
                 list.Tag = students;
 
+                list.SubItems.Add(student.FirstName.ToString());
                 list.SubItems.Add(student.LastName.ToString());
 
                 // adding student items in list
                 listviewnames.Items.Add(list);
             }
-
             listViewdrinkcash.Items.Clear();
 
             // getting drinks data
             foreach (Drinks drink in drinks)
             {
                 // drinks data in list view
-                ListViewItem list = new ListViewItem(drink.drinkName.ToString());
+                ListViewItem list = new ListViewItem(drink.drinkId.ToString());
                 list.Tag = drink;
 
-                list.SubItems.Add(drink.drinkType.ToString());
-                list.SubItems.Add(drink.price.ToString());
+                list.SubItems.Add(drink.drinkName.ToString());
+                list.SubItems.Add(drink.drinkPrice.ToString());
                 list.SubItems.Add(drink.stock.ToString());
+                list.SubItems.Add(drink.drinkType.ToString());
 
                 // adding drink items in list
                 listViewdrinkcash.Items.Add(list);
             }
         }
-        private void btncheckout_Click(object sender, EventArgs e)
-        { 
-
-            string selectedName;
-            string selectedDrink;
-
-            if ((listviewnames.SelectedItems.Count == 1) && (listViewdrinkcash.SelectedItems.Count == 1))
+        private void CheckOutButtonEnable()
+        {
+            if (listViewdrinkcash.SelectedItems.Count > 0 && listviewnames.SelectedItems.Count > 0)
             {
-                //getting the selected data  from the listview
-                selectedName = listviewnames.SelectedItems[0].SubItems[0].Text;
-                selectedDrink = listViewdrinkcash.SelectedItems[0].Text;
+                // show the proce of the selected drink and display in the textbox
+                int price = int.Parse(listViewdrinkcash.SelectedItems[0].SubItems[2].Text);
+                txtTotalAmount.Text = price.ToString();
 
-                DialogResult result = MessageBox.Show($"{selectedName} is buying {txtQuantity.Text} {selectedDrink}", "CheckOut");
+                // enabling the checkout button once the sufficient amount of rows are selected.
+                btncheckout.Enabled = true;
             }
             else
             {
-                //Showing Errors
-                if ((listviewnames.SelectedItems.Count > 1) || (listViewdrinkcash.SelectedItems.Count > 1))
-                {
-                    MessageBox.Show("Too Many Students or Drinks Selected", "Error!");
-                }
-                else if ((listviewnames.SelectedItems.Count < 1) || (listViewdrinkcash.SelectedItems.Count < 1))
-                {
-                    MessageBox.Show("Not Enough Students or Drinks Selected", "Error!");
-                }
-            }   
+                // if no price then is selected show 000
+                txtTotalAmount.Text = "0.00";
+                btncheckout.Enabled = false;
+            }
         }
-        public void HideAllpanel()
+        private void UnselectListviewItem(System.Windows.Forms.ListView listView)
         {
-            //hidinG ALL OTHER panels
+            // unselecting the selected rows after adding the data to the database
+            if (listView.SelectedIndices.Count > 0)
+            {
+                for (int i = 0; i < listView.SelectedIndices.Count; i++)
+                {
+                    listView.Items[listView.SelectedIndices[i]].Selected = false;
+                }
+            }
+        }
+        private void btncheckout_Click_1(object sender, EventArgs e)
+        {
+            //getting the selected data  from the listview
+            int studentID = int.Parse(listviewnames.SelectedItems[0].SubItems[0].Text);
+            int drinkID = int.Parse(listViewdrinkcash.SelectedItems[0].SubItems[0].Text);
+
+            // assigning the selected rows to the variables from the class Order.
+            Order order = new Order();
+            order.studentID = studentID;
+            order.drinkID = drinkID;
+
+            // try the code
+            try
+            {
+                // calling the method from the service layer made in the DAO
+                OrderService orderService = new OrderService();
+                orderService.DrinkOrdering(order);
+
+                // shpwing the order completion message after success.
+                MessageBox.Show($"Order Check Out Successfully! \nStudent Number: {studentID} bought Drink ID: {drinkID}.", "Successful");
+
+                // calling the unselect method to order more drinks.
+                UnselectListviewItem(listViewdrinkcash);
+                UnselectListviewItem(listviewnames);
+            }
+
+            // throw an error if the try does not work
+            catch (Exception exp)
+            {
+                // Error message
+                MessageBox.Show("Something went Wrong while checking out... \n" + exp.Message, "Error!");
+            }
+        }
+
+        public void HideAllpanelForCash()
+        {
+            //hiding ALL OTHER panels
             pnlStudents.Hide();
             pnlLecturers.Hide();
             pnlRooms.Hide();
             pnlDashboard.Hide();
             pnlDrinks.Hide();
+            pnlActivity.Hide(); 
+        }
+
+        public void HideAllpanelForActivity()
+        {
+            //hiding ALL OTHER panels
+            pnlStudents.Hide();
+            pnlLecturers.Hide();    
+            pnlRooms.Hide();    
+            pnlDashboard.Hide();
+            pnlDrinks.Hide();
+            pnlCashRegister.Hide();
+        }
+        private void ShowActivitiesPanel()
+        {
+            // hide all other panels
+            HideAllpanelForActivity();
+
+            // show the activity panel
+            pnlActivity.Show();
+
+            try
+            {
+                // getting the activities form the GetActivities method and sending it to the list and then displaying
+                List<Activities> activities = GetActivities();
+                DisplayActivities(activities);
+            }
+
+            // throw an exception if try does not work
+            catch (Exception e)
+            {
+                // show error message box if there is an error
+                MessageBox.Show("Something went wrong while loading the Activities: " + e.Message);
+            }
+        }
+        private List<Activities> GetActivities()
+        {
+            // Get the activites from the GetActivities method
+            ActivityService activityService = new ActivityService();
+            List<Activities> activities = activityService.GetActivities();
+
+            // return the activities.
+            return activities;
+        }
+
+        private void DisplayActivities(List<Activities> activities)
+        {
+            // clear the listview before filling it
+            listViewActivity.Items.Clear();
+
+            foreach (Activities activity in activities)
+            {
+
+                ListViewItem li = new ListViewItem(activity.activityId.ToString());
+                li.Tag = activity;
+
+                li.SubItems.Add(activity.activityName.ToString());
+                li.SubItems.Add(activity.startTime.ToString());
+                li.SubItems.Add(activity.endTime.ToString());
+
+                // adding all the data to the list
+                listViewActivity.Items.Add(li);
+            }
         }
         private void ShowCashRegisterPanel()
         {
             // hide all panels
-            HideAllpanel();
+            HideAllpanelForCash();
 
             // show cash register panel
             pnlCashRegister.Show();
@@ -366,35 +488,6 @@ namespace SomerenUI
                 // show error message box if there is an error
                 MessageBox.Show("Something went wrong while loading the Cash Register: " + e.Message);
             }
-        }
-
-
-        private void dashboardToolStripMenuItem1_Click_2(object sender, EventArgs e)
-        {
-            ShowDashboardPanel();
-        }
-        private void exitToolStripMenuItem_Click_2(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-        private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowStudentsPanel();
-        }
-
-        private void lecturersToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ShowLecturerPanel();
-        }
-
-        private void roomsToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ShowRoomPanel();
-        }
-
-        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowDrinksPanel();
         }
 
         class ListViewItemStringComparer : IComparer
@@ -457,8 +550,6 @@ namespace SomerenUI
                 return returnVal;
             }
         }
-
-
         private void listViewDrinks_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             if (e.Column != _sortColumnIndex)
@@ -466,22 +557,22 @@ namespace SomerenUI
                 // Set the sort column to the new column.
                 _sortColumnIndex = e.Column;
                 // Set the sort order to ascending by default.
-                listViewname.Sorting = SortOrder.Ascending;
+                listViewDrinks.Sorting = SortOrder.Ascending;
             }
             else
             {
                 // Determine what the last sort order was and change it.
-                if (listViewname.Sorting == SortOrder.Ascending)
-                    listViewname.Sorting = SortOrder.Descending;
+                if (listViewDrinks.Sorting == SortOrder.Ascending)
+                    listViewDrinks.Sorting = SortOrder.Descending;
                 else
-                    listViewname.Sorting = SortOrder.Ascending;
+                    listViewDrinks.Sorting = SortOrder.Ascending;
             }
 
             // Call the sort method to manually sort.
-            listViewname.Sort();
+            listViewDrinks.Sort();
 
             // Set the ListViewItemSorter property to a new ListViewItemComparer object.
-            listViewname.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewname.Sorting);
+            listViewDrinks.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewDrinks.Sorting);
         }
 
         private SortOrder studentSortOrder = SortOrder.Ascending;
@@ -604,31 +695,231 @@ namespace SomerenUI
             // Set the ListViewItemSorter property to a new ListViewItemComparer object.
             listViewLecturers.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewLecturers.Sorting);
         }
-        private void btnAdd_Click(object sender, EventArgs e)
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            // try to add an activity
+            try
+            {
+                // making a new variable from the class Activities.
+                Activities activities = new Activities();
+
+                // assigning the data entered in the textbox and datetimepicker to the variables in class Activities.
+                activities.activityName = txtActivityName.Text;
+                activities.startTime = DateTime.Parse(dateTimeStart.Text);
+                activities.endTime = DateTime.Parse(dateTimeEnd.Text);
+
+                // making a new variable from the class ActivitiesService to get the methood to Update.
+                ActivityService activity = new ActivityService();
+
+                // calling the method from the activity service which is made in DAO.
+                activity.ActivityAdd(activities);
+
+                // Show a message of success if the activity is addeed successfully...
+                MessageBox.Show($"New Activity: {txtActivityName.Text} is added successfully!", "Successful");
+            }
+
+            // throw an exception if the try doesn't work...
+            catch (Exception exp)
+            {
+                MessageBox.Show("Something went wrong while Adding an Activity! \n" + exp.Message, "Error!");
+            }
+
+            //refresh the list
+            ShowActivitiesPanel();
+        }
+        private void btnUpdateItem_Click(object sender, EventArgs e)
+        {
+            // try to update the selected activity
+            try
+            {
+                // check if the selected number of greater then 0 to see if the row is selected or not...
+                if (listViewActivity.SelectedItems.Count > 0)
+                {
+                    // converting the selected item into (class)Activities and assigning the selected row to activities(variable)
+                    Activities activities = (Activities)listViewActivity.SelectedItems[0].Tag;
+
+                    // assigning the data entered in the textbox and datetimepicker to the variables in class Activities.
+                    activities.activityName = txtActivityName.Text;
+                    activities.startTime = DateTime.Parse(dateTimeStart.Text);
+                    activities.endTime = DateTime.Parse(dateTimeEnd.Text);
+
+                    // making a new variable from the class ActivitiesService to get the methood to Update.
+                    ActivityService activity = new ActivityService();
+
+                    // calling the method from the activity service which is made in DAO.
+                    activity.ActivityUpdate(activities);
+                }
+                //show an error if the above code doesn't work.
+                else
+                {
+                    // error message
+                    MessageBox.Show("No activity is Affected", "Failed!");
+
+                    // return as the code is not working
+                    return;
+                }
+            }
+            // throw an exception if the try doesn't work...
+            catch (Exception exp)
+            {
+                MessageBox.Show("Something went wrong while Updating an Activity! \n" + exp.Message, "Error!");
+            }
+            // refresh the list
+            ShowActivitiesPanel();
+        }
+
+        private void btnDeleteItem_Click(object sender, EventArgs e)
+        {
+            // parse the selected row into int...
+            int activityId = int.Parse(listViewActivity.SelectedItems[0].SubItems[0].Text);
+
+            // making a new variable from the class Activities.
+            Activities activities = new Activities();
+
+            // assigning the selected row to the variable activityId in class Activities
+            activities.activityId = activityId;
+
+            // try to delete the selected activity.
+            try
+            {
+                ActivityService activity = new ActivityService();
+                // ask to make sure if they want to delete.
+                DialogResult dialogResult = MessageBox.Show("Are you sure that you wish to remove this activity?", "Confirmation", MessageBoxButtons.YesNo);
+
+                // if they agree then delete the activity...
+                if (dialogResult == DialogResult.Yes)
+                {
+                    activity.ActivityDelete(activities);
+                    MessageBox.Show("Activity deleted successfully", "Successful");
+                }
+                //if they disagree then don't do anything...
+                else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("Activity is not deleted", "Successful");
+                }
+            }
+            // throw an exception if the try method doesn't work...
+            catch (Exception exp)
+            {
+                MessageBox.Show("Something went wrong while deleting an Activity! \n" + exp.Message, "Error!");
+            }
+
+            //refresh the list
+            ShowActivitiesPanel();
+        }
+        private void btnRefreshlist_Click(object sender, EventArgs e)
+        {
+            // refresh the activity panel 
+            ShowActivitiesPanel();
+
+            // reset all the textboxes and dateatimepickers to add more data
+            txtActivityID.Clear();
+            txtActivityName.Clear();
+            dateTimeStart.ResetText();
+            dateTimeEnd.ResetText();
+        }
+        private void listViewActivity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // enable the delete button if the row is selected in acticities..
+            btnDeleteItem.Enabled = (listViewActivity.SelectedItems.Count >= 0);
+
+            // check the user has selected any row...
+            if (listViewActivity.SelectedItems.Count > 0)
+            {
+
+                // converting the selected item into (class)Activities and assigning the selected row to activities(variable)
+                Activities activities = (Activities)listViewActivity.SelectedItems[0].Tag;
+
+                // assigning the data entered in the textbox and datetimepicker to the variables in class Activities.
+                txtActivityID.Text = activities.activityId.ToString();
+                txtActivityName.Text = activities.activityName.ToString();
+                dateTimeStart.Text = activities.startTime.ToString();
+                dateTimeEnd.Text = activities.endTime.ToString();
+            }
+            // show an error and return if no enough no
+            else
+            {
+                MessageBox.Show("Not Enough Number of Row Selected", "Failed!");
+                return;
+            }
+        }
+        private void btnAdd_Click_1(object sender, EventArgs e)
         {
             Drinks drink = new Drinks();
             DrinkAdd drinkAdd = new DrinkAdd(drink);
             drinkAdd.ShowDialog();
-
         }
-
-        private void btn_Refresh_Click(object sender, EventArgs e)
+        private void bnUpdate_Click_1(object sender, EventArgs e)
         {
-            ShowDrinksPanel();
+            Drinks drink = new Drinks();
+            DrinkUpdate drinkUpdate = new DrinkUpdate(drink);
+            drinkUpdate.ShowDialog();
         }
-
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click_1(object sender, EventArgs e)
         {
             Drinks drink = new Drinks();
             DrinkDelete drinkDelete = new DrinkDelete(drink);
             drinkDelete.ShowDialog();
         }
 
-        private void bnUpdate_Click(object sender, EventArgs e)
+        private void btn_Refresh_Click(object sender, EventArgs e)
         {
-            Drinks drink = new Drinks();
-            DrinkUpdate drinkUpdate = new DrinkUpdate(drink);
-            drinkUpdate.ShowDialog();
+            // refresh the drink panel
+            ShowDrinksPanel();
+        }
+
+        private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ShowDashboardPanel();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void studentsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ShowStudentsPanel();
+        }
+
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowLecturerPanel();
+        }
+
+        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Show rooms panel
+            ShowRoomPanel();
+        }
+
+        private void drinksToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ShowDrinksPanel();
+        }
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // show the activity panel
+            ShowActivitiesPanel();
+        }
+        private void cashRegisterToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            // refresh the cash register panel
+            ShowCashRegisterPanel();
+        }
+
+        private void listviewnames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // call the checkout button to enable
+            CheckOutButtonEnable();
+        }
+
+        private void listViewdrinkcash_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // call the checkout button to enable
+            CheckOutButtonEnable();
         }
     }
 }
