@@ -13,7 +13,7 @@ namespace SomerenDAL
     {
         public List<studentParticipationModel> GetAllParticipaitingStudents()
         {
-            string query = "Select PARTICIPATE.StudentId, ACTIVITIES.ActivityId, ActivityName, STUDENT.firstName, STUDENT.lastName\r\nfrom PARTICIPATE\r\njoin STUDENT on PARTICIPATE.[StudentId] = STUDENT.[StudentId]\r\njoin ACTIVITIES on ACTIVITIES.ActivityId = PARTICIPATE.[activityId]";
+            string query = "SELECT PARTICIPATE.StudentId, ACTIVITIES.ActivityId, ACTIVITIES.ActivityName, STUDENT.firstName, STUDENT.lastName\r\nFROM PARTICIPATE\r\nJOIN STUDENT ON PARTICIPATE.StudentId = STUDENT.StudentId\r\nJOIN ACTIVITIES ON ACTIVITIES.ActivityId = PARTICIPATE.ActivityId";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }

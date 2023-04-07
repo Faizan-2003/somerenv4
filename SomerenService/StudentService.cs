@@ -18,5 +18,7 @@ namespace SomerenService
             List<Student> students = studentdb.GetAllStudents();
             return students;
         }
+
+
     }
 }

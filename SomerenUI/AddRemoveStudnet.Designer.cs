@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new System.Windows.Forms.Button();
-            button2 = new System.Windows.Forms.Button();
+            buttonAdd = new System.Windows.Forms.Button();
+            buttonRemove = new System.Windows.Forms.Button();
             comboBox1 = new System.Windows.Forms.ComboBox();
             textBox1 = new System.Windows.Forms.TextBox();
             textBox2 = new System.Windows.Forms.TextBox();
@@ -37,28 +37,30 @@
             label2 = new System.Windows.Forms.Label();
             SuspendLayout();
             // 
-            // button1
+            // buttonAdd
             // 
-            button1.Location = new System.Drawing.Point(324, 227);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(94, 29);
-            button1.TabIndex = 0;
-            button1.Text = "Add";
-            button1.UseVisualStyleBackColor = true;
+            buttonAdd.Location = new System.Drawing.Point(324, 227);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new System.Drawing.Size(94, 29);
+            buttonAdd.TabIndex = 0;
+            buttonAdd.Text = "Add";
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += button1_Click;
             // 
-            // button2
+            // buttonRemove
             // 
-            button2.Location = new System.Drawing.Point(424, 227);
-            button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(94, 29);
-            button2.TabIndex = 1;
-            button2.Text = "Remove";
-            button2.UseVisualStyleBackColor = true;
+            buttonRemove.Location = new System.Drawing.Point(424, 227);
+            buttonRemove.Name = "buttonRemove";
+            buttonRemove.Size = new System.Drawing.Size(94, 29);
+            buttonRemove.TabIndex = 1;
+            buttonRemove.Text = "Remove";
+            buttonRemove.UseVisualStyleBackColor = true;
+            buttonRemove.Click += button2_Click;
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "No activity", "Zumba", "Football", "HandBall", "Kickbox", "Boxing" });
+            comboBox1.Items.AddRange(new object[] { "No activity", "Zumba", "Football", "Handball", "Kickbox", "Boxing", "Eating" });
             comboBox1.Location = new System.Drawing.Point(324, 193);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new System.Drawing.Size(194, 28);
@@ -106,8 +108,8 @@
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(comboBox1);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(buttonRemove);
+            Controls.Add(buttonAdd);
             Name = "AddRemoveStudnet";
             Text = "Form1";
             ResumeLayout(false);
@@ -116,8 +118,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;

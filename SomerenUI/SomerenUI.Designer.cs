@@ -118,12 +118,12 @@
             columnHeader10 = new System.Windows.Forms.ColumnHeader();
             label5 = new System.Windows.Forms.Label();
             pnlParticipents = new System.Windows.Forms.Panel();
+            comboBox1 = new System.Windows.Forms.ComboBox();
             listView2 = new System.Windows.Forms.ListView();
             columnHeader25 = new System.Windows.Forms.ColumnHeader();
             columnHeader12 = new System.Windows.Forms.ColumnHeader();
             columnHeader19 = new System.Windows.Forms.ColumnHeader();
             button3 = new System.Windows.Forms.Button();
-            comboBox1 = new System.Windows.Forms.ComboBox();
             button2 = new System.Windows.Forms.Button();
             label9 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
@@ -871,9 +871,9 @@
             // 
             // pnlParticipents
             // 
+            pnlParticipents.Controls.Add(comboBox1);
             pnlParticipents.Controls.Add(listView2);
             pnlParticipents.Controls.Add(button3);
-            pnlParticipents.Controls.Add(comboBox1);
             pnlParticipents.Controls.Add(button2);
             pnlParticipents.Controls.Add(label9);
             pnlParticipents.Controls.Add(label8);
@@ -881,6 +881,15 @@
             pnlParticipents.Name = "pnlParticipents";
             pnlParticipents.Size = new System.Drawing.Size(1072, 601);
             pnlParticipents.TabIndex = 13;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "No activity", "Zumba", "Football", "Handball", "Kickbox", "Boxing", "Eating" });
+            comboBox1.Location = new System.Drawing.Point(920, 64);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new System.Drawing.Size(151, 28);
+            comboBox1.TabIndex = 13;
             // 
             // listView2
             // 
@@ -917,16 +926,6 @@
             button3.Text = "Add / remove a student from activity";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
-            // 
-            // comboBox1
-            // 
-            comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "No activity", "Zumba", "Football", "HandBall", "Kickbox", "Boxing" });
-            comboBox1.Location = new System.Drawing.Point(922, 64);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new System.Drawing.Size(147, 28);
-            comboBox1.TabIndex = 8;
             // 
             // button2
             // 
@@ -1096,11 +1095,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.ColumnHeader columnHeader25;
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader19;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

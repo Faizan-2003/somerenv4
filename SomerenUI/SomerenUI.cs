@@ -284,8 +284,11 @@ namespace SomerenUI
             }
         }
 
+        private List<studentParticipationModel> allStudentParticipations;
         private void DisplayStudentParticipents(List<studentParticipationModel> studentParticipations)
         {
+            allStudentParticipations = studentParticipations;
+
             listView2.Items.Clear();
 
             foreach (studentParticipationModel student in studentParticipations)
@@ -299,6 +302,7 @@ namespace SomerenUI
                 listView2.Items.Add(li);
             }
         }
+
         public void ShowDrinksPanel()
         {
             // hide all other panels
@@ -718,12 +722,36 @@ namespace SomerenUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            List<string> sports = new List<string>() { "No activity", "Zumba", "Football", "HandBall", "Kickbox", "Boxing" };
+            List<string> sports = new List<string>() { "No activity", "Zumba", "Football", "Handball", "Kickbox", "Boxing", "Eating" };
 
-            if (comboBox1.SelectedIndex == 0)
+            string activity = comboBox1.SelectedItem.ToString();
+
+            if (!sports.Contains(activity))
             {
-                listView2.ListViewItemSorter = new ListViewItemStringComparer(2, SortOrder.Ascending);
-                listView2.Sort();
+                MessageBox.Show("Invalid activity.");
+                return;
+            }
+
+            List<studentParticipationModel> matchingItems = new List<studentParticipationModel>();
+
+            foreach (studentParticipationModel student in allStudentParticipations)
+            {
+                if (student.ActivityName == activity)
+                {
+                    matchingItems.Add(student);
+                }
+            }
+
+            listView2.Items.Clear();
+            foreach (studentParticipationModel student in matchingItems)
+            {
+                ListViewItem li = new ListViewItem(student.ActivityName.ToString());
+                li.Tag = student;
+
+                li.SubItems.Add(student.FirstName.ToString());
+                li.SubItems.Add(student.LastName.ToString());
+
+                listView2.Items.Add(li);
             }
         }
     }
