@@ -30,7 +30,7 @@ namespace SomerenUI
             string sql = "INSERT INTO DRINKS VALUES (" + textBox_DrinkID.Text + "," + "'" + textBox_DrinkName.Text + "'" + "," + "'" + textBox_DrinkType.Text + "'" + "," + "'" + textBox_Price.Text + "'" + "," + "'" + textBox_Stock.Text + "'" + "," + "'" + textBox_VAT.Text + "'" + ")";
             command = new SqlCommand(sql, connection);
 
-            int result=command.ExecuteNonQuery();
+            int result = command.ExecuteNonQuery();
             MessageBox.Show("Drink added");
         }
     }

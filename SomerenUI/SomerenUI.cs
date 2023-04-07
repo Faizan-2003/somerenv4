@@ -38,6 +38,7 @@ namespace SomerenUI
             pnlActivity.Hide();
             pnlRevenue.Hide();
             pnlParticipants.Hide();
+            pnlSupervisors.Hide();
 
             // show dashboard
             pnlDashboard.Show();
@@ -54,6 +55,7 @@ namespace SomerenUI
             pnlActivity.Hide();
             pnlRevenue.Hide();
             pnlParticipants.Hide();
+            pnlSupervisors.Hide();
 
             // show students
             pnlStudents.Show();
@@ -80,6 +82,7 @@ namespace SomerenUI
             pnlActivity.Hide();
             pnlRevenue.Hide();
             pnlParticipants.Hide();
+            pnlSupervisors.Hide();
 
             // show the room panel
             pnlRooms.Show();
@@ -187,6 +190,7 @@ namespace SomerenUI
             pnlCashRegister.Hide();
             pnlActivity.Hide();
             pnlRevenue.Hide();
+            pnlSupervisors.Hide();
             pnlParticipants.Hide();
 
             // show lecturer panel
@@ -243,8 +247,7 @@ namespace SomerenUI
             pnlLecturers.Hide();
             pnlCashRegister.Hide();
             pnlActivity.Hide();
-            pnlRevenue.Hide();
-            pnlParticipants.Hide();
+            pnlSupervisors.Hide();
 
             // show drinks panel
 
@@ -284,10 +287,10 @@ namespace SomerenUI
 
                 // adding data to the listview 
                 li.SubItems.Add(drink.drinkType.ToString());
-                li.SubItems.Add(drink.drinkPrice.ToString());
+                li.SubItems.Add(drink.price.ToString());
                 li.SubItems.Add(drink.stock.ToString());
                 li.SubItems.Add(drink.VAT.ToString());
-                li.SubItems.Add(drinksService.GetTotalSales(drink.drinkName));
+                li.SubItems.Add(drinksService.GetTotalSales(drink.drinkId));
                 if (drink.stock < 10)
                 {
                     li.SubItems.Add("Stock nearly depleted");
@@ -335,7 +338,7 @@ namespace SomerenUI
                 list.Tag = drink;
 
                 list.SubItems.Add(drink.drinkName.ToString());
-                list.SubItems.Add(drink.drinkPrice.ToString());
+                list.SubItems.Add(drink.price.ToString());
                 list.SubItems.Add(drink.stock.ToString());
                 list.SubItems.Add(drink.drinkType.ToString());
 
@@ -372,39 +375,7 @@ namespace SomerenUI
                 }
             }
         }
-        private void btncheckout_Click_1(object sender, EventArgs e)
-        {
-            //getting the selected data  from the listview
-            int studentID = int.Parse(listviewnames.SelectedItems[0].SubItems[0].Text);
-            int drinkID = int.Parse(listViewdrinkcash.SelectedItems[0].SubItems[0].Text);
 
-            // assigning the selected rows to the variables from the class Order.
-            Order order = new Order();
-            order.studentID = studentID;
-            order.drinkID = drinkID;
-
-            // try the code
-            try
-            {
-                // calling the method from the service layer made in the DAO
-                OrderService orderService = new OrderService();
-                orderService.DrinkOrdering(order);
-
-                // shpwing the order completion message after success.
-                MessageBox.Show($"Order Check Out Successfully! \nStudent Number: {studentID} bought Drink ID: {drinkID}.", "Successful");
-
-                // calling the unselect method to order more drinks.
-                UnselectListviewItem(listViewdrinkcash);
-                UnselectListviewItem(listviewnames);
-            }
-
-            // throw an error if the try does not work
-            catch (Exception exp)
-            {
-                // Error message
-                MessageBox.Show("Something went Wrong while checking out... \n" + exp.Message, "Error!");
-            }
-        }
 
         public void HideAllpanelForCash()
         {
@@ -417,19 +388,21 @@ namespace SomerenUI
             pnlActivity.Hide();
             pnlRevenue.Hide();
             pnlParticipants.Hide();
+            pnlSupervisors.Hide();
         }
 
         public void HideAllpanelForActivity()
         {
             //hiding ALL OTHER panels
             pnlStudents.Hide();
-            pnlLecturers.Hide();    
-            pnlRooms.Hide();    
+            pnlLecturers.Hide();
+            pnlRooms.Hide();
             pnlDashboard.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
             pnlRevenue.Hide();
             pnlParticipants.Hide();
+            pnlSupervisors.Hide();
         }
         private void ShowActivitiesPanel()
         {
@@ -564,154 +537,10 @@ namespace SomerenUI
                 return returnVal;
             }
         }
-        private void listViewDrinks_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            if (e.Column != _sortColumnIndex)
-            {
-                // Set the sort column to the new column.
-                _sortColumnIndex = e.Column;
-                // Set the sort order to ascending by default.
-                listViewDrinks.Sorting = SortOrder.Ascending;
-            }
-            else
-            {
-                // Determine what the last sort order was and change it.
-                if (listViewDrinks.Sorting == SortOrder.Ascending)
-                    listViewDrinks.Sorting = SortOrder.Descending;
-                else
-                    listViewDrinks.Sorting = SortOrder.Ascending;
-            }
-
-            // Call the sort method to manually sort.
-            listViewDrinks.Sort();
-
-            // Set the ListViewItemSorter property to a new ListViewItemComparer object.
-            listViewDrinks.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewDrinks.Sorting);
-        }
 
         private SortOrder studentSortOrder = SortOrder.Ascending;
-        private void studentNumberbutton_Click(object sender, EventArgs e)
-        {
-            if (studentSortOrder == SortOrder.Ascending)
-            {
-                studentSortOrder = SortOrder.Descending;
-            }
-            else
-            {
-                studentSortOrder = SortOrder.Ascending;
-            }
-            // Sort students by their ID
-            listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(0, studentSortOrder);
-            listViewStudents.Sort();
-        }
-
-        private void firstNameButton_Click(object sender, EventArgs e)
-        {
-            // Toggle between ascending and descending order
-            if (studentSortOrder == SortOrder.Ascending)
-            {
-                studentSortOrder = SortOrder.Descending;
-            }
-            else
-            {
-                studentSortOrder = SortOrder.Ascending;
-            }
-            // Sort students by their name (first name column is index 1)
-            listViewStudents.ListViewItemSorter = new ListViewItemStringComparer(1, studentSortOrder);
-            listViewStudents.Sort();
-        }
-
-        private void lastNameButton_Click(object sender, EventArgs e)
-        {
-            // Toggle between ascending and descending order
-            if (studentSortOrder == SortOrder.Ascending)
-            {
-                studentSortOrder = SortOrder.Descending;
-            }
-            else
-            {
-                studentSortOrder = SortOrder.Ascending;
-            }
-            // Sort students by their last name (last name column is index 2)
-            listViewStudents.ListViewItemSorter = new ListViewItemStringComparer(2, studentSortOrder);
-            listViewStudents.Sort();
-        }
-
-        private void telephoneButton_Click(object sender, EventArgs e)
-        {
-            // Toggle between ascending and descending order
-            if (studentSortOrder == SortOrder.Ascending)
-            {
-                studentSortOrder = SortOrder.Descending;
-            }
-            else
-            {
-                studentSortOrder = SortOrder.Ascending;
-            }
-            // Sort students by their phone (phone column is index 3)
-            listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(3, studentSortOrder);
-            listViewStudents.Sort();
-        }
-
-        private void classButton_Click(object sender, EventArgs e)
-        {
-            // Toggle between ascending and descending order
-            if (studentSortOrder == SortOrder.Ascending)
-            {
-                studentSortOrder = SortOrder.Descending;
-            }
-            else
-            {
-                studentSortOrder = SortOrder.Ascending;
-            }
-            // Sort students by their class (class column is index 4)
-            listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(4, studentSortOrder);
-            listViewStudents.Sort();
-        }
-
-        private void roomIDbutton_Click(object sender, EventArgs e)
-        {
-            if (studentSortOrder == SortOrder.Ascending)
-            {
-                studentSortOrder = SortOrder.Descending;
-            }
-            else
-            {
-                studentSortOrder = SortOrder.Ascending;
-            }
-            // Sort students by their class (class column is index 4)
-            listViewStudents.ListViewItemSorter = new ListViewItemIntComparer(5, studentSortOrder);
-            listViewStudents.Sort();
-        }
 
         int _sortColumnIndex = -1;
-       
-        private void btnAdd_Click_1(object sender, EventArgs e)
-        {
-            Drinks drink = new Drinks();
-            DrinkAdd drinkAdd = new DrinkAdd(drink);
-            drinkAdd.ShowDialog();
-        }
-        private void bnUpdate_Click_1(object sender, EventArgs e)
-        {
-            Drinks drink = new Drinks();
-            DrinkUpdate drinkUpdate = new DrinkUpdate(drink);
-            drinkUpdate.ShowDialog();
-        }
-        private void btnDelete_Click_1(object sender, EventArgs e)
-        {
-            Drinks drink = new Drinks();
-            DrinkDelete drinkDelete = new DrinkDelete(drink);
-            drinkDelete.ShowDialog();
-        }
-
-        private void btn_Refresh_Click(object sender, EventArgs e)
-        {
-            // refresh the drink panel
-            ShowDrinksPanel();
-        }
-
-        
 
         private RevenueService revenueService = new RevenueService();
         private List<Revenue> allRevenues;
@@ -725,6 +554,7 @@ namespace SomerenUI
             pnlCashRegister.Hide();
             pnlActivity.Hide();
             pnlParticipants.Hide();
+            pnlSupervisors.Hide();
 
             pnlRevenue.Show();
 
@@ -765,13 +595,6 @@ namespace SomerenUI
             }
             // Update label13.Text to display the overall profit
             label13.Text = overallProfit.ToString("C");
-        }
-
-        public List<Revenue> GetRevenues(DateTime selectedDate)
-        {
-            RevenueService revenueService = new RevenueService();
-            List<Revenue> revenues = revenueService.GetRevenues(selectedDate);
-            return revenues;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -1219,6 +1042,286 @@ namespace SomerenUI
                 MessageBox.Show("Not Enough Number of Row Selected", "Failed!");
                 return;
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Drinks drink = new Drinks();
+            DrinkAdd drinkAdd = new DrinkAdd(drink);
+            drinkAdd.ShowDialog();
+        }
+
+        private void bnUpdate_Click(object sender, EventArgs e)
+        {
+            Drinks drink = new Drinks();
+            DrinkUpdate drinkUpdate = new DrinkUpdate(drink);
+            drinkUpdate.ShowDialog();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Drinks drink = new Drinks();
+            DrinkDelete drinkDelete = new DrinkDelete(drink);
+            drinkDelete.ShowDialog();
+        }
+
+        private void btn_Refresh_Click_1(object sender, EventArgs e)
+        {
+            // refresh the drink panel
+            ShowDrinksPanel();
+        }
+        private void listViewDrinks_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (e.Column != _sortColumnIndex)
+            {
+                // Set the sort column to the new column.
+                _sortColumnIndex = e.Column;
+                // Set the sort order to ascending by default.
+                listViewDrinks.Sorting = SortOrder.Ascending;
+            }
+            else
+            {
+                // Determine what the last sort order was and change it.
+                if (listViewDrinks.Sorting == SortOrder.Ascending)
+                    listViewDrinks.Sorting = SortOrder.Descending;
+                else
+                    listViewDrinks.Sorting = SortOrder.Ascending;
+            }
+
+            // Call the sort method to manually sort.
+            listViewDrinks.Sort();
+
+            // Set the ListViewItemSorter property to a new ListViewItemComparer object.
+            listViewDrinks.ListViewItemSorter = new ListViewItemStringComparer(e.Column, listViewDrinks.Sorting);
+        }
+        public void ShowSupervisorPanel()
+        {
+            // hide all other panels
+            pnlStudents.Hide();
+            pnlDashboard.Hide();
+            pnlRooms.Hide();
+            pnlLecturers.Hide();
+            pnlCashRegister.Hide();
+            pnlActivity.Hide();
+
+            // show supervisors panel
+
+            pnlSupervisors.Show();
+
+            try
+            {
+                DisplaySupervisorActivities();
+            }
+
+            catch (Exception e)
+            {
+                // show error message box if there is an error
+                MessageBox.Show("Something went wrong while loading the supervisor page: " + e.Message);
+            }
+        }
+
+        private List<Supervisors> GetSupervisedActivities()
+        {
+            SupervisorsService supervisorsService = new SupervisorsService();
+            List<Supervisors> supervisors = supervisorsService.GetAllSupervisedActivities();
+            return supervisors;
+        }
+        private void DisplaySupervisorActivities()
+        {
+            // clear the listview before filling it
+            listActivity_Supervisor.Items.Clear();
+            List<SomerenModel.Supervisors> activities = GetSupervisedActivities();
+
+            foreach (SomerenModel.Supervisors activity in activities)
+            {
+                ListViewItem li = new ListViewItem(activity.ActivityId.ToString());
+                li.Tag = activity;
+
+                li.SubItems.Add(activity.activityName.ToString());
+                li.SubItems.Add($"{activity.startTime:dd/MM/yyyy HH:mm}");
+                li.SubItems.Add($"{activity.endTime:dd/MM/yyyy HH:mm}");
+
+                listActivity_Supervisor.Items.Add(li);
+            }
+        }
+
+        private ListViewItem listViewItem = null;
+        private Supervisors selectedSupervisor = null;
+        private Supervisors selectedActivity = null;
+
+        private List<Supervisors> GetSupervisors()
+        {
+            SupervisorsService supervisorsService = new SupervisorsService();
+            List<Supervisors> supervisors = supervisorsService.GetSupervisors(selectedActivity);
+            return supervisors;
+        }
+        private List<Supervisors> GetNotSupervisors()
+        {
+            SupervisorsService supervisorsService = new SupervisorsService();
+            List<Supervisors> supervisors = supervisorsService.GetNotSupervisors(selectedActivity);
+            return supervisors;
+        }
+
+        private void DisplayNotSupervisors()
+        {
+
+            listIsNotSupervisor.Items.Clear();
+
+            List<Supervisors> supervisors = GetNotSupervisors();
+
+            foreach (Supervisors supervisor in supervisors)
+            {
+                ListViewItem li = new ListViewItem(supervisor.LecturerId.ToString());
+                li.Tag = supervisor;
+
+                li.SubItems.Add(supervisor.firstName.ToString());
+                li.SubItems.Add(supervisor.lastName.ToString());
+
+                listIsNotSupervisor.Items.Add(li);
+            }
+        }
+        private void DisplaySupervisors()
+        {
+
+            listIsSupervisor.Items.Clear();
+
+            List<Supervisors> supervisors = GetSupervisors();
+
+            foreach (Supervisors supervisor in supervisors)
+            {
+                ListViewItem li = new ListViewItem(supervisor.LecturerId.ToString());
+                li.Tag = supervisor;
+
+                li.SubItems.Add(supervisor.firstName.ToString());
+                li.SubItems.Add(supervisor.lastName.ToString());
+
+                listIsSupervisor.Items.Add(li);
+            }
+        }
+
+
+        private void AddSupervisors()
+        {
+            SupervisorsService supervisorsService = new SupervisorsService();
+            supervisorsService.AddSupervisors(selectedSupervisor);
+        }
+        private void RemoveSupervisors()
+        {
+            SupervisorsService supervisorsService = new SupervisorsService();
+            supervisorsService.RemoveSupervisors(selectedSupervisor);
+        }
+
+        private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowSupervisorPanel();
+        }
+
+        private void btncheckout_Click(object sender, EventArgs e)
+        {
+            //getting the selected data  from the listview
+            int studentID = int.Parse(listviewnames.SelectedItems[0].SubItems[0].Text);
+            int drinkID = int.Parse(listViewdrinkcash.SelectedItems[0].SubItems[0].Text);
+
+            // assigning the selected rows to the variables from the class Order.
+            Order order = new Order();
+            order.studentID = studentID;
+            order.drinkID = drinkID;
+
+            // try the code
+            try
+            {
+                // calling the method from the service layer made in the DAO
+                OrderService orderService = new OrderService();
+                orderService.DrinkOrdering(order);
+
+                // shpwing the order completion message after success.
+                MessageBox.Show($"Order Check Out Successfully! \nStudent Number: {studentID} bought Drink ID: {drinkID}.", "Successful");
+
+                // calling the unselect method to order more drinks.
+                UnselectListviewItem(listViewdrinkcash);
+                UnselectListviewItem(listviewnames);
+            }
+
+            // throw an error if the try does not work
+            catch (Exception exp)
+            {
+                // Error message
+                MessageBox.Show("Something went Wrong while checking out... \n" + exp.Message, "Error!");
+            }
+        }
+
+        private void button_Show_Click_1(object sender, EventArgs e)
+        {
+            if (listActivity_Supervisor.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            else if (listActivity_Supervisor.SelectedItems.Count != 0)
+            {
+                listViewItem = listActivity_Supervisor.SelectedItems[0];
+                selectedActivity = (Supervisors)listViewItem.Tag;
+
+                DisplayNotSupervisors();
+                DisplaySupervisors();
+            }
+        }
+
+        private void buttonAdd_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implemented due to a querry error", "Code is there but due to en error it crashes the application");
+            /* if (listActivity_Supervisor.SelectedItems.Count == 0)
+             {
+                 // to warn user that there is already data in vairaiable Selected variable
+                 MessageBox.Show("Please select activity then only add it", "Select Activity");
+             }
+             else if (listIsNotSupervisor.SelectedItems.Count == 0)
+             {
+                 MessageBox.Show("Please Select a Lecturer who is not supervising activity", "Wrong Selection");
+             }
+             else
+             {
+                 listViewItem = listActivity_Supervisor.SelectedItems[0];
+                 selectedActivity = (Supervisors)listViewItem.Tag;
+
+                 listViewItem = listIsNotSupervisor.SelectedItems[0];
+                 selectedSupervisor = (Supervisors)listViewItem.Tag;
+
+                 AddSupervisors();
+
+             }
+                             DisplayNotSupervisors();
+                 DisplaySupervisors();
+            */
+        }
+
+        private void buttonRemove_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implemented due to a querry error", "Code is there but due to en error it crashes the application");
+
+            /*if (listActivity_Supervisor.SelectedItems.Count == 0)
+            {
+                // to warn user that there is already data in vairaiable Selected variable
+                MessageBox.Show("Please select activity then only add it", "Select Activity");
+            }
+            else if (listIsSupervisor.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please Select a Lecturer who is not supervising activity", "Wrong Selection");
+            }
+            else
+            {
+                listViewItem = listActivity_Supervisor.SelectedItems[0];
+                selectedActivity = (Supervisors)listViewItem.Tag;
+
+                listViewItem = listIsSupervisor.SelectedItems[0];
+                selectedSupervisor = (Supervisors)listViewItem.Tag;
+
+                RemoveSupervisors();
+
+
+                MessageBox.Show("Done");
+            }*/
+            DisplayNotSupervisors();
+            DisplaySupervisors();
         }
     }
 }
