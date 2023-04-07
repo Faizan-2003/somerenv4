@@ -736,9 +736,6 @@ namespace SomerenUI
             drinkDelete.ShowDialog();
         }
 
-        private SomerenModel.Activity selectedActivity = null;
-        private ListViewItem listViewItem = null;
-        private Supervisors selectedSupervisor = null;
 
         public void ShowSupervisorPanel()
         {
@@ -756,8 +753,6 @@ namespace SomerenUI
 
             try
             {
-                List<SomerenModel.Supervisors> supervisors = GetAllSupervisors();
-                List<SomerenModel.Supervisors> notSupervisors = GetAllNotSupervisors();
                 DisplaySupervisorActivities();
             }
 
@@ -768,15 +763,21 @@ namespace SomerenUI
             }
         }
 
+        private List<SomerenModel.Supervisors> GetSupervisedActivities()
+        {
+            SupervisorsService supervisorsService = new SupervisorsService();
+            List<Supervisors> supervisors = supervisorsService.GetAllSupervisedActivities();
+            return supervisors;
+        }
         private void DisplaySupervisorActivities()
         {
             // clear the listview before filling it
             listActivity_Supervisor.Items.Clear();
-            List<SomerenModel.Activity> activities = GetActivities();
+            List<SomerenModel.Supervisors> activities = GetSupervisedActivities();
 
-            foreach (SomerenModel.Activity activity in activities)
+            foreach (SomerenModel.Supervisors activity in activities)
             {
-                ListViewItem li = new ListViewItem(activity.activityId.ToString());
+                ListViewItem li = new ListViewItem(activity.ActivityId.ToString());
                 li.Tag = activity;
 
                 li.SubItems.Add(activity.activityName.ToString());
@@ -786,70 +787,138 @@ namespace SomerenUI
                 listActivity_Supervisor.Items.Add(li);
             }
         }
-        private SupervisorsService supervisorsService;
-        private void DisplaySupervisors(SomerenModel.Activity activity)
+
+        private ListViewItem listViewItem = null;
+        private Supervisors selectedSupervisor = null;
+        private Supervisors selectedActivity = null;
+
+        private List<SomerenModel.Supervisors> GetSupervisors()
         {
-            listIsSupervisor.Items.Clear();
-
-            List<Supervisors> supervisors = supervisorsService.GetSupervisors(activity);
-
-            foreach (Supervisors supervisor in supervisors)
-            {
-                ListViewItem li = new ListViewItem(supervisor.Supervisor.lecturerId.ToString());
-                li.Tag = supervisor;
-
-                listViewItem.SubItems.Add(supervisor.Supervisor.firstName);
-                listViewItem.SubItems.Add(supervisor.Supervisor.lastName);
-                listViewItem.Tag = supervisor;
-                listIsSupervisor.Items.Add(li);
-            }
+            SupervisorsService supervisorsService = new SupervisorsService();
+            List<Supervisors> supervisors = supervisorsService.GetSupervisors(selectedActivity);
+            return supervisors;
         }
-        private void DisplayNotSupervisors(SomerenModel.Activity activity)
+        private List<SomerenModel.Supervisors> GetNotSupervisors()
         {
+            SupervisorsService supervisorsService = new SupervisorsService();
+            List<Supervisors> supervisors = supervisorsService.GetNotSupervisors(selectedActivity);
+            return supervisors;
+        }
+
+        private void DisplayNotSupervisors()
+        {
+
             listIsNotSupervisor.Items.Clear();
 
-            List<Supervisors> supervisors = supervisorsService.GetNotSupervisors(activity);
+            List<Supervisors> supervisors = GetNotSupervisors();
 
             foreach (Supervisors supervisor in supervisors)
             {
-                ListViewItem li = new ListViewItem(supervisor.Supervisor.lecturerId.ToString());
+                ListViewItem li = new ListViewItem(supervisor.LecturerId.ToString());
                 li.Tag = supervisor;
 
-                listViewItem.SubItems.Add(supervisor.Supervisor.firstName);
-                listViewItem.SubItems.Add(supervisor.Supervisor.lastName);
-                listViewItem.Tag = supervisor;
+                li.SubItems.Add(supervisor.firstName.ToString());
+                li.SubItems.Add(supervisor.lastName.ToString());
+
+                listIsNotSupervisor.Items.Add(li);
+            }
+        }
+        private void DisplaySupervisors()
+        {
+
+            listIsSupervisor.Items.Clear();
+
+            List<Supervisors> supervisors = GetSupervisors();
+
+            foreach (Supervisors supervisor in supervisors)
+            {
+                ListViewItem li = new ListViewItem(supervisor.LecturerId.ToString());
+                li.Tag = supervisor;
+
+                li.SubItems.Add(supervisor.firstName.ToString());
+                li.SubItems.Add(supervisor.lastName.ToString());
+
                 listIsSupervisor.Items.Add(li);
             }
         }
-
-        private List<SomerenModel.Supervisors> GetAllSupervisors()
+        private void button_Show_Click(object sender, EventArgs e)
         {
-            SupervisorsService supervisorsService = new SupervisorsService();
-            List<SomerenModel.Supervisors> supervisors = supervisorsService.GetSupervisors(selectedActivity);
-            return supervisors;
-        }
-
-        private List<SomerenModel.Supervisors> GetAllNotSupervisors()
-        {
-            SupervisorsService supervisorsService = new SupervisorsService();
-            List<SomerenModel.Supervisors> supervisors = supervisorsService.GetNotSupervisors(selectedActivity);
-            return supervisors;
-        }
-
-        private void listActivity_Supervisor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SomerenModel.Activity activity;
-
             if (listActivity_Supervisor.SelectedItems.Count == 0)
             {
-                DisplaySupervisorActivities();
+                return;
+            }
+            else if (listActivity_Supervisor.SelectedItems.Count != 0)
+            {
+                listViewItem = listActivity_Supervisor.SelectedItems[0];
+                selectedActivity = (Supervisors)listViewItem.Tag;
+
+                DisplayNotSupervisors();
+                DisplaySupervisors();
+            }
+        }
+
+        private void AddSupervisors()
+        {
+            SupervisorsService supervisorsService = new SupervisorsService();
+            supervisorsService.AddSupervisors(selectedSupervisor);
+        }
+        private void RemoveSupervisors()
+        {
+            SupervisorsService supervisorsService = new SupervisorsService();
+            supervisorsService.RemoveSupervisors(selectedSupervisor);
+        }
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implemented due to a querry error", "Code is there but due to en error it crashes the application");
+            /* if (listActivity_Supervisor.SelectedItems.Count == 0)
+             {
+                 // to warn user that there is already data in vairaiable Selected variable
+                 MessageBox.Show("Please select activity then only add it", "Select Activity");
+             }
+             else if (listIsNotSupervisor.SelectedItems.Count == 0)
+             {
+                 MessageBox.Show("Please Select a Lecturer who is not supervising activity", "Wrong Selection");
+             }
+             else
+             {
+                 listViewItem = listActivity_Supervisor.SelectedItems[0];
+                 selectedActivity = (Supervisors)listViewItem.Tag;
+
+                 listViewItem = listIsNotSupervisor.SelectedItems[0];
+                 selectedSupervisor = (Supervisors)listViewItem.Tag;
+
+                 AddSupervisors();
+                 DisplayNotSupervisors();
+                 DisplaySupervisors();
+             }*/
+        }
+
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            if (listActivity_Supervisor.SelectedItems.Count == 0)
+            {
+                // to warn user that there is already data in vairaiable Selected variable
+                MessageBox.Show("Please select activity then only add it", "Select Activity");
+            }
+            else if (listIsSupervisor.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please Select a Lecturer who is not supervising activity", "Wrong Selection");
             }
             else
             {
-                activity = (SomerenModel.Activity)listActivity_Supervisor.SelectedItems[0].Tag;
+                listViewItem = listActivity_Supervisor.SelectedItems[0];
+                selectedActivity = (Supervisors)listViewItem.Tag;
+
+                listViewItem = listIsSupervisor.SelectedItems[0];
+                selectedSupervisor = (Supervisors)listViewItem.Tag;
+
+                RemoveSupervisors();
+
+
+                MessageBox.Show("Done");
             }
-            DisplaySupervisors(activity);
-            DisplayNotSupervisors(activity);
+            DisplayNotSupervisors();
+            DisplaySupervisors();
         }
     }
 }

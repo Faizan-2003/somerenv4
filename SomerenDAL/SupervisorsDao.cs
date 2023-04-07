@@ -1,7 +1,9 @@
 ﻿using SomerenModel;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
@@ -12,52 +14,82 @@ namespace SomerenDAL
 {
     public class SupervisorsDao : BaseDao
     {
-        public List<Supervisors> GetSupervisor(SomerenModel.Activity activity)
+        public List<Supervisors> GetSupervisor(Supervisors activity)
         {
-            string query = "SELECT lecturerId, firstName, lastName FROM SUPERVISE WHERE activityId=@activityId";
+            string query = "SELECT SUPERVISE.LecturerId, LECTURER.firstName, LECTURER.lastName FROM SUPERVISE\r\nJOIN LECTURER ON SUPERVISE.LecturerId = LECTURER.LecturerId\r\nJOIN ACTIVITIES ON ACTIVITIES.ActivityId = SUPERVISE.ActivityId\r\nWHERE SUPERVISE.ActivityId=@ActivityId";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@activityId", activity.activityId);
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            sqlParameters[0] = new SqlParameter("@ActivityId", activity.ActivityId);
+            return ReadSupervisors(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public List<Supervisors> GetNotSupervisor(Supervisors activity)
+        {
+            string query = "SELECT DISTINCT SUPERVISE.LecturerId, LECTURER.firstName, LECTURER.lastName FROM SUPERVISE\r\nJOIN LECTURER ON SUPERVISE.LecturerId = LECTURER.LecturerId\r\nJOIN ACTIVITIES ON ACTIVITIES.ActivityId = SUPERVISE.ActivityId\r\nWHERE SUPERVISE.LecturerId not in (SELECT SUPERVISE.LecturerId FROM SUPERVISE WHERE ActivityID =@ActivityId)";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@ActivityId", activity.ActivityId);
+            return ReadSupervisors(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public List<Supervisors> GetNotSupervisor(SomerenModel.Activity activity)
-        {
-            string query = "SELECT lecturerId, firstName, lastName FROM LECTURER WHERE LecturerId not in  (SELECT lecturerId FROM SUPERVISE WHERE activityID = @activityId)";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@activityID", activity.activityId);
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        }
-        private List<Supervisors> ReadTables(DataTable dataTable)
+        private List<Supervisors> ReadSupervisors(DataTable dataTable)
         {
             List<Supervisors> supervisors = new List<Supervisors>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Supervisors activitySupervisor = new Supervisors();
-                int number = (int)dr["teacher_number"];
-                activitySupervisor.Supervisor = GetLecturer(number);
-                supervisors.Add(activitySupervisor);
+                Supervisors supervisor = new Supervisors()
+                {
+                    LecturerId = (int)dr["LecturerId"],
+                    firstName = dr["firstName"].ToString(),
+                    lastName = dr["lastName"].ToString(),
+                };
+
+                supervisors.Add(supervisor);
             }
             return supervisors;
         }
 
-        private Lecturer GetLecturer(int lecturerId)
+        public List<Supervisors> GetSupervisedActivities()
         {
-            string query = "SELECT lecturerId, firstName ,lastName FROM Lecturer WHERE lecturerId=@lecturerId";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@lecturerId", lecturerId);
-            return ReadTablesForLecurers(ExecuteSelectQuery(query, sqlParameters));
+            string query = "SELECT ActivityId, ActivityName, StartDateTime, EndDateTime FROM [ACTIVITIES]";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadActivities(ExecuteSelectQuery(query, sqlParameters));
         }
-        private Lecturer ReadTablesForLecurers(DataTable dataTable)
+
+        private List<Supervisors> ReadActivities(DataTable dataTable)
         {
-            Lecturer lecturer = new Lecturer();
+            List<Supervisors> activities = new List<Supervisors>();
+
             foreach (DataRow dr in dataTable.Rows)
             {
-                lecturer.lecturerId = (int)dr["lecturerId"];
-                lecturer.firstName = (string)dr["firstName"];
-                lecturer.lastName = (string)dr["lastName"];
+                Supervisors activity = new Supervisors()
+                {
+                    ActivityId = (int)dr["ActivityId"],
+                    activityName = dr["ActivityName"].ToString(),
+                    startTime = (DateTime)dr["StartDateTime"],
+                    endTime = (DateTime)dr["EndDateTime"],
+                };
+                activities.Add(activity);
             }
-            return lecturer;
+            return activities;
         }
+
+        public void AddSupervisor(Supervisors activity)
+        {
+            string query = "INSERT INTO SUPERVISE(LecturerId,ActivityId) VALUES (@LecturerId, @ActivityId)";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@LecturerId", activity.LecturerId);
+            sqlParameters[1] = new SqlParameter("@ActivityId", activity.ActivityId);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void RemoveSupervisor(Supervisors supervisors)
+        {
+            string query = "DELETE FROM SUPERVISE WHERE LecturerId=@LecturerId AND ActivityId=@ActivityId";
+            // preventing sql injections 
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@LecturerId", supervisors.LecturerId);
+            sqlParameters[1] = new SqlParameter("@ActivityId", supervisors.ActivityId);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
     }
 }

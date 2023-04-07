@@ -119,6 +119,9 @@
             this.endTime = new System.Windows.Forms.ColumnHeader();
             this.label6 = new System.Windows.Forms.Label();
             this.pnlSupervisors = new System.Windows.Forms.Panel();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.button_Show = new System.Windows.Forms.Button();
             this.listIsNotSupervisor = new System.Windows.Forms.ListView();
             this.columnHeader18 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader19 = new System.Windows.Forms.ColumnHeader();
@@ -940,6 +943,9 @@
             // 
             // pnlSupervisors
             // 
+            this.pnlSupervisors.Controls.Add(this.buttonRemove);
+            this.pnlSupervisors.Controls.Add(this.buttonAdd);
+            this.pnlSupervisors.Controls.Add(this.button_Show);
             this.pnlSupervisors.Controls.Add(this.listIsNotSupervisor);
             this.pnlSupervisors.Controls.Add(this.listIsSupervisor);
             this.pnlSupervisors.Controls.Add(this.pictureBox7);
@@ -951,13 +957,43 @@
             this.pnlSupervisors.Size = new System.Drawing.Size(1072, 622);
             this.pnlSupervisors.TabIndex = 13;
             // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Location = new System.Drawing.Point(811, 248);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(166, 29);
+            this.buttonRemove.TabIndex = 8;
+            this.buttonRemove.Text = "Remove";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(811, 213);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(166, 29);
+            this.buttonAdd.TabIndex = 7;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // button_Show
+            // 
+            this.button_Show.Location = new System.Drawing.Point(811, 178);
+            this.button_Show.Name = "button_Show";
+            this.button_Show.Size = new System.Drawing.Size(166, 29);
+            this.button_Show.TabIndex = 6;
+            this.button_Show.Text = "Show Supervisors";
+            this.button_Show.UseVisualStyleBackColor = true;
+            this.button_Show.Click += new System.EventHandler(this.button_Show_Click);
+            // 
             // listIsNotSupervisor
             // 
             this.listIsNotSupervisor.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader18,
             this.columnHeader19,
             this.columnHeader20});
-            this.listIsNotSupervisor.Location = new System.Drawing.Point(541, 286);
+            this.listIsNotSupervisor.Location = new System.Drawing.Point(541, 322);
             this.listIsNotSupervisor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listIsNotSupervisor.Name = "listIsNotSupervisor";
             this.listIsNotSupervisor.Size = new System.Drawing.Size(484, 211);
@@ -988,7 +1024,7 @@
             this.columnHeader22,
             this.columnHeader23,
             this.columnHeader24});
-            this.listIsSupervisor.Location = new System.Drawing.Point(15, 286);
+            this.listIsSupervisor.Location = new System.Drawing.Point(15, 322);
             this.listIsSupervisor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listIsSupervisor.Name = "listIsSupervisor";
             this.listIsSupervisor.Size = new System.Drawing.Size(484, 211);
@@ -1030,6 +1066,7 @@
             this.columnHeader10,
             this.columnHeader11,
             this.columnHeader12});
+            this.listActivity_Supervisor.FullRowSelect = true;
             this.listActivity_Supervisor.Location = new System.Drawing.Point(150, 56);
             this.listActivity_Supervisor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listActivity_Supervisor.Name = "listActivity_Supervisor";
@@ -1037,7 +1074,6 @@
             this.listActivity_Supervisor.TabIndex = 1;
             this.listActivity_Supervisor.UseCompatibleStateImageBehavior = false;
             this.listActivity_Supervisor.View = System.Windows.Forms.View.Details;
-            this.listActivity_Supervisor.SelectedIndexChanged += new System.EventHandler(this.listActivity_Supervisor_SelectedIndexChanged);
             // 
             // columnHeader9
             // 
@@ -1227,5 +1263,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader18;
         private System.Windows.Forms.ColumnHeader columnHeader19;
         private System.Windows.Forms.ColumnHeader columnHeader20;
+        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button button_Show;
     }
 }
