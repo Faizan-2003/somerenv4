@@ -22,6 +22,8 @@ namespace SomerenUI
 
             // disable the delete button if no row is selected.
             btnDeleteItem.Enabled = false;
+
+            // disable the checkout button if unsufficient rows are selected.
             btncheckout.Enabled = false;
         }
 
@@ -47,6 +49,7 @@ namespace SomerenUI
             pnlLecturers.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
+            pnlActivity.Hide(); 
 
             // show students
             pnlStudents.Show();
@@ -70,6 +73,7 @@ namespace SomerenUI
             pnlLecturers.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
+            pnlActivity.Hide();
 
             // show the room panel
             pnlRooms.Show();
@@ -175,6 +179,7 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
+            pnlLecturers.Hide();    
 
             // show lecturer panel
 
@@ -310,7 +315,6 @@ namespace SomerenUI
                 // adding student items in list
                 listviewnames.Items.Add(list);
             }
-
             listViewdrinkcash.Items.Clear();
 
             // getting drinks data
@@ -321,9 +325,9 @@ namespace SomerenUI
                 list.Tag = drink;
 
                 list.SubItems.Add(drink.drinkName.ToString());
-                list.SubItems.Add(drink.drinkType.ToString());
                 list.SubItems.Add(drink.drinkPrice.ToString());
                 list.SubItems.Add(drink.stock.ToString());
+                list.SubItems.Add(drink.drinkType.ToString());
 
                 // adding drink items in list
                 listViewdrinkcash.Items.Add(list);
@@ -331,76 +335,65 @@ namespace SomerenUI
         }
         private void CheckOutButtonEnable()
         {
-            if ((listViewdrinkcash.Items.Count > 0) && (listviewnames.SelectedItems.Count > 0))
+            if (listViewdrinkcash.SelectedItems.Count > 0 && listviewnames.SelectedItems.Count > 0)
             {
-                int price = int.Parse(listViewdrinkcash.SelectedItems[0].SubItems[3].Text);
+                // show the proce of the selected drink and display in the textbox
+                int price = int.Parse(listViewdrinkcash.SelectedItems[0].SubItems[2].Text);
                 txtTotalAmount.Text = price.ToString();
+
+                // enabling the checkout button once the sufficient amount of rows are selected.
                 btncheckout.Enabled = true;
             }
             else
             {
+                // if no price then is selected show 000
                 txtTotalAmount.Text = "0.00";
                 btncheckout.Enabled = false;
             }
         }
         private void UnselectListviewItem(System.Windows.Forms.ListView listView)
         {
+            // unselecting the selected rows after adding the data to the database
             if (listView.SelectedIndices.Count > 0)
             {
                 for (int i = 0; i < listView.SelectedIndices.Count; i++)
                 {
                     listView.Items[listView.SelectedIndices[i]].Selected = false;
                 }
-
             }
         }
-
         private void btncheckout_Click_1(object sender, EventArgs e)
         {
-
             //getting the selected data  from the listview
             int studentID = int.Parse(listviewnames.SelectedItems[0].SubItems[0].Text);
-            int drinkID = int.Parse(listViewdrinkcash.SelectedItems[0].Text);
+            int drinkID = int.Parse(listViewdrinkcash.SelectedItems[0].SubItems[0].Text);
 
-
+            // assigning the selected rows to the variables from the class Order.
             Order order = new Order();
             order.studentID = studentID;
             order.drinkID = drinkID;
 
+            // try the code
             try
             {
+                // calling the method from the service layer made in the DAO
                 OrderService orderService = new OrderService();
                 orderService.DrinkOrdering(order);
-                MessageBox.Show("Order CheckOut Successfully!");
+
+                // shpwing the order completion message after success.
+                MessageBox.Show($"Order Check Out Successfully! \nStudent Number: {studentID} bought Drink ID: {drinkID}.", "Successful");
+
+                // calling the unselect method to order more drinks.
                 UnselectListviewItem(listViewdrinkcash);
                 UnselectListviewItem(listviewnames);
             }
+
+            // throw an error if the try does not work
             catch (Exception exp)
             {
-                MessageBox.Show("Something went Wrong while checking out..." + exp.Message, "Error!");
+                // Error message
+                MessageBox.Show("Something went Wrong while checking out... \n" + exp.Message, "Error!");
             }
-
-
-
-
-
-
-
-
-
-
-
-
-            //Showing Errors
-            if ((listviewnames.SelectedItems.Count > 1) || (listViewdrinkcash.SelectedItems.Count > 1))
-            {
-                MessageBox.Show("Too Many Students or Drinks Selected", "Error!");
-            }
-            else if ((listviewnames.SelectedItems.Count < 1) || (listViewdrinkcash.SelectedItems.Count < 1))
-            {
-                MessageBox.Show("Not Enough Students or Drinks Selected", "Error!");
-            }
-
         }
 
         public void HideAllpanelForCash()
@@ -411,31 +404,35 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlDashboard.Hide();
             pnlDrinks.Hide();
+            pnlActivity.Hide(); 
         }
 
         public void HideAllpanelForActivity()
         {
             //hiding ALL OTHER panels
             pnlStudents.Hide();
-            pnlLecturers.Hide();
-            pnlRooms.Hide();
+            pnlLecturers.Hide();    
+            pnlRooms.Hide();    
             pnlDashboard.Hide();
             pnlDrinks.Hide();
+            pnlCashRegister.Hide();
         }
         private void ShowActivitiesPanel()
         {
-
+            // hide all other panels
             HideAllpanelForActivity();
 
+            // show the activity panel
             pnlActivity.Show();
 
             try
             {
                 // getting the activities form the GetActivities method and sending it to the list and then displaying
-                List<SomerenModel.Activities> activities = GetActivities();
+                List<Activities> activities = GetActivities();
                 DisplayActivities(activities);
             }
 
+            // throw an exception if try does not work
             catch (Exception e)
             {
                 // show error message box if there is an error
@@ -444,8 +441,11 @@ namespace SomerenUI
         }
         private List<Activities> GetActivities()
         {
+            // Get the activites from the GetActivities method
             ActivityService activityService = new ActivityService();
-            List<SomerenModel.Activities> activities = activityService.GetActivities();
+            List<Activities> activities = activityService.GetActivities();
+
+            // return the activities.
             return activities;
         }
 
@@ -456,6 +456,7 @@ namespace SomerenUI
 
             foreach (Activities activity in activities)
             {
+
                 ListViewItem li = new ListViewItem(activity.activityId.ToString());
                 li.Tag = activity;
 
@@ -463,6 +464,7 @@ namespace SomerenUI
                 li.SubItems.Add(activity.startTime.ToString());
                 li.SubItems.Add(activity.endTime.ToString());
 
+                // adding all the data to the list
                 listViewActivity.Items.Add(li);
             }
         }
@@ -889,6 +891,7 @@ namespace SomerenUI
 
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Show rooms panel
             ShowRoomPanel();
         }
 
@@ -898,6 +901,7 @@ namespace SomerenUI
         }
         private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // show the activity panel
             ShowActivitiesPanel();
         }
         private void cashRegisterToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -906,6 +910,16 @@ namespace SomerenUI
             ShowCashRegisterPanel();
         }
 
+        private void listviewnames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // call the checkout button to enable
+            CheckOutButtonEnable();
+        }
 
+        private void listViewdrinkcash_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // call the checkout button to enable
+            CheckOutButtonEnable();
+        }
     }
 }

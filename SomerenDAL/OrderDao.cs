@@ -17,7 +17,7 @@ namespace SomerenDAL
         public List<Order> GetAllOrders()
         {
             // selecting data from tables
-            string query = "SELECT  firstName, lastName FROM [STUDENT] " +
+            string query = "SELECT firstName, lastName FROM [STUDENT] " +
                 "SELECT drinkName, drinkType, price, stock  FROM [DRINKS]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
@@ -42,12 +42,9 @@ namespace SomerenDAL
         }
         public void DrinkOrder(Order order)
         {
-            string query = $"INSERT INTO [Cash Register] (drinkId, StudentId, sales, price) VALUES ('{order.drinkID}', '{order.studentID}','{order.sales}', '{order.price}')";
+            string query = $"INSERT INTO [Cash Register] (drinkId, StudentId) VALUES ('{order.drinkID}', '{order.studentID}')";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
-
-
-
     }
 }

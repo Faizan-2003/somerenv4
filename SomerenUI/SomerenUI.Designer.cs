@@ -684,17 +684,19 @@
             // 
             // txtTotalAmount
             // 
+            txtTotalAmount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             txtTotalAmount.Location = new System.Drawing.Point(487, 478);
             txtTotalAmount.Name = "txtTotalAmount";
-            txtTotalAmount.Size = new System.Drawing.Size(150, 31);
+            txtTotalAmount.Size = new System.Drawing.Size(150, 34);
             txtTotalAmount.TabIndex = 12;
             // 
             // label11
             // 
             label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             label11.Location = new System.Drawing.Point(337, 481);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(81, 25);
+            label11.Size = new System.Drawing.Size(105, 32);
             label11.TabIndex = 11;
             label11.Text = "Amount:";
             // 
@@ -710,6 +712,7 @@
             listViewdrinkcash.TabIndex = 8;
             listViewdrinkcash.UseCompatibleStateImageBehavior = false;
             listViewdrinkcash.View = System.Windows.Forms.View.Details;
+            listViewdrinkcash.SelectedIndexChanged += listViewdrinkcash_SelectedIndexChanged;
             // 
             // drink
             // 
@@ -752,6 +755,7 @@
             listviewnames.TabIndex = 7;
             listviewnames.UseCompatibleStateImageBehavior = false;
             listviewnames.View = System.Windows.Forms.View.Details;
+            listviewnames.SelectedIndexChanged += listviewnames_SelectedIndexChanged;
             // 
             // student
             // 
