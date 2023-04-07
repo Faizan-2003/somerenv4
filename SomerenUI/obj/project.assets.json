@@ -837,24 +837,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mf384\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\yanid\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenUI\\SomerenUI.csproj",
+      "projectUniqueName": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenUI\\SomerenUI.csproj",
       "projectName": "SomerenUI",
-      "projectPath": "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenUI\\SomerenUI.csproj",
-      "packagesPath": "C:\\Users\\mf384\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenUI\\obj\\",
+      "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenUI\\SomerenUI.csproj",
+      "packagesPath": "C:\\Users\\yanid\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenUI\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\mf384\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\yanid\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -862,18 +857,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
-              "projectPath": "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenModel\\SomerenModel.csproj"
+            "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj": {
+              "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenModel\\SomerenModel.csproj"
             },
-            "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenService\\SomerenService.csproj": {
-              "projectPath": "C:\\Users\\mf384\\OneDrive\\Desktop\\DataBase Project\\somerenv4\\SomerenService\\SomerenService.csproj"
+            "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenService\\SomerenService.csproj": {
+              "projectPath": "C:\\Users\\yanid\\OneDrive\\Desktop\\Someren Project\\GitHub\\somerenv4\\SomerenService\\SomerenService.csproj"
             }
           }
         }
@@ -906,7 +900,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
