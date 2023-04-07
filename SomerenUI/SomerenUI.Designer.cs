@@ -645,6 +645,7 @@
             this.columnHeader17});
             this.listViewDrinks.Location = new System.Drawing.Point(18, 56);
             this.listViewDrinks.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listViewDrinks.MultiSelect = false;
             this.listViewDrinks.Name = "listViewDrinks";
             this.listViewDrinks.Size = new System.Drawing.Size(875, 408);
             this.listViewDrinks.TabIndex = 1;
@@ -1114,14 +1115,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 674);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnlDrinks);
+            this.Controls.Add(this.pnlCashRegister);
+            this.Controls.Add(this.pnlActivity);
             this.Controls.Add(this.pnlSupervisors);
             this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.pnlLecturers);
             this.Controls.Add(this.pnlRooms);
-            this.Controls.Add(this.pnlDrinks);
-            this.Controls.Add(this.pnlCashRegister);
-            this.Controls.Add(this.pnlActivity);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SomerenUI";

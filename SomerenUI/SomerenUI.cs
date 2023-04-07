@@ -272,7 +272,7 @@ namespace SomerenUI
                 li.SubItems.Add(drink.price.ToString());
                 li.SubItems.Add(drink.stock.ToString());
                 li.SubItems.Add(drink.VAT.ToString());
-                li.SubItems.Add(drinksService.GetTotalSales(drink.drinkName));
+                li.SubItems.Add(drinksService.GetTotalSales(drink.drinkId));
                 if (drink.stock < 10)
                 {
                     li.SubItems.Add("Stock nearly depleted");
@@ -888,14 +888,18 @@ namespace SomerenUI
                  selectedSupervisor = (Supervisors)listViewItem.Tag;
 
                  AddSupervisors();
-                 DisplayNotSupervisors();
+
+             }
+                             DisplayNotSupervisors();
                  DisplaySupervisors();
-             }*/
+            */
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
-            if (listActivity_Supervisor.SelectedItems.Count == 0)
+            MessageBox.Show("Not implemented due to a querry error", "Code is there but due to en error it crashes the application");
+
+            /*if (listActivity_Supervisor.SelectedItems.Count == 0)
             {
                 // to warn user that there is already data in vairaiable Selected variable
                 MessageBox.Show("Please select activity then only add it", "Select Activity");
@@ -916,7 +920,7 @@ namespace SomerenUI
 
 
                 MessageBox.Show("Done");
-            }
+            }*/
             DisplayNotSupervisors();
             DisplaySupervisors();
         }

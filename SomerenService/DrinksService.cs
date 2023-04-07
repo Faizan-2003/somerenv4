@@ -24,7 +24,7 @@ namespace SomerenService
             return drinks;
         }
 
-        public string GetTotalSales(string drinkName)
+        public string GetTotalSales(int drinkName)
         {
             return drinksdb.GetSales(drinkName);
         }
